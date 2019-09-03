@@ -1,22 +1,27 @@
-
-translate([-5,0,32])rotate([180,0,0])holder();
+$fn=80;
+//difference(){
+  //projection(cut = true)
+    translate([-5,0,35])rotate([180,0,0])holder();
+//  cube([100,100,100]);
+//}
 
 //translate([0,0,-10])color("Gray")mainGear();
 //drillAdapter();
 //translate([0,0,5])color("LightGray")cylinder(d=8,h=46);
 //translate([0,0,24])ballBearing8();
-//translate([0,0,1])ballBearing15();
+//translate([0,0,3])ballBearing15();
 
 //translate([0,0,35])pulley36T();
 
 // belt length = 200mm
-translate([70,0,-38])motor775();
-translate([70,0,35])pulley16T();
+//translate([70,0,-38])motor775();
+//translate([70,0,35])pulley16T();
 
 
-
-//translate([70,0,30])linear_extrude(2)motorHolder();
-//translate([0,0,31])linear_extrude(1)bearing22holder();
+//projection(cut = false)
+//translate([70,0,30])color([0.1,0.1,0.1])linear_extrude(2)motorHolder();
+//translate([0,0,31])color([0.1,0.1,0.1])linear_extrude(1)bearing8holder();
+//translate([0,0,2])color([0.1,0.1,0.1])linear_extrude(1)bearing15holder();
 
 
 //translate([133,0,14])ushko();
@@ -84,9 +89,9 @@ difference(){
     
     translate([5,0,-1])cylinder(d=18,h=40); // hole for main shaft
 
-    translate([5,0,30-9])cylinder(d=32,h=10); // bearing 15 hole
-    translate([5,0,30-10])cylinder(d=26,h=12); // bearing 15 hole
-    translate([5,0,-2])cylinder(d=22,h=8); // bearing 8 hole
+    translate([5,0,30-10])cylinder(d=32,h=10); // bearing 15 hole
+    translate([5,0,30-11])cylinder(d=26,h=12); // bearing 15 hole
+    translate([5,0,0])cylinder(d=22,h=8); // bearing 8 hole
 
     // place for motor holder
     translate([75,0,-1])linear_extrude(4)hull(){
@@ -183,16 +188,30 @@ module motorHolder(){
     }
 }
 
-module bearing22holder(){
-    difference(){
+module bearing8holder(){
+    color("Black")difference(){
         hull(){
             translate([-12,0])circle(d=12);
             translate([12,0])circle(d=12);
             translate([0,0])circle(d=23);
         }
  
-        circle(d=17);
+        circle(d=16);
         translate([-15,0])circle(d=3,$fn=10);
         translate([15,0])circle(d=3,$fn=10);
+    }
+}
+
+module bearing15holder(){
+    difference(){
+        hull(){
+            translate([-15,0])circle(d=12);
+            translate([15,0])circle(d=12);
+            translate([0,0])circle(d=33);
+        }
+ 
+        circle(d=21);
+        translate([-18,0])circle(d=3,$fn=10);
+        translate([18,0])circle(d=3,$fn=10);
     }
 }

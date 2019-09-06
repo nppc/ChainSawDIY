@@ -36,7 +36,7 @@ module drillAdapter(){
 }
 
 module ballBearing8(){
-  color("Gray")linear_extrude(7)difference(){circle(d=22);circle(d=8);}
+  color("Gray")linear_extrude(7)difference(){circle(d=22);circle(d=8,$fn=20);}
 }
 
 module ballBearing15(){
@@ -73,11 +73,11 @@ difference(){
 
         translate([5,0,15])cylinder(d=50,h=15);
     }
-    translate([-1,70/2,15+15/2])rotate([0,90,0])cylinder(d=8,h=30);
-    translate([-1,-70/2,15+15/2])rotate([0,90,0])cylinder(d=8,h=30);
+    translate([-1,70/2,15+15/2])rotate([0,90,0])cylinder(d=8,h=35,$fn=20);
+    translate([-1,-70/2,15+15/2])rotate([0,90,0])cylinder(d=8,h=35,$fn=20);
 
-    translate([30,-70/2,15+15/2])cube([10,13.5,16],true); // nut holder front
-    translate([30,70/2,15+15/2])cube([10,13.5,16],true); // nut holder front
+    translate([35,-70/2,15+15/2])cube([10,13.5,16],true); // nut holder front
+    translate([35,70/2,15+15/2])cube([10,13.5,16],true); // nut holder front
 
     //translate([95,-70/2,15+15/2])cube([10,13.5,16],true); // nut holder back
     //translate([95,70/2,15+15/2])cube([10,13.5,16],true); // nut holder back
@@ -87,27 +87,27 @@ difference(){
       translate([75-5,0,-1])cylinder(d=50,h=40);
     }
     
-    translate([5,0,-1])cylinder(d=18,h=40); // hole for main shaft
+    translate([5,0,-1])cylinder(d=18,h=40,$fn=40); // hole for main shaft
 
     translate([5,0,30-10])cylinder(d=32,h=10); // bearing 15 hole
     translate([5,0,30-11])cylinder(d=26,h=12); // bearing 15 hole
-    translate([5,0,0])cylinder(d=22,h=8); // bearing 8 hole
+    translate([5,0,0])cylinder(d=22,h=8,$fn=50); // bearing 8 hole
 
     // place for motor holder
     translate([75,0,-1])linear_extrude(4)hull(){
-        translate([-25-10,-25])circle(d=13);
-        translate([-25-10,25])circle(d=13);
-        translate([25+10,-25])circle(d=13);
-        translate([25+10,25])circle(d=13);
+        translate([-25-10,-25])circle(d=13,$fn=40);
+        translate([-25-10,25])circle(d=13,$fn=40);
+        translate([25+10,-25])circle(d=13,$fn=40);
+        translate([25+10,25])circle(d=13,$fn=40);
     }
-    translate([75-25,-25,-1])cylinder(d=4,h=40);
-    translate([75-25,25,-1])cylinder(d=4,h=40);
-    translate([75+25,-25,-1])cylinder(d=4,h=40);
-    translate([75+25,25,-1])cylinder(d=4,h=40);
-    translate([75-25,-25,22])cylinder(d=8,h=10);
-    translate([75-25,25,22])cylinder(d=8,h=10);
-    translate([75+25,-25,22])cylinder(d=8,h=10);
-    translate([75+25,25,22])cylinder(d=8,h=10);
+    translate([75-25,-25,-1])cylinder(d=4,h=40,$fn=20);
+    translate([75-25,25,-1])cylinder(d=4,h=40,$fn=20);
+    translate([75+25,-25,-1])cylinder(d=4,h=40,$fn=20);
+    translate([75+25,25,-1])cylinder(d=4,h=40,$fn=20);
+    translate([75-25,-25,20])cylinder(d=9,h=11,$fn=30);
+    translate([75-25,25,20])cylinder(d=9,h=11,$fn=30);
+    translate([75+25,-25,20])cylinder(d=9,h=11,$fn=30);
+    translate([75+25,25,20])cylinder(d=9,h=11,$fn=30);
     
     //place for bearing8 holder
     translate([5,0,-1])linear_extrude(2)hull(){

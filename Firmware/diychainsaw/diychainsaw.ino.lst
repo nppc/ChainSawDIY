@@ -1,0 +1,2978 @@
+
+C:\Users\Pavel\AppData\Local\Temp\arduino_build_933401/diychainsaw.ino.elf:     file format elf32-avr
+
+
+Disassembly of section .text:
+
+00000000 <__vectors>:
+__vectors():
+   0:	51 c0       	rjmp	.+162    	; 0xa4 <__ctors_end>
+   2:	75 c0       	rjmp	.+234    	; 0xee <__bad_interrupt>
+   4:	74 c0       	rjmp	.+232    	; 0xee <__bad_interrupt>
+   6:	73 c0       	rjmp	.+230    	; 0xee <__bad_interrupt>
+   8:	72 c0       	rjmp	.+228    	; 0xee <__bad_interrupt>
+   a:	b2 c4       	rjmp	.+2404   	; 0x970 <__vector_5>
+   c:	70 c0       	rjmp	.+224    	; 0xee <__bad_interrupt>
+   e:	6f c0       	rjmp	.+222    	; 0xee <__bad_interrupt>
+  10:	6e c0       	rjmp	.+220    	; 0xee <__bad_interrupt>
+  12:	6d c0       	rjmp	.+218    	; 0xee <__bad_interrupt>
+  14:	6c c0       	rjmp	.+216    	; 0xee <__bad_interrupt>
+  16:	6b c0       	rjmp	.+214    	; 0xee <__bad_interrupt>
+  18:	6a c0       	rjmp	.+212    	; 0xee <__bad_interrupt>
+  1a:	69 c0       	rjmp	.+210    	; 0xee <__bad_interrupt>
+  1c:	68 c0       	rjmp	.+208    	; 0xee <__bad_interrupt>
+
+0000001e <__trampolines_end>:
+__trampolines_start():
+  1e:	00 00       	nop
+  20:	00 00       	nop
+  22:	36 00       	.word	0x0036	; ????
+
+00000024 <port_to_mode_PGM>:
+  24:	00 00 00 00 37 00                                   ....7.
+
+0000002a <port_to_output_PGM>:
+  2a:	00 00 00 00 38 00                                   ....8.
+
+00000030 <digital_pin_to_port_PGM>:
+  30:	02 02 02 02 02 02                                   ......
+
+00000036 <digital_pin_to_bit_mask_PGM>:
+  36:	01 02 04 08 10 20                                   ..... 
+
+0000003c <digital_pin_to_timer_PGM>:
+  3c:	01 02 00 00 04 00                                   ......
+
+00000042 <bat2>:
+  42:	7f ff c0 df df df df df df df df df c0 df df df     ................
+  52:	df df df df df df c0 df df df df df df df df df     ................
+
+00000062 <bat1>:
+  62:	ff ff 00 ff ff ff ff ff ff ff ff ff 00 ff ff ff     ................
+  72:	ff ff ff ff ff ff 00 ff ff ff ff ff ff ff ff ff     ................
+
+00000082 <bat0>:
+  82:	fe ff 03 fb fb fb fb fb fb fb fb fb 03 fb fb fb     ................
+  92:	fb fb fb fb fb fb 03 fb fb fb fb fb fb fb fb fb     ................
+
+000000a2 <__ctors_start>:
+__ctors_start():
+  a2:	72 05       	cpc	r23, r2
+
+000000a4 <__ctors_end>:
+__dtors_end():
+  a4:	11 24       	eor	r1, r1
+  a6:	1f be       	out	0x3f, r1	; 63
+  a8:	cf e5       	ldi	r28, 0x5F	; 95
+  aa:	d2 e0       	ldi	r29, 0x02	; 2
+  ac:	de bf       	out	0x3e, r29	; 62
+  ae:	cd bf       	out	0x3d, r28	; 61
+
+000000b0 <__do_copy_data>:
+__do_copy_data():
+/home/jenkins-mingw32/workspace/avr-gcc-staging/label/Ubuntu14.04x64-mingw32/gcc-build/avr/avr25/libgcc/../../../../gcc/libgcc/config/avr/lib1funcs.S:2409
+  b0:	10 e0       	ldi	r17, 0x00	; 0
+/home/jenkins-mingw32/workspace/avr-gcc-staging/label/Ubuntu14.04x64-mingw32/gcc-build/avr/avr25/libgcc/../../../../gcc/libgcc/config/avr/lib1funcs.S:2410
+  b2:	a0 e6       	ldi	r26, 0x60	; 96
+/home/jenkins-mingw32/workspace/avr-gcc-staging/label/Ubuntu14.04x64-mingw32/gcc-build/avr/avr25/libgcc/../../../../gcc/libgcc/config/avr/lib1funcs.S:2411
+  b4:	b0 e0       	ldi	r27, 0x00	; 0
+/home/jenkins-mingw32/workspace/avr-gcc-staging/label/Ubuntu14.04x64-mingw32/gcc-build/avr/avr25/libgcc/../../../../gcc/libgcc/config/avr/lib1funcs.S:2412
+  b6:	e0 e9       	ldi	r30, 0x90	; 144
+/home/jenkins-mingw32/workspace/avr-gcc-staging/label/Ubuntu14.04x64-mingw32/gcc-build/avr/avr25/libgcc/../../../../gcc/libgcc/config/avr/lib1funcs.S:2413
+  b8:	fb e0       	ldi	r31, 0x0B	; 11
+/home/jenkins-mingw32/workspace/avr-gcc-staging/label/Ubuntu14.04x64-mingw32/gcc-build/avr/avr25/libgcc/../../../../gcc/libgcc/config/avr/lib1funcs.S:2414
+  ba:	02 c0       	rjmp	.+4      	; 0xc0 <__do_copy_data+0x10>
+/home/jenkins-mingw32/workspace/avr-gcc-staging/label/Ubuntu14.04x64-mingw32/gcc-build/avr/avr25/libgcc/../../../../gcc/libgcc/config/avr/lib1funcs.S:2417
+  bc:	05 90       	lpm	r0, Z+
+/home/jenkins-mingw32/workspace/avr-gcc-staging/label/Ubuntu14.04x64-mingw32/gcc-build/avr/avr25/libgcc/../../../../gcc/libgcc/config/avr/lib1funcs.S:2422
+  be:	0d 92       	st	X+, r0
+/home/jenkins-mingw32/workspace/avr-gcc-staging/label/Ubuntu14.04x64-mingw32/gcc-build/avr/avr25/libgcc/../../../../gcc/libgcc/config/avr/lib1funcs.S:2424
+  c0:	ae 3d       	cpi	r26, 0xDE	; 222
+/home/jenkins-mingw32/workspace/avr-gcc-staging/label/Ubuntu14.04x64-mingw32/gcc-build/avr/avr25/libgcc/../../../../gcc/libgcc/config/avr/lib1funcs.S:2425
+  c2:	b1 07       	cpc	r27, r17
+/home/jenkins-mingw32/workspace/avr-gcc-staging/label/Ubuntu14.04x64-mingw32/gcc-build/avr/avr25/libgcc/../../../../gcc/libgcc/config/avr/lib1funcs.S:2426
+  c4:	d9 f7       	brne	.-10     	; 0xbc <__do_copy_data+0xc>
+
+000000c6 <__do_clear_bss>:
+__do_clear_bss():
+/home/jenkins-mingw32/workspace/avr-gcc-staging/label/Ubuntu14.04x64-mingw32/gcc-build/avr/avr25/libgcc/../../../../gcc/libgcc/config/avr/lib1funcs.S:2441
+  c6:	21 e0       	ldi	r18, 0x01	; 1
+/home/jenkins-mingw32/workspace/avr-gcc-staging/label/Ubuntu14.04x64-mingw32/gcc-build/avr/avr25/libgcc/../../../../gcc/libgcc/config/avr/lib1funcs.S:2442
+  c8:	ae ed       	ldi	r26, 0xDE	; 222
+/home/jenkins-mingw32/workspace/avr-gcc-staging/label/Ubuntu14.04x64-mingw32/gcc-build/avr/avr25/libgcc/../../../../gcc/libgcc/config/avr/lib1funcs.S:2443
+  ca:	b0 e0       	ldi	r27, 0x00	; 0
+/home/jenkins-mingw32/workspace/avr-gcc-staging/label/Ubuntu14.04x64-mingw32/gcc-build/avr/avr25/libgcc/../../../../gcc/libgcc/config/avr/lib1funcs.S:2444
+  cc:	01 c0       	rjmp	.+2      	; 0xd0 <.do_clear_bss_start>
+
+000000ce <.do_clear_bss_loop>:
+/home/jenkins-mingw32/workspace/avr-gcc-staging/label/Ubuntu14.04x64-mingw32/gcc-build/avr/avr25/libgcc/../../../../gcc/libgcc/config/avr/lib1funcs.S:2446
+  ce:	1d 92       	st	X+, r1
+
+000000d0 <.do_clear_bss_start>:
+/home/jenkins-mingw32/workspace/avr-gcc-staging/label/Ubuntu14.04x64-mingw32/gcc-build/avr/avr25/libgcc/../../../../gcc/libgcc/config/avr/lib1funcs.S:2448
+  d0:	aa 32       	cpi	r26, 0x2A	; 42
+/home/jenkins-mingw32/workspace/avr-gcc-staging/label/Ubuntu14.04x64-mingw32/gcc-build/avr/avr25/libgcc/../../../../gcc/libgcc/config/avr/lib1funcs.S:2449
+  d2:	b2 07       	cpc	r27, r18
+/home/jenkins-mingw32/workspace/avr-gcc-staging/label/Ubuntu14.04x64-mingw32/gcc-build/avr/avr25/libgcc/../../../../gcc/libgcc/config/avr/lib1funcs.S:2450
+  d4:	e1 f7       	brne	.-8      	; 0xce <.do_clear_bss_loop>
+
+000000d6 <__do_global_ctors>:
+__do_global_ctors():
+/home/jenkins-mingw32/workspace/avr-gcc-staging/label/Ubuntu14.04x64-mingw32/gcc-build/avr/avr25/libgcc/../../../../gcc/libgcc/config/avr/lib1funcs.S:2466
+  d6:	10 e0       	ldi	r17, 0x00	; 0
+/home/jenkins-mingw32/workspace/avr-gcc-staging/label/Ubuntu14.04x64-mingw32/gcc-build/avr/avr25/libgcc/../../../../gcc/libgcc/config/avr/lib1funcs.S:2467
+  d8:	c2 e5       	ldi	r28, 0x52	; 82
+/home/jenkins-mingw32/workspace/avr-gcc-staging/label/Ubuntu14.04x64-mingw32/gcc-build/avr/avr25/libgcc/../../../../gcc/libgcc/config/avr/lib1funcs.S:2468
+  da:	d0 e0       	ldi	r29, 0x00	; 0
+/home/jenkins-mingw32/workspace/avr-gcc-staging/label/Ubuntu14.04x64-mingw32/gcc-build/avr/avr25/libgcc/../../../../gcc/libgcc/config/avr/lib1funcs.S:2472
+  dc:	03 c0       	rjmp	.+6      	; 0xe4 <__do_global_ctors+0xe>
+/home/jenkins-mingw32/workspace/avr-gcc-staging/label/Ubuntu14.04x64-mingw32/gcc-build/avr/avr25/libgcc/../../../../gcc/libgcc/config/avr/lib1funcs.S:2474
+  de:	21 97       	sbiw	r28, 0x01	; 1
+/home/jenkins-mingw32/workspace/avr-gcc-staging/label/Ubuntu14.04x64-mingw32/gcc-build/avr/avr25/libgcc/../../../../gcc/libgcc/config/avr/lib1funcs.S:2480
+  e0:	fe 01       	movw	r30, r28
+/home/jenkins-mingw32/workspace/avr-gcc-staging/label/Ubuntu14.04x64-mingw32/gcc-build/avr/avr25/libgcc/../../../../gcc/libgcc/config/avr/lib1funcs.S:2481
+  e2:	4e d5       	rcall	.+2716   	; 0xb80 <__tablejump2__>
+/home/jenkins-mingw32/workspace/avr-gcc-staging/label/Ubuntu14.04x64-mingw32/gcc-build/avr/avr25/libgcc/../../../../gcc/libgcc/config/avr/lib1funcs.S:2483
+  e4:	c1 35       	cpi	r28, 0x51	; 81
+/home/jenkins-mingw32/workspace/avr-gcc-staging/label/Ubuntu14.04x64-mingw32/gcc-build/avr/avr25/libgcc/../../../../gcc/libgcc/config/avr/lib1funcs.S:2484
+  e6:	d1 07       	cpc	r29, r17
+/home/jenkins-mingw32/workspace/avr-gcc-staging/label/Ubuntu14.04x64-mingw32/gcc-build/avr/avr25/libgcc/../../../../gcc/libgcc/config/avr/lib1funcs.S:2489
+  e8:	d1 f7       	brne	.-12     	; 0xde <__do_global_ctors+0x8>
+  ea:	8c d4       	rcall	.+2328   	; 0xa04 <main>
+  ec:	4f c5       	rjmp	.+2718   	; 0xb8c <_exit>
+
+000000ee <__bad_interrupt>:
+__vector_1():
+  ee:	88 cf       	rjmp	.-240    	; 0x0 <__vectors>
+
+000000f0 <u8x8_ClearDisplayWithTile.constprop.12>:
+u8x8_ClearDisplayWithTile():
+C:\Users\Pavel\Documents\Arduino\libraries\U8g2\src\clib/u8x8_display.c:123
+void u8x8_RefreshDisplay(u8x8_t *u8x8)
+{
+  u8x8->display_cb(u8x8, U8X8_MSG_DISPLAY_REFRESH, 0, NULL);  
+}
+
+void u8x8_ClearDisplayWithTile(u8x8_t *u8x8, const uint8_t *buf)
+  f0:	1f 93       	push	r17
+  f2:	cf 93       	push	r28
+  f4:	df 93       	push	r29
+  f6:	00 d0       	rcall	.+0      	; 0xf8 <u8x8_ClearDisplayWithTile.constprop.12+0x8>
+  f8:	00 d0       	rcall	.+0      	; 0xfa <u8x8_ClearDisplayWithTile.constprop.12+0xa>
+  fa:	1f 92       	push	r1
+  fc:	cd b7       	in	r28, 0x3d	; 61
+  fe:	de b7       	in	r29, 0x3e	; 62
+C:\Users\Pavel\Documents\Arduino\libraries\U8g2\src\clib/u8x8_display.c:128
+{
+  u8x8_tile_t tile;
+  uint8_t h;
+
+  tile.x_pos = 0;
+ 100:	1c 82       	std	Y+4, r1	; 0x04
+C:\Users\Pavel\Documents\Arduino\libraries\U8g2\src\clib/u8x8_display.c:129
+  tile.cnt = 1;
+ 102:	21 e0       	ldi	r18, 0x01	; 1
+ 104:	2b 83       	std	Y+3, r18	; 0x03
+C:\Users\Pavel\Documents\Arduino\libraries\U8g2\src\clib/u8x8_display.c:130
+  tile.tile_ptr = (uint8_t *)buf;		/* tile_ptr should be const, but isn't */
+ 106:	9a 83       	std	Y+2, r25	; 0x02
+ 108:	89 83       	std	Y+1, r24	; 0x01
+C:\Users\Pavel\Documents\Arduino\libraries\U8g2\src\clib/u8x8_display.c:132
+  
+  h = u8x8->display_info->tile_height;
+ 10a:	e0 91 f3 00 	lds	r30, 0x00F3	; 0x8000f3 <u8x8+0x4>
+ 10e:	f0 91 f4 00 	lds	r31, 0x00F4	; 0x8000f4 <u8x8+0x5>
+ 112:	11 89       	ldd	r17, Z+17	; 0x11
+C:\Users\Pavel\Documents\Arduino\libraries\U8g2\src\clib/u8x8_display.c:133
+  tile.y_pos = 0;
+ 114:	1d 82       	std	Y+5, r1	; 0x05
+C:\Users\Pavel\Documents\Arduino\libraries\U8g2\src\clib/u8x8_display.c:136
+  do
+  {
+    u8x8->display_cb(u8x8, U8X8_MSG_DISPLAY_DRAW_TILE, u8x8->display_info->tile_width, (void *)&tile);
+ 116:	a0 91 f3 00 	lds	r26, 0x00F3	; 0x8000f3 <u8x8+0x4>
+ 11a:	b0 91 f4 00 	lds	r27, 0x00F4	; 0x8000f4 <u8x8+0x5>
+ 11e:	e0 91 f7 00 	lds	r30, 0x00F7	; 0x8000f7 <u8x8+0x8>
+ 122:	f0 91 f8 00 	lds	r31, 0x00F8	; 0x8000f8 <u8x8+0x9>
+ 126:	9e 01       	movw	r18, r28
+ 128:	2f 5f       	subi	r18, 0xFF	; 255
+ 12a:	3f 4f       	sbci	r19, 0xFF	; 255
+ 12c:	50 96       	adiw	r26, 0x10	; 16
+ 12e:	4c 91       	ld	r20, X
+ 130:	6f e0       	ldi	r22, 0x0F	; 15
+ 132:	83 ef       	ldi	r24, 0xF3	; 243
+ 134:	90 e0       	ldi	r25, 0x00	; 0
+ 136:	09 95       	icall
+C:\Users\Pavel\Documents\Arduino\libraries\U8g2\src\clib/u8x8_display.c:137
+    tile.y_pos++;
+ 138:	8d 81       	ldd	r24, Y+5	; 0x05
+ 13a:	8f 5f       	subi	r24, 0xFF	; 255
+ 13c:	8d 83       	std	Y+5, r24	; 0x05
+C:\Users\Pavel\Documents\Arduino\libraries\U8g2\src\clib/u8x8_display.c:138
+  } while( tile.y_pos < h );
+ 13e:	81 17       	cp	r24, r17
+ 140:	50 f3       	brcs	.-44     	; 0x116 <u8x8_ClearDisplayWithTile.constprop.12+0x26>
+C:\Users\Pavel\Documents\Arduino\libraries\U8g2\src\clib/u8x8_display.c:139
+}
+ 142:	0f 90       	pop	r0
+ 144:	0f 90       	pop	r0
+ 146:	0f 90       	pop	r0
+ 148:	0f 90       	pop	r0
+ 14a:	0f 90       	pop	r0
+ 14c:	df 91       	pop	r29
+ 14e:	cf 91       	pop	r28
+ 150:	1f 91       	pop	r17
+ 152:	08 95       	ret
+
+00000154 <u8x8_byte_SendBytes.constprop.1>:
+u8x8_byte_SendBytes():
+C:\Users\Pavel\Documents\Arduino\libraries\U8g2\src\clib/u8x8_byte.c:44
+uint8_t u8x8_byte_SetDC(u8x8_t *u8x8, uint8_t dc)
+{
+  return u8x8->byte_cb(u8x8, U8X8_MSG_BYTE_SET_DC, dc, NULL);
+}
+
+uint8_t u8x8_byte_SendBytes(u8x8_t *u8x8, uint8_t cnt, uint8_t *data)
+ 154:	9b 01       	movw	r18, r22
+C:\Users\Pavel\Documents\Arduino\libraries\U8g2\src\clib/u8x8_byte.c:46
+{
+  return u8x8->byte_cb(u8x8, U8X8_MSG_BYTE_SEND, cnt, (void *)data);
+ 156:	dc 01       	movw	r26, r24
+ 158:	18 96       	adiw	r26, 0x08	; 8
+ 15a:	ed 91       	ld	r30, X+
+ 15c:	fc 91       	ld	r31, X
+ 15e:	41 e0       	ldi	r20, 0x01	; 1
+ 160:	67 e1       	ldi	r22, 0x17	; 23
+ 162:	09 94       	ijmp
+
+00000164 <turnOffPWM>:
+turnOffPWM():
+C:\Users\Pavel\AppData\Local\Arduino15\packages\ATTinyCore\hardware\avr\1.3.1\cores\tiny/wiring_digital.c:67
+}
+
+static void turnOffPWM(uint8_t timer)
+{
+  #if defined(TCCR0A) && defined(COM0A1)
+  if( timer == TIMER0A){
+ 164:	81 30       	cpi	r24, 0x01	; 1
+ 166:	21 f4       	brne	.+8      	; 0x170 <turnOffPWM+0xc>
+C:\Users\Pavel\AppData\Local\Arduino15\packages\ATTinyCore\hardware\avr\1.3.1\cores\tiny/wiring_digital.c:68
+    cbi(TCCR0A, COM0A1);
+ 168:	8a b5       	in	r24, 0x2a	; 42
+ 16a:	8f 77       	andi	r24, 0x7F	; 127
+C:\Users\Pavel\AppData\Local\Arduino15\packages\ATTinyCore\hardware\avr\1.3.1\cores\tiny/wiring_digital.c:75
+  } else
+  #endif
+
+  #if defined(TCCR0A) && defined(COM0B1)
+  if( timer == TIMER0B){
+    cbi(TCCR0A, COM0B1);
+ 16c:	8a bd       	out	0x2a, r24	; 42
+ 16e:	08 95       	ret
+C:\Users\Pavel\AppData\Local\Arduino15\packages\ATTinyCore\hardware\avr\1.3.1\cores\tiny/wiring_digital.c:74
+    //cbi(TCCR0A, COM0A0);
+  } else
+  #endif
+
+  #if defined(TCCR0A) && defined(COM0B1)
+  if( timer == TIMER0B){
+ 170:	82 30       	cpi	r24, 0x02	; 2
+ 172:	19 f4       	brne	.+6      	; 0x17a <turnOffPWM+0x16>
+C:\Users\Pavel\AppData\Local\Arduino15\packages\ATTinyCore\hardware\avr\1.3.1\cores\tiny/wiring_digital.c:75
+    cbi(TCCR0A, COM0B1);
+ 174:	8a b5       	in	r24, 0x2a	; 42
+ 176:	8f 7d       	andi	r24, 0xDF	; 223
+ 178:	f9 cf       	rjmp	.-14     	; 0x16c <turnOffPWM+0x8>
+C:\Users\Pavel\AppData\Local\Arduino15\packages\ATTinyCore\hardware\avr\1.3.1\cores\tiny/wiring_digital.c:105
+    cbi(TCCR1C,COM1D0);
+    //cbi(TCCR1A,PWM1D);
+  } else
+    #endif
+  #if defined(TCCR1) && defined(COM1A1)
+  if(timer == TIMER1A){
+ 17a:	83 30       	cpi	r24, 0x03	; 3
+ 17c:	21 f4       	brne	.+8      	; 0x186 <turnOffPWM+0x22>
+C:\Users\Pavel\AppData\Local\Arduino15\packages\ATTinyCore\hardware\avr\1.3.1\cores\tiny/wiring_digital.c:106
+    cbi(TCCR1, COM1A1);
+ 17e:	80 b7       	in	r24, 0x30	; 48
+ 180:	8f 7d       	andi	r24, 0xDF	; 223
+ 182:	80 bf       	out	0x30, r24	; 48
+ 184:	08 95       	ret
+C:\Users\Pavel\AppData\Local\Arduino15\packages\ATTinyCore\hardware\avr\1.3.1\cores\tiny/wiring_digital.c:125
+  #endif
+  } else
+  #endif
+
+  #if defined(TCCR1) && defined(COM1B1)
+  if( timer == TIMER1B){
+ 186:	84 30       	cpi	r24, 0x04	; 4
+ 188:	19 f4       	brne	.+6      	; 0x190 <turnOffPWM+0x2c>
+C:\Users\Pavel\AppData\Local\Arduino15\packages\ATTinyCore\hardware\avr\1.3.1\cores\tiny/wiring_digital.c:126
+    cbi(GTCCR, COM1B1);
+ 18a:	8c b5       	in	r24, 0x2c	; 44
+ 18c:	8f 7d       	andi	r24, 0xDF	; 223
+ 18e:	8c bd       	out	0x2c, r24	; 44
+C:\Users\Pavel\AppData\Local\Arduino15\packages\ATTinyCore\hardware\avr\1.3.1\cores\tiny/wiring_digital.c:134
+  #endif
+
+    {
+    }
+
+}
+ 190:	08 95       	ret
+
+00000192 <digitalWrite>:
+digitalWrite():
+C:\Users\Pavel\AppData\Local\Arduino15\packages\ATTinyCore\hardware\avr\1.3.1\cores\tiny/wiring_digital.c:137
+
+void digitalWrite(uint8_t pin, uint8_t val)
+{
+ 192:	1f 93       	push	r17
+ 194:	cf 93       	push	r28
+ 196:	df 93       	push	r29
+ 198:	16 2f       	mov	r17, r22
+C:\Users\Pavel\AppData\Local\Arduino15\packages\ATTinyCore\hardware\avr\1.3.1\cores\tiny/wiring_digital.c:138
+  if (pin&128) {pin=analogInputToDigitalPin((pin&127));}
+ 19a:	87 ff       	sbrs	r24, 7
+ 19c:	09 c0       	rjmp	.+18     	; 0x1b0 <digitalWrite+0x1e>
+ 19e:	8f 77       	andi	r24, 0x7F	; 127
+ 1a0:	71 f1       	breq	.+92     	; 0x1fe <digitalWrite+0x6c>
+ 1a2:	81 30       	cpi	r24, 0x01	; 1
+ 1a4:	71 f1       	breq	.+92     	; 0x202 <digitalWrite+0x70>
+ 1a6:	82 30       	cpi	r24, 0x02	; 2
+ 1a8:	71 f1       	breq	.+92     	; 0x206 <digitalWrite+0x74>
+ 1aa:	83 30       	cpi	r24, 0x03	; 3
+ 1ac:	71 f1       	breq	.+92     	; 0x20a <digitalWrite+0x78>
+ 1ae:	8f ef       	ldi	r24, 0xFF	; 255
+C:\Users\Pavel\AppData\Local\Arduino15\packages\ATTinyCore\hardware\avr\1.3.1\cores\tiny/wiring_digital.c:139
+  uint8_t timer = digitalPinToTimer(pin);
+ 1b0:	28 2f       	mov	r18, r24
+ 1b2:	30 e0       	ldi	r19, 0x00	; 0
+ 1b4:	f9 01       	movw	r30, r18
+ 1b6:	e4 5c       	subi	r30, 0xC4	; 196
+ 1b8:	ff 4f       	sbci	r31, 0xFF	; 255
+ 1ba:	84 91       	lpm	r24, Z
+C:\Users\Pavel\AppData\Local\Arduino15\packages\ATTinyCore\hardware\avr\1.3.1\cores\tiny/wiring_digital.c:140
+  uint8_t bit = digitalPinToBitMask(pin);
+ 1bc:	f9 01       	movw	r30, r18
+ 1be:	ea 5c       	subi	r30, 0xCA	; 202
+ 1c0:	ff 4f       	sbci	r31, 0xFF	; 255
+ 1c2:	d4 91       	lpm	r29, Z
+C:\Users\Pavel\AppData\Local\Arduino15\packages\ATTinyCore\hardware\avr\1.3.1\cores\tiny/wiring_digital.c:141
+  uint8_t port = digitalPinToPort(pin);
+ 1c4:	f9 01       	movw	r30, r18
+ 1c6:	e0 5d       	subi	r30, 0xD0	; 208
+ 1c8:	ff 4f       	sbci	r31, 0xFF	; 255
+ 1ca:	c4 91       	lpm	r28, Z
+C:\Users\Pavel\AppData\Local\Arduino15\packages\ATTinyCore\hardware\avr\1.3.1\cores\tiny/wiring_digital.c:144
+  volatile uint8_t *out;
+
+  if (port == NOT_A_PIN) return;
+ 1cc:	cc 23       	and	r28, r28
+ 1ce:	99 f0       	breq	.+38     	; 0x1f6 <digitalWrite+0x64>
+C:\Users\Pavel\AppData\Local\Arduino15\packages\ATTinyCore\hardware\avr\1.3.1\cores\tiny/wiring_digital.c:148
+
+  // If the pin that support PWM output, we need to turn it off
+  // before doing a digital write.
+  if (timer != NOT_ON_TIMER) turnOffPWM(timer);
+ 1d0:	81 11       	cpse	r24, r1
+ 1d2:	c8 df       	rcall	.-112    	; 0x164 <turnOffPWM>
+C:\Users\Pavel\AppData\Local\Arduino15\packages\ATTinyCore\hardware\avr\1.3.1\cores\tiny/wiring_digital.c:150
+
+  out = portOutputRegister(port);
+ 1d4:	ec 2f       	mov	r30, r28
+ 1d6:	f0 e0       	ldi	r31, 0x00	; 0
+ 1d8:	ee 0f       	add	r30, r30
+ 1da:	ff 1f       	adc	r31, r31
+ 1dc:	e6 5d       	subi	r30, 0xD6	; 214
+ 1de:	ff 4f       	sbci	r31, 0xFF	; 255
+ 1e0:	a5 91       	lpm	r26, Z+
+ 1e2:	b4 91       	lpm	r27, Z
+C:\Users\Pavel\AppData\Local\Arduino15\packages\ATTinyCore\hardware\avr\1.3.1\cores\tiny/wiring_digital.c:153
+
+  if (val == LOW) {
+    uint8_t oldSREG = SREG;
+ 1e4:	8f b7       	in	r24, 0x3f	; 63
+C:\Users\Pavel\AppData\Local\Arduino15\packages\ATTinyCore\hardware\avr\1.3.1\cores\tiny/wiring_digital.c:152
+  // before doing a digital write.
+  if (timer != NOT_ON_TIMER) turnOffPWM(timer);
+
+  out = portOutputRegister(port);
+
+  if (val == LOW) {
+ 1e6:	11 11       	cpse	r17, r1
+ 1e8:	12 c0       	rjmp	.+36     	; 0x20e <digitalWrite+0x7c>
+C:\Users\Pavel\AppData\Local\Arduino15\packages\ATTinyCore\hardware\avr\1.3.1\cores\tiny/wiring_digital.c:154
+    uint8_t oldSREG = SREG;
+    cli();
+ 1ea:	f8 94       	cli
+C:\Users\Pavel\AppData\Local\Arduino15\packages\ATTinyCore\hardware\avr\1.3.1\cores\tiny/wiring_digital.c:155
+    *out &= ~bit;
+ 1ec:	ec 91       	ld	r30, X
+ 1ee:	d0 95       	com	r29
+ 1f0:	de 23       	and	r29, r30
+C:\Users\Pavel\AppData\Local\Arduino15\packages\ATTinyCore\hardware\avr\1.3.1\cores\tiny/wiring_digital.c:160
+    SREG = oldSREG;
+  } else {
+    uint8_t oldSREG = SREG;
+    cli();
+    *out |= bit;
+ 1f2:	dc 93       	st	X, r29
+C:\Users\Pavel\AppData\Local\Arduino15\packages\ATTinyCore\hardware\avr\1.3.1\cores\tiny/wiring_digital.c:161
+    SREG = oldSREG;
+ 1f4:	8f bf       	out	0x3f, r24	; 63
+C:\Users\Pavel\AppData\Local\Arduino15\packages\ATTinyCore\hardware\avr\1.3.1\cores\tiny/wiring_digital.c:163
+  }
+}
+ 1f6:	df 91       	pop	r29
+ 1f8:	cf 91       	pop	r28
+ 1fa:	1f 91       	pop	r17
+ 1fc:	08 95       	ret
+C:\Users\Pavel\AppData\Local\Arduino15\packages\ATTinyCore\hardware\avr\1.3.1\cores\tiny/wiring_digital.c:138
+
+}
+
+void digitalWrite(uint8_t pin, uint8_t val)
+{
+  if (pin&128) {pin=analogInputToDigitalPin((pin&127));}
+ 1fe:	85 e0       	ldi	r24, 0x05	; 5
+ 200:	d7 cf       	rjmp	.-82     	; 0x1b0 <digitalWrite+0x1e>
+ 202:	82 e0       	ldi	r24, 0x02	; 2
+ 204:	d5 cf       	rjmp	.-86     	; 0x1b0 <digitalWrite+0x1e>
+ 206:	84 e0       	ldi	r24, 0x04	; 4
+ 208:	d3 cf       	rjmp	.-90     	; 0x1b0 <digitalWrite+0x1e>
+ 20a:	83 e0       	ldi	r24, 0x03	; 3
+ 20c:	d1 cf       	rjmp	.-94     	; 0x1b0 <digitalWrite+0x1e>
+C:\Users\Pavel\AppData\Local\Arduino15\packages\ATTinyCore\hardware\avr\1.3.1\cores\tiny/wiring_digital.c:159
+    cli();
+    *out &= ~bit;
+    SREG = oldSREG;
+  } else {
+    uint8_t oldSREG = SREG;
+    cli();
+ 20e:	f8 94       	cli
+C:\Users\Pavel\AppData\Local\Arduino15\packages\ATTinyCore\hardware\avr\1.3.1\cores\tiny/wiring_digital.c:160
+    *out |= bit;
+ 210:	ec 91       	ld	r30, X
+ 212:	de 2b       	or	r29, r30
+ 214:	ee cf       	rjmp	.-36     	; 0x1f2 <digitalWrite+0x60>
+
+00000216 <pinMode>:
+pinMode():
+C:\Users\Pavel\AppData\Local\Arduino15\packages\ATTinyCore\hardware\avr\1.3.1\cores\tiny/wiring_digital.c:33
+#define ARDUINO_MAIN
+#include "wiring_private.h"
+#include "pins_arduino.h"
+
+void pinMode(uint8_t pin, uint8_t mode)
+{
+ 216:	cf 93       	push	r28
+ 218:	df 93       	push	r29
+C:\Users\Pavel\AppData\Local\Arduino15\packages\ATTinyCore\hardware\avr\1.3.1\cores\tiny/wiring_digital.c:34
+  if (pin&128) {pin=analogInputToDigitalPin((pin&127));}
+ 21a:	87 ff       	sbrs	r24, 7
+ 21c:	09 c0       	rjmp	.+18     	; 0x230 <pinMode+0x1a>
+ 21e:	8f 77       	andi	r24, 0x7F	; 127
+ 220:	79 f1       	breq	.+94     	; 0x280 <__stack+0x21>
+ 222:	81 30       	cpi	r24, 0x01	; 1
+ 224:	79 f1       	breq	.+94     	; 0x284 <__stack+0x25>
+ 226:	82 30       	cpi	r24, 0x02	; 2
+ 228:	79 f1       	breq	.+94     	; 0x288 <__stack+0x29>
+ 22a:	83 30       	cpi	r24, 0x03	; 3
+ 22c:	79 f1       	breq	.+94     	; 0x28c <__stack+0x2d>
+ 22e:	8f ef       	ldi	r24, 0xFF	; 255
+C:\Users\Pavel\AppData\Local\Arduino15\packages\ATTinyCore\hardware\avr\1.3.1\cores\tiny/wiring_digital.c:35
+  uint8_t bit = digitalPinToBitMask(pin);
+ 230:	90 e0       	ldi	r25, 0x00	; 0
+ 232:	fc 01       	movw	r30, r24
+ 234:	ea 5c       	subi	r30, 0xCA	; 202
+ 236:	ff 4f       	sbci	r31, 0xFF	; 255
+ 238:	24 91       	lpm	r18, Z
+C:\Users\Pavel\AppData\Local\Arduino15\packages\ATTinyCore\hardware\avr\1.3.1\cores\tiny/wiring_digital.c:36
+  uint8_t port = digitalPinToPort(pin);
+ 23a:	80 5d       	subi	r24, 0xD0	; 208
+ 23c:	9f 4f       	sbci	r25, 0xFF	; 255
+ 23e:	fc 01       	movw	r30, r24
+ 240:	84 91       	lpm	r24, Z
+C:\Users\Pavel\AppData\Local\Arduino15\packages\ATTinyCore\hardware\avr\1.3.1\cores\tiny/wiring_digital.c:39
+  volatile uint8_t *reg, *out;
+
+  if (port == NOT_A_PIN) return;
+ 242:	88 23       	and	r24, r24
+ 244:	d1 f0       	breq	.+52     	; 0x27a <__stack+0x1b>
+C:\Users\Pavel\AppData\Local\Arduino15\packages\ATTinyCore\hardware\avr\1.3.1\cores\tiny/wiring_digital.c:41
+
+  reg = portModeRegister(port);
+ 246:	90 e0       	ldi	r25, 0x00	; 0
+ 248:	88 0f       	add	r24, r24
+ 24a:	99 1f       	adc	r25, r25
+ 24c:	fc 01       	movw	r30, r24
+ 24e:	ec 5d       	subi	r30, 0xDC	; 220
+ 250:	ff 4f       	sbci	r31, 0xFF	; 255
+ 252:	a5 91       	lpm	r26, Z+
+ 254:	b4 91       	lpm	r27, Z
+C:\Users\Pavel\AppData\Local\Arduino15\packages\ATTinyCore\hardware\avr\1.3.1\cores\tiny/wiring_digital.c:42
+  out = portOutputRegister(port);
+ 256:	fc 01       	movw	r30, r24
+ 258:	e6 5d       	subi	r30, 0xD6	; 214
+ 25a:	ff 4f       	sbci	r31, 0xFF	; 255
+ 25c:	c5 91       	lpm	r28, Z+
+ 25e:	d4 91       	lpm	r29, Z
+C:\Users\Pavel\AppData\Local\Arduino15\packages\ATTinyCore\hardware\avr\1.3.1\cores\tiny/wiring_digital.c:50
+    uint8_t oldSREG = SREG;
+                cli();
+    *reg &= ~bit;
+    *out &= ~bit;
+    SREG = oldSREG;
+  } else if (mode == INPUT_PULLUP) {
+ 260:	62 30       	cpi	r22, 0x02	; 2
+ 262:	b1 f4       	brne	.+44     	; 0x290 <__stack+0x31>
+C:\Users\Pavel\AppData\Local\Arduino15\packages\ATTinyCore\hardware\avr\1.3.1\cores\tiny/wiring_digital.c:51
+    uint8_t oldSREG = SREG;
+ 264:	9f b7       	in	r25, 0x3f	; 63
+C:\Users\Pavel\AppData\Local\Arduino15\packages\ATTinyCore\hardware\avr\1.3.1\cores\tiny/wiring_digital.c:52
+                cli();
+ 266:	f8 94       	cli
+C:\Users\Pavel\AppData\Local\Arduino15\packages\ATTinyCore\hardware\avr\1.3.1\cores\tiny/wiring_digital.c:53
+    *reg &= ~bit;
+ 268:	3c 91       	ld	r19, X
+ 26a:	82 2f       	mov	r24, r18
+ 26c:	80 95       	com	r24
+ 26e:	83 23       	and	r24, r19
+ 270:	8c 93       	st	X, r24
+C:\Users\Pavel\AppData\Local\Arduino15\packages\ATTinyCore\hardware\avr\1.3.1\cores\tiny/wiring_digital.c:54
+    *out |= bit;
+ 272:	e8 81       	ld	r30, Y
+ 274:	2e 2b       	or	r18, r30
+ 276:	28 83       	st	Y, r18
+C:\Users\Pavel\AppData\Local\Arduino15\packages\ATTinyCore\hardware\avr\1.3.1\cores\tiny/wiring_digital.c:55
+    SREG = oldSREG;
+ 278:	9f bf       	out	0x3f, r25	; 63
+C:\Users\Pavel\AppData\Local\Arduino15\packages\ATTinyCore\hardware\avr\1.3.1\cores\tiny/wiring_digital.c:62
+    uint8_t oldSREG = SREG;
+                cli();
+    *reg |= bit;
+    SREG = oldSREG;
+  }
+}
+ 27a:	df 91       	pop	r29
+ 27c:	cf 91       	pop	r28
+ 27e:	08 95       	ret
+C:\Users\Pavel\AppData\Local\Arduino15\packages\ATTinyCore\hardware\avr\1.3.1\cores\tiny/wiring_digital.c:34
+#include "wiring_private.h"
+#include "pins_arduino.h"
+
+void pinMode(uint8_t pin, uint8_t mode)
+{
+  if (pin&128) {pin=analogInputToDigitalPin((pin&127));}
+ 280:	85 e0       	ldi	r24, 0x05	; 5
+ 282:	d6 cf       	rjmp	.-84     	; 0x230 <pinMode+0x1a>
+ 284:	82 e0       	ldi	r24, 0x02	; 2
+ 286:	d4 cf       	rjmp	.-88     	; 0x230 <pinMode+0x1a>
+ 288:	84 e0       	ldi	r24, 0x04	; 4
+ 28a:	d2 cf       	rjmp	.-92     	; 0x230 <pinMode+0x1a>
+ 28c:	83 e0       	ldi	r24, 0x03	; 3
+ 28e:	d0 cf       	rjmp	.-96     	; 0x230 <pinMode+0x1a>
+C:\Users\Pavel\AppData\Local\Arduino15\packages\ATTinyCore\hardware\avr\1.3.1\cores\tiny/wiring_digital.c:57
+                cli();
+    *reg &= ~bit;
+    *out |= bit;
+    SREG = oldSREG;
+  } else {
+    uint8_t oldSREG = SREG;
+ 290:	8f b7       	in	r24, 0x3f	; 63
+C:\Users\Pavel\AppData\Local\Arduino15\packages\ATTinyCore\hardware\avr\1.3.1\cores\tiny/wiring_digital.c:58
+                cli();
+ 292:	f8 94       	cli
+C:\Users\Pavel\AppData\Local\Arduino15\packages\ATTinyCore\hardware\avr\1.3.1\cores\tiny/wiring_digital.c:59
+    *reg |= bit;
+ 294:	ec 91       	ld	r30, X
+ 296:	2e 2b       	or	r18, r30
+ 298:	2c 93       	st	X, r18
+C:\Users\Pavel\AppData\Local\Arduino15\packages\ATTinyCore\hardware\avr\1.3.1\cores\tiny/wiring_digital.c:60
+    SREG = oldSREG;
+ 29a:	8f bf       	out	0x3f, r24	; 63
+ 29c:	ee cf       	rjmp	.-36     	; 0x27a <__stack+0x1b>
+
+0000029e <micros>:
+micros():
+C:\Users\Pavel\AppData\Local\Arduino15\packages\ATTinyCore\hardware\avr\1.3.1\cores\tiny/wiring.c:187
+}
+
+unsigned long micros()
+{
+  unsigned long m;
+  uint8_t oldSREG = SREG, t;
+ 29e:	3f b7       	in	r19, 0x3f	; 63
+C:\Users\Pavel\AppData\Local\Arduino15\packages\ATTinyCore\hardware\avr\1.3.1\cores\tiny/wiring.c:189
+
+  cli();
+ 2a0:	f8 94       	cli
+C:\Users\Pavel\AppData\Local\Arduino15\packages\ATTinyCore\hardware\avr\1.3.1\cores\tiny/wiring.c:190
+  m = millis_timer_overflow_count;
+ 2a2:	80 91 e3 00 	lds	r24, 0x00E3	; 0x8000e3 <millis_timer_overflow_count>
+ 2a6:	90 91 e4 00 	lds	r25, 0x00E4	; 0x8000e4 <millis_timer_overflow_count+0x1>
+ 2aa:	a0 91 e5 00 	lds	r26, 0x00E5	; 0x8000e5 <millis_timer_overflow_count+0x2>
+ 2ae:	b0 91 e6 00 	lds	r27, 0x00E6	; 0x8000e6 <millis_timer_overflow_count+0x3>
+C:\Users\Pavel\AppData\Local\Arduino15\packages\ATTinyCore\hardware\avr\1.3.1\cores\tiny/wiring.c:192
+#if defined(TCNT0) && (TIMER_TO_USE_FOR_MILLIS == 0) && !defined(TCW0)
+  t = TCNT0;
+ 2b2:	22 b7       	in	r18, 0x32	; 50
+C:\Users\Pavel\AppData\Local\Arduino15\packages\ATTinyCore\hardware\avr\1.3.1\cores\tiny/wiring.c:207
+
+#if defined(TIFR0) && (TIMER_TO_USE_FOR_MILLIS == 0)
+  if ((TIFR0 & _BV(TOV0)) && (t < 255))
+    m++;
+#elif defined(TIFR) && (TIMER_TO_USE_FOR_MILLIS == 0)
+  if ((TIFR & _BV(TOV0)) && (t < 255))
+ 2b4:	08 b6       	in	r0, 0x38	; 56
+ 2b6:	01 fe       	sbrs	r0, 1
+ 2b8:	05 c0       	rjmp	.+10     	; 0x2c4 <micros+0x26>
+ 2ba:	2f 3f       	cpi	r18, 0xFF	; 255
+ 2bc:	19 f0       	breq	.+6      	; 0x2c4 <micros+0x26>
+C:\Users\Pavel\AppData\Local\Arduino15\packages\ATTinyCore\hardware\avr\1.3.1\cores\tiny/wiring.c:208
+    m++;
+ 2be:	01 96       	adiw	r24, 0x01	; 1
+ 2c0:	a1 1d       	adc	r26, r1
+ 2c2:	b1 1d       	adc	r27, r1
+C:\Users\Pavel\AppData\Local\Arduino15\packages\ATTinyCore\hardware\avr\1.3.1\cores\tiny/wiring.c:217
+#elif defined(TIFR) && (TIMER_TO_USE_FOR_MILLIS == 1)
+  if ((TIFR & _BV(TOV1)) && (t < 255))
+    m++;
+#endif
+
+  SREG = oldSREG;
+ 2c4:	3f bf       	out	0x3f, r19	; 63
+C:\Users\Pavel\AppData\Local\Arduino15\packages\ATTinyCore\hardware\avr\1.3.1\cores\tiny/wiring.c:224
+
+#if F_CPU < 1000000L
+  return ((m << 8) + t) * MillisTimer_Prescale_Value * (1000000L/F_CPU);
+#else
+#if (MillisTimer_Prescale_Value % clockCyclesPerMicrosecond() == 0 ) // Can we just do it the naive way? If so great!
+  return ((m << 8) + t) * (MillisTimer_Prescale_Value / clockCyclesPerMicrosecond());
+ 2c6:	ba 2f       	mov	r27, r26
+ 2c8:	a9 2f       	mov	r26, r25
+ 2ca:	98 2f       	mov	r25, r24
+ 2cc:	88 27       	eor	r24, r24
+ 2ce:	bc 01       	movw	r22, r24
+ 2d0:	cd 01       	movw	r24, r26
+ 2d2:	62 0f       	add	r22, r18
+ 2d4:	71 1d       	adc	r23, r1
+ 2d6:	81 1d       	adc	r24, r1
+ 2d8:	91 1d       	adc	r25, r1
+ 2da:	43 e0       	ldi	r20, 0x03	; 3
+ 2dc:	66 0f       	add	r22, r22
+ 2de:	77 1f       	adc	r23, r23
+ 2e0:	88 1f       	adc	r24, r24
+ 2e2:	99 1f       	adc	r25, r25
+ 2e4:	4a 95       	dec	r20
+ 2e6:	d1 f7       	brne	.-12     	; 0x2dc <micros+0x3e>
+C:\Users\Pavel\AppData\Local\Arduino15\packages\ATTinyCore\hardware\avr\1.3.1\cores\tiny/wiring.c:267
+  //the high part gets divided by cCPuS then multiplied by the prescaler. Then take the low 8 bits plus the high part modulo-cCPuS to correct for the division, then multiply that by the prescaler value first before dividing by cCPuS, and finally add the two together.
+  //return ((m << 8 )/clockCyclesPerMicrosecond()* MillisTimer_Prescale_Value) + ((t+(((m<<8)%clockCyclesPerMicrosecond())) * MillisTimer_Prescale_Value / clockCyclesPerMicrosecond()));
+  return ((m << 8 )/clockCyclesPerMicrosecond()* MillisTimer_Prescale_Value) + (t * MillisTimer_Prescale_Value / clockCyclesPerMicrosecond());
+#endif
+#endif
+}
+ 2e8:	08 95       	ret
+
+000002ea <u8x8_dummy_cb>:
+u8x8_dummy_cb():
+C:\Users\Pavel\Documents\Arduino\libraries\U8g2\src\clib/u8x8_setup.c:44
+/* universal dummy callback, which will be default for all callbacks */
+uint8_t u8x8_dummy_cb(U8X8_UNUSED u8x8_t *u8x8, U8X8_UNUSED uint8_t msg, U8X8_UNUSED uint8_t arg_int, U8X8_UNUSED void *arg_ptr)
+{
+  /* the dummy callback will not handle any message and will fail for all messages */
+  return 0;
+}
+ 2ea:	80 e0       	ldi	r24, 0x00	; 0
+ 2ec:	08 95       	ret
+
+000002ee <u8x8_gpio_call>:
+u8x8_gpio_call():
+C:\Users\Pavel\Documents\Arduino\libraries\U8g2\src\clib/u8x8_gpio.c:42
+#include "u8x8.h"
+
+
+void u8x8_gpio_call(u8x8_t *u8x8, uint8_t msg, uint8_t arg)
+{
+  u8x8->gpio_and_delay_cb(u8x8, msg, arg, NULL);
+ 2ee:	dc 01       	movw	r26, r24
+ 2f0:	1a 96       	adiw	r26, 0x0a	; 10
+ 2f2:	ed 91       	ld	r30, X+
+ 2f4:	fc 91       	ld	r31, X
+ 2f6:	30 e0       	ldi	r19, 0x00	; 0
+ 2f8:	20 e0       	ldi	r18, 0x00	; 0
+ 2fa:	09 94       	ijmp
+
+000002fc <u8x8_DrawTile>:
+u8x8_DrawTile():
+C:\Users\Pavel\Documents\Arduino\libraries\U8g2\src\clib/u8x8_display.c:83
+
+/*==========================================*/
+/* official functions */
+
+uint8_t u8x8_DrawTile(u8x8_t *u8x8, uint8_t x, uint8_t y, uint8_t cnt, uint8_t *tile_ptr)
+{
+ 2fc:	0f 93       	push	r16
+ 2fe:	1f 93       	push	r17
+ 300:	cf 93       	push	r28
+ 302:	df 93       	push	r29
+ 304:	00 d0       	rcall	.+0      	; 0x306 <u8x8_DrawTile+0xa>
+ 306:	00 d0       	rcall	.+0      	; 0x308 <u8x8_DrawTile+0xc>
+ 308:	1f 92       	push	r1
+ 30a:	cd b7       	in	r28, 0x3d	; 61
+ 30c:	de b7       	in	r29, 0x3e	; 62
+C:\Users\Pavel\Documents\Arduino\libraries\U8g2\src\clib/u8x8_display.c:85
+  u8x8_tile_t tile;
+  tile.x_pos = x;
+ 30e:	6c 83       	std	Y+4, r22	; 0x04
+C:\Users\Pavel\Documents\Arduino\libraries\U8g2\src\clib/u8x8_display.c:86
+  tile.y_pos = y;
+ 310:	4d 83       	std	Y+5, r20	; 0x05
+C:\Users\Pavel\Documents\Arduino\libraries\U8g2\src\clib/u8x8_display.c:87
+  tile.cnt = cnt;
+ 312:	2b 83       	std	Y+3, r18	; 0x03
+C:\Users\Pavel\Documents\Arduino\libraries\U8g2\src\clib/u8x8_display.c:88
+  tile.tile_ptr = tile_ptr;
+ 314:	1a 83       	std	Y+2, r17	; 0x02
+ 316:	09 83       	std	Y+1, r16	; 0x01
+C:\Users\Pavel\Documents\Arduino\libraries\U8g2\src\clib/u8x8_display.c:89
+  return u8x8->display_cb(u8x8, U8X8_MSG_DISPLAY_DRAW_TILE, 1, (void *)&tile);
+ 318:	dc 01       	movw	r26, r24
+ 31a:	14 96       	adiw	r26, 0x04	; 4
+ 31c:	ed 91       	ld	r30, X+
+ 31e:	fc 91       	ld	r31, X
+ 320:	9e 01       	movw	r18, r28
+ 322:	2f 5f       	subi	r18, 0xFF	; 255
+ 324:	3f 4f       	sbci	r19, 0xFF	; 255
+ 326:	41 e0       	ldi	r20, 0x01	; 1
+ 328:	6f e0       	ldi	r22, 0x0F	; 15
+ 32a:	09 95       	icall
+C:\Users\Pavel\Documents\Arduino\libraries\U8g2\src\clib/u8x8_display.c:90
+}
+ 32c:	0f 90       	pop	r0
+ 32e:	0f 90       	pop	r0
+ 330:	0f 90       	pop	r0
+ 332:	0f 90       	pop	r0
+ 334:	0f 90       	pop	r0
+ 336:	df 91       	pop	r29
+ 338:	cf 91       	pop	r28
+ 33a:	1f 91       	pop	r17
+ 33c:	0f 91       	pop	r16
+ 33e:	08 95       	ret
+
+00000340 <drawTileF(unsigned char, unsigned char, unsigned char, unsigned char const*) [clone .constprop.2]>:
+drawTileF():
+C:\src\Tennp\Git\ChainSawDIY\Firmware\diychainsaw/diychainsaw.ino:16
+
+void setup() {
+  u8x8.begin();
+}
+
+void drawTileF(uint8_t x, uint8_t y, uint8_t len, const uint8_t * bufF){
+ 340:	ef 92       	push	r14
+ 342:	ff 92       	push	r15
+ 344:	0f 93       	push	r16
+ 346:	1f 93       	push	r17
+ 348:	cf 93       	push	r28
+ 34a:	df 93       	push	r29
+ 34c:	d8 2f       	mov	r29, r24
+ 34e:	7b 01       	movw	r14, r22
+C:\src\Tennp\Git\ChainSawDIY\Firmware\diychainsaw/diychainsaw.ino:17
+  for(uint8_t i=0;i<len;i++){
+ 350:	c0 e0       	ldi	r28, 0x00	; 0
+ 352:	a7 ee       	ldi	r26, 0xE7	; 231
+ 354:	b0 e0       	ldi	r27, 0x00	; 0
+ 356:	90 e0       	ldi	r25, 0x00	; 0
+ 358:	80 e0       	ldi	r24, 0x00	; 0
+C:\src\Tennp\Git\ChainSawDIY\Firmware\diychainsaw/diychainsaw.ino:18
+    for(uint8_t i1=0;i1<8;i1++)buf[i1]=pgm_read_byte(bufF+(i*8+i1));
+ 35a:	fc 01       	movw	r30, r24
+ 35c:	ee 0d       	add	r30, r14
+ 35e:	ff 1d       	adc	r31, r15
+ 360:	e4 91       	lpm	r30, Z
+ 362:	ed 93       	st	X+, r30
+ 364:	01 96       	adiw	r24, 0x01	; 1
+ 366:	88 30       	cpi	r24, 0x08	; 8
+ 368:	91 05       	cpc	r25, r1
+ 36a:	b9 f7       	brne	.-18     	; 0x35a <drawTileF(unsigned char, unsigned char, unsigned char, unsigned char const*) [clone .constprop.2]+0x1a>
+_ZN4U8X88drawTileEhhhPh():
+C:\Users\Pavel\Documents\Arduino\libraries\U8g2\src/U8x8lib.h:171
+
+    uint8_t getCols(void) { return u8x8_GetCols(&u8x8); }
+    uint8_t getRows(void) { return u8x8_GetRows(&u8x8); }
+    
+    void drawTile(uint8_t x, uint8_t y, uint8_t cnt, uint8_t *tile_ptr) {
+      u8x8_DrawTile(&u8x8, x, y, cnt, tile_ptr); }
+ 36c:	07 ee       	ldi	r16, 0xE7	; 231
+ 36e:	10 e0       	ldi	r17, 0x00	; 0
+ 370:	21 e0       	ldi	r18, 0x01	; 1
+ 372:	4d 2f       	mov	r20, r29
+ 374:	6c 2f       	mov	r22, r28
+ 376:	83 ef       	ldi	r24, 0xF3	; 243
+ 378:	90 e0       	ldi	r25, 0x00	; 0
+ 37a:	c0 df       	rcall	.-128    	; 0x2fc <u8x8_DrawTile>
+drawTileF():
+C:\src\Tennp\Git\ChainSawDIY\Firmware\diychainsaw/diychainsaw.ino:17
+void setup() {
+  u8x8.begin();
+}
+
+void drawTileF(uint8_t x, uint8_t y, uint8_t len, const uint8_t * bufF){
+  for(uint8_t i=0;i<len;i++){
+ 37c:	cf 5f       	subi	r28, 0xFF	; 255
+ 37e:	88 e0       	ldi	r24, 0x08	; 8
+ 380:	e8 0e       	add	r14, r24
+ 382:	f1 1c       	adc	r15, r1
+ 384:	c4 30       	cpi	r28, 0x04	; 4
+ 386:	29 f7       	brne	.-54     	; 0x352 <drawTileF(unsigned char, unsigned char, unsigned char, unsigned char const*) [clone .constprop.2]+0x12>
+C:\src\Tennp\Git\ChainSawDIY\Firmware\diychainsaw/diychainsaw.ino:21
+    for(uint8_t i1=0;i1<8;i1++)buf[i1]=pgm_read_byte(bufF+(i*8+i1));
+    u8x8.drawTile(x+i, y, 1, buf);  
+  }  
+}
+ 388:	df 91       	pop	r29
+ 38a:	cf 91       	pop	r28
+ 38c:	1f 91       	pop	r17
+ 38e:	0f 91       	pop	r16
+ 390:	ff 90       	pop	r15
+ 392:	ef 90       	pop	r14
+ 394:	08 95       	ret
+
+00000396 <u8x8_cad_EndTransfer>:
+u8x8_cad_EndTransfer():
+C:\Users\Pavel\Documents\Arduino\libraries\U8g2\src\clib/u8x8_cad.c:120
+  return u8x8->cad_cb(u8x8, U8X8_MSG_CAD_START_TRANSFER, 0, NULL);
+}
+
+uint8_t u8x8_cad_EndTransfer(u8x8_t *u8x8)
+{
+  return u8x8->cad_cb(u8x8, U8X8_MSG_CAD_END_TRANSFER, 0, NULL);
+ 396:	dc 01       	movw	r26, r24
+ 398:	16 96       	adiw	r26, 0x06	; 6
+ 39a:	ed 91       	ld	r30, X+
+ 39c:	fc 91       	ld	r31, X
+ 39e:	30 e0       	ldi	r19, 0x00	; 0
+ 3a0:	20 e0       	ldi	r18, 0x00	; 0
+ 3a2:	40 e0       	ldi	r20, 0x00	; 0
+ 3a4:	69 e1       	ldi	r22, 0x19	; 25
+ 3a6:	09 94       	ijmp
+
+000003a8 <u8x8_cad_StartTransfer>:
+u8x8_cad_StartTransfer():
+C:\Users\Pavel\Documents\Arduino\libraries\U8g2\src\clib/u8x8_cad.c:115
+  return u8x8->cad_cb(u8x8, U8X8_MSG_CAD_SEND_DATA, cnt, data);
+}
+
+uint8_t u8x8_cad_StartTransfer(u8x8_t *u8x8)
+{
+  return u8x8->cad_cb(u8x8, U8X8_MSG_CAD_START_TRANSFER, 0, NULL);
+ 3a8:	dc 01       	movw	r26, r24
+ 3aa:	16 96       	adiw	r26, 0x06	; 6
+ 3ac:	ed 91       	ld	r30, X+
+ 3ae:	fc 91       	ld	r31, X
+ 3b0:	30 e0       	ldi	r19, 0x00	; 0
+ 3b2:	20 e0       	ldi	r18, 0x00	; 0
+ 3b4:	40 e0       	ldi	r20, 0x00	; 0
+ 3b6:	68 e1       	ldi	r22, 0x18	; 24
+ 3b8:	09 94       	ijmp
+
+000003ba <u8x8_cad_SendData>:
+u8x8_cad_SendData():
+C:\Users\Pavel\Documents\Arduino\libraries\U8g2\src\clib/u8x8_cad.c:109
+  }
+  return 1;
+}
+
+uint8_t u8x8_cad_SendData(u8x8_t *u8x8, uint8_t cnt, uint8_t *data)
+{
+ 3ba:	9a 01       	movw	r18, r20
+C:\Users\Pavel\Documents\Arduino\libraries\U8g2\src\clib/u8x8_cad.c:110
+  return u8x8->cad_cb(u8x8, U8X8_MSG_CAD_SEND_DATA, cnt, data);
+ 3bc:	dc 01       	movw	r26, r24
+ 3be:	16 96       	adiw	r26, 0x06	; 6
+ 3c0:	ed 91       	ld	r30, X+
+ 3c2:	fc 91       	ld	r31, X
+ 3c4:	46 2f       	mov	r20, r22
+ 3c6:	67 e1       	ldi	r22, 0x17	; 23
+ 3c8:	09 94       	ijmp
+
+000003ca <u8x8_cad_SendSequence>:
+u8x8_cad_SendSequence():
+C:\Users\Pavel\Documents\Arduino\libraries\U8g2\src\clib/u8x8_cad.c:134
+  254 milli	delay by milliseconds
+  255		end of sequence
+*/
+
+void u8x8_cad_SendSequence(u8x8_t *u8x8, uint8_t const *data)
+{
+ 3ca:	ef 92       	push	r14
+ 3cc:	ff 92       	push	r15
+ 3ce:	0f 93       	push	r16
+ 3d0:	1f 93       	push	r17
+ 3d2:	cf 93       	push	r28
+ 3d4:	df 93       	push	r29
+ 3d6:	1f 92       	push	r1
+ 3d8:	cd b7       	in	r28, 0x3d	; 61
+ 3da:	de b7       	in	r29, 0x3e	; 62
+ 3dc:	7c 01       	movw	r14, r24
+ 3de:	8b 01       	movw	r16, r22
+C:\Users\Pavel\Documents\Arduino\libraries\U8g2\src\clib/u8x8_cad.c:140
+  uint8_t cmd;
+  uint8_t v;
+
+  for(;;)
+  {
+    cmd = *data;
+ 3e0:	d8 01       	movw	r26, r16
+ 3e2:	6c 91       	ld	r22, X
+C:\Users\Pavel\Documents\Arduino\libraries\U8g2\src\clib/u8x8_cad.c:142
+    data++;
+    switch( cmd )
+ 3e4:	67 31       	cpi	r22, 0x17	; 23
+ 3e6:	21 f1       	breq	.+72     	; 0x430 <__LOCK_REGION_LENGTH__+0x30>
+ 3e8:	50 f4       	brcc	.+20     	; 0x3fe <u8x8_cad_SendSequence+0x34>
+ 3ea:	65 31       	cpi	r22, 0x15	; 21
+ 3ec:	98 f4       	brcc	.+38     	; 0x414 <__LOCK_REGION_LENGTH__+0x14>
+C:\Users\Pavel\Documents\Arduino\libraries\U8g2\src\clib/u8x8_cad.c:168
+	  break;
+      default:
+	return;
+    }
+  }
+}
+ 3ee:	0f 90       	pop	r0
+ 3f0:	df 91       	pop	r29
+ 3f2:	cf 91       	pop	r28
+ 3f4:	1f 91       	pop	r17
+ 3f6:	0f 91       	pop	r16
+ 3f8:	ff 90       	pop	r15
+ 3fa:	ef 90       	pop	r14
+ 3fc:	08 95       	ret
+C:\Users\Pavel\Documents\Arduino\libraries\U8g2\src\clib/u8x8_cad.c:142
+
+  for(;;)
+  {
+    cmd = *data;
+    data++;
+    switch( cmd )
+ 3fe:	6a 31       	cpi	r22, 0x1A	; 26
+ 400:	08 f1       	brcs	.+66     	; 0x444 <__LOCK_REGION_LENGTH__+0x44>
+ 402:	6e 3f       	cpi	r22, 0xFE	; 254
+ 404:	a1 f7       	brne	.-24     	; 0x3ee <u8x8_cad_SendSequence+0x24>
+C:\Users\Pavel\Documents\Arduino\libraries\U8g2\src\clib/u8x8_cad.c:160
+      case U8X8_MSG_CAD_START_TRANSFER:
+      case U8X8_MSG_CAD_END_TRANSFER:
+	  u8x8->cad_cb(u8x8, cmd, 0, NULL);
+	  break;
+      case 0x0fe:
+	  v = *data;
+ 406:	f8 01       	movw	r30, r16
+ 408:	41 81       	ldd	r20, Z+1	; 0x01
+ 40a:	49 83       	std	Y+1, r20	; 0x01
+C:\Users\Pavel\Documents\Arduino\libraries\U8g2\src\clib/u8x8_cad.c:161
+	  u8x8_gpio_Delay(u8x8, U8X8_MSG_DELAY_MILLI, v);	    
+ 40c:	69 e2       	ldi	r22, 0x29	; 41
+ 40e:	c7 01       	movw	r24, r14
+ 410:	6e df       	rcall	.-292    	; 0x2ee <u8x8_gpio_call>
+ 412:	0b c0       	rjmp	.+22     	; 0x42a <__LOCK_REGION_LENGTH__+0x2a>
+C:\Users\Pavel\Documents\Arduino\libraries\U8g2\src\clib/u8x8_cad.c:146
+    data++;
+    switch( cmd )
+    {
+      case U8X8_MSG_CAD_SEND_CMD:
+      case U8X8_MSG_CAD_SEND_ARG:
+	  v = *data;
+ 414:	f8 01       	movw	r30, r16
+ 416:	41 81       	ldd	r20, Z+1	; 0x01
+ 418:	49 83       	std	Y+1, r20	; 0x01
+C:\Users\Pavel\Documents\Arduino\libraries\U8g2\src\clib/u8x8_cad.c:147
+	  u8x8->cad_cb(u8x8, cmd, v, NULL);
+ 41a:	d7 01       	movw	r26, r14
+ 41c:	16 96       	adiw	r26, 0x06	; 6
+ 41e:	ed 91       	ld	r30, X+
+ 420:	fc 91       	ld	r31, X
+ 422:	30 e0       	ldi	r19, 0x00	; 0
+ 424:	20 e0       	ldi	r18, 0x00	; 0
+ 426:	c7 01       	movw	r24, r14
+ 428:	09 95       	icall
+C:\Users\Pavel\Documents\Arduino\libraries\U8g2\src\clib/u8x8_cad.c:162
+	  u8x8->cad_cb(u8x8, cmd, 0, NULL);
+	  break;
+      case 0x0fe:
+	  v = *data;
+	  u8x8_gpio_Delay(u8x8, U8X8_MSG_DELAY_MILLI, v);	    
+	  data++;
+ 42a:	0e 5f       	subi	r16, 0xFE	; 254
+ 42c:	1f 4f       	sbci	r17, 0xFF	; 255
+ 42e:	d8 cf       	rjmp	.-80     	; 0x3e0 <u8x8_cad_SendSequence+0x16>
+C:\Users\Pavel\Documents\Arduino\libraries\U8g2\src\clib/u8x8_cad.c:151
+	  v = *data;
+	  u8x8->cad_cb(u8x8, cmd, v, NULL);
+	  data++;
+	  break;
+      case U8X8_MSG_CAD_SEND_DATA:
+	  v = *data;
+ 430:	f8 01       	movw	r30, r16
+ 432:	81 81       	ldd	r24, Z+1	; 0x01
+ 434:	89 83       	std	Y+1, r24	; 0x01
+C:\Users\Pavel\Documents\Arduino\libraries\U8g2\src\clib/u8x8_cad.c:152
+	  u8x8_cad_SendData(u8x8, 1, &v);
+ 436:	ae 01       	movw	r20, r28
+ 438:	4f 5f       	subi	r20, 0xFF	; 255
+ 43a:	5f 4f       	sbci	r21, 0xFF	; 255
+ 43c:	61 e0       	ldi	r22, 0x01	; 1
+ 43e:	c7 01       	movw	r24, r14
+ 440:	bc df       	rcall	.-136    	; 0x3ba <u8x8_cad_SendData>
+ 442:	f3 cf       	rjmp	.-26     	; 0x42a <__LOCK_REGION_LENGTH__+0x2a>
+C:\Users\Pavel\Documents\Arduino\libraries\U8g2\src\clib/u8x8_cad.c:141
+  uint8_t v;
+
+  for(;;)
+  {
+    cmd = *data;
+    data++;
+ 444:	0f 5f       	subi	r16, 0xFF	; 255
+ 446:	1f 4f       	sbci	r17, 0xFF	; 255
+C:\Users\Pavel\Documents\Arduino\libraries\U8g2\src\clib/u8x8_cad.c:157
+	  u8x8_cad_SendData(u8x8, 1, &v);
+	  data++;
+	  break;
+      case U8X8_MSG_CAD_START_TRANSFER:
+      case U8X8_MSG_CAD_END_TRANSFER:
+	  u8x8->cad_cb(u8x8, cmd, 0, NULL);
+ 448:	d7 01       	movw	r26, r14
+ 44a:	16 96       	adiw	r26, 0x06	; 6
+ 44c:	ed 91       	ld	r30, X+
+ 44e:	fc 91       	ld	r31, X
+ 450:	30 e0       	ldi	r19, 0x00	; 0
+ 452:	20 e0       	ldi	r18, 0x00	; 0
+ 454:	40 e0       	ldi	r20, 0x00	; 0
+ 456:	c7 01       	movw	r24, r14
+ 458:	09 95       	icall
+ 45a:	c2 cf       	rjmp	.-124    	; 0x3e0 <u8x8_cad_SendSequence+0x16>
+
+0000045c <u8x8_cad_SendArg>:
+u8x8_cad_SendArg():
+C:\Users\Pavel\Documents\Arduino\libraries\U8g2\src\clib/u8x8_cad.c:94
+{
+  return u8x8->cad_cb(u8x8, U8X8_MSG_CAD_SEND_CMD, cmd, NULL);
+}
+
+uint8_t u8x8_cad_SendArg(u8x8_t *u8x8, uint8_t arg)
+{
+ 45c:	46 2f       	mov	r20, r22
+C:\Users\Pavel\Documents\Arduino\libraries\U8g2\src\clib/u8x8_cad.c:95
+  return u8x8->cad_cb(u8x8, U8X8_MSG_CAD_SEND_ARG, arg, NULL);
+ 45e:	dc 01       	movw	r26, r24
+ 460:	16 96       	adiw	r26, 0x06	; 6
+ 462:	ed 91       	ld	r30, X+
+ 464:	fc 91       	ld	r31, X
+ 466:	30 e0       	ldi	r19, 0x00	; 0
+ 468:	20 e0       	ldi	r18, 0x00	; 0
+ 46a:	66 e1       	ldi	r22, 0x16	; 22
+ 46c:	09 94       	ijmp
+
+0000046e <u8x8_cad_SendCmd>:
+u8x8_cad_SendCmd():
+C:\Users\Pavel\Documents\Arduino\libraries\U8g2\src\clib/u8x8_cad.c:89
+*/
+
+#include "u8x8.h"
+
+uint8_t u8x8_cad_SendCmd(u8x8_t *u8x8, uint8_t cmd)
+{
+ 46e:	46 2f       	mov	r20, r22
+C:\Users\Pavel\Documents\Arduino\libraries\U8g2\src\clib/u8x8_cad.c:90
+  return u8x8->cad_cb(u8x8, U8X8_MSG_CAD_SEND_CMD, cmd, NULL);
+ 470:	dc 01       	movw	r26, r24
+ 472:	16 96       	adiw	r26, 0x06	; 6
+ 474:	ed 91       	ld	r30, X+
+ 476:	fc 91       	ld	r31, X
+ 478:	30 e0       	ldi	r19, 0x00	; 0
+ 47a:	20 e0       	ldi	r18, 0x00	; 0
+ 47c:	65 e1       	ldi	r22, 0x15	; 21
+ 47e:	09 94       	ijmp
+
+00000480 <u8x8_d_ssd1306_128x32_univision>:
+u8x8_d_ssd1306_128x32_univision():
+C:\Users\Pavel\Documents\Arduino\libraries\U8g2\src\clib/u8x8_d_ssd1306_128x32.c:205
+  /* pixel_width = */ 128,
+  /* pixel_height = */ 32
+};
+
+uint8_t u8x8_d_ssd1306_128x32_univision(u8x8_t *u8x8, uint8_t msg, uint8_t arg_int, void *arg_ptr)
+{
+ 480:	ef 92       	push	r14
+ 482:	ff 92       	push	r15
+ 484:	0f 93       	push	r16
+ 486:	1f 93       	push	r17
+ 488:	cf 93       	push	r28
+ 48a:	df 93       	push	r29
+ 48c:	ec 01       	movw	r28, r24
+ 48e:	04 2f       	mov	r16, r20
+ 490:	79 01       	movw	r14, r18
+C:\Users\Pavel\Documents\Arduino\libraries\U8g2\src\clib/u8x8_d_ssd1306_128x32.c:206
+    if ( msg == U8X8_MSG_DISPLAY_SETUP_MEMORY )
+ 492:	69 30       	cpi	r22, 0x09	; 9
+ 494:	69 f4       	brne	.+26     	; 0x4b0 <u8x8_d_ssd1306_128x32_univision+0x30>
+u8x8_d_helper_display_setup_memory():
+C:\Users\Pavel\Documents\Arduino\libraries\U8g2\src\clib/u8x8_display.c:55
+  
+*/
+void u8x8_d_helper_display_setup_memory(u8x8_t *u8x8, const u8x8_display_info_t *display_info)
+{
+      /* 1) set display info struct */
+      u8x8->display_info = display_info;
+ 496:	85 ec       	ldi	r24, 0xC5	; 197
+ 498:	90 e0       	ldi	r25, 0x00	; 0
+ 49a:	99 83       	std	Y+1, r25	; 0x01
+ 49c:	88 83       	st	Y, r24
+C:\Users\Pavel\Documents\Arduino\libraries\U8g2\src\clib/u8x8_display.c:56
+      u8x8->x_offset = u8x8->display_info->default_x_offset;
+ 49e:	1c 8a       	std	Y+20, r1	; 0x14
+u8x8_d_ssd1306_128x32_univision():
+C:\Users\Pavel\Documents\Arduino\libraries\U8g2\src\clib/u8x8_d_ssd1306_128x32.c:176
+      u8x8_cad_EndTransfer(u8x8);
+      break;
+    default:
+      return 0;
+  }
+  return 1;
+ 4a0:	81 e0       	ldi	r24, 0x01	; 1
+C:\Users\Pavel\Documents\Arduino\libraries\U8g2\src\clib/u8x8_d_ssd1306_128x32.c:212
+    {
+      u8x8_d_helper_display_setup_memory(u8x8, &u8x8_ssd1306_128x32_univision_display_info);
+      return 1;
+    }
+    return u8x8_d_ssd1306_128x32_generic(u8x8, msg, arg_int, arg_ptr);
+}
+ 4a2:	df 91       	pop	r29
+ 4a4:	cf 91       	pop	r28
+ 4a6:	1f 91       	pop	r17
+ 4a8:	0f 91       	pop	r16
+ 4aa:	ff 90       	pop	r15
+ 4ac:	ef 90       	pop	r14
+ 4ae:	08 95       	ret
+u8x8_d_ssd1306_128x32_generic():
+C:\Users\Pavel\Documents\Arduino\libraries\U8g2\src\clib/u8x8_d_ssd1306_128x32.c:109
+
+static uint8_t u8x8_d_ssd1306_128x32_generic(u8x8_t *u8x8, uint8_t msg, uint8_t arg_int, void *arg_ptr)
+{
+  uint8_t x, c;
+  uint8_t *ptr;
+  switch(msg)
+ 4b0:	6d 30       	cpi	r22, 0x0D	; 13
+ 4b2:	09 f4       	brne	.+2      	; 0x4b6 <u8x8_d_ssd1306_128x32_univision+0x36>
+ 4b4:	69 c0       	rjmp	.+210    	; 0x588 <u8x8_d_ssd1306_128x32_univision+0x108>
+ 4b6:	38 f4       	brcc	.+14     	; 0x4c6 <u8x8_d_ssd1306_128x32_univision+0x46>
+ 4b8:	6a 30       	cpi	r22, 0x0A	; 10
+ 4ba:	69 f1       	breq	.+90     	; 0x516 <u8x8_d_ssd1306_128x32_univision+0x96>
+ 4bc:	6b 30       	cpi	r22, 0x0B	; 11
+ 4be:	09 f4       	brne	.+2      	; 0x4c2 <u8x8_d_ssd1306_128x32_univision+0x42>
+ 4c0:	5c c0       	rjmp	.+184    	; 0x57a <u8x8_d_ssd1306_128x32_univision+0xfa>
+u8x8_d_ssd1306_128x32_univision():
+C:\Users\Pavel\Documents\Arduino\libraries\U8g2\src\clib/u8x8_d_ssd1306_128x32.c:174
+      } while( arg_int > 0 );
+      
+      u8x8_cad_EndTransfer(u8x8);
+      break;
+    default:
+      return 0;
+ 4c2:	80 e0       	ldi	r24, 0x00	; 0
+ 4c4:	ee cf       	rjmp	.-36     	; 0x4a2 <u8x8_d_ssd1306_128x32_univision+0x22>
+u8x8_d_ssd1306_128x32_generic():
+C:\Users\Pavel\Documents\Arduino\libraries\U8g2\src\clib/u8x8_d_ssd1306_128x32.c:109
+
+static uint8_t u8x8_d_ssd1306_128x32_generic(u8x8_t *u8x8, uint8_t msg, uint8_t arg_int, void *arg_ptr)
+{
+  uint8_t x, c;
+  uint8_t *ptr;
+  switch(msg)
+ 4c6:	6e 30       	cpi	r22, 0x0E	; 14
+ 4c8:	09 f4       	brne	.+2      	; 0x4cc <u8x8_d_ssd1306_128x32_univision+0x4c>
+ 4ca:	6f c0       	rjmp	.+222    	; 0x5aa <u8x8_d_ssd1306_128x32_univision+0x12a>
+ 4cc:	6f 30       	cpi	r22, 0x0F	; 15
+ 4ce:	c9 f7       	brne	.-14     	; 0x4c2 <u8x8_d_ssd1306_128x32_univision+0x42>
+C:\Users\Pavel\Documents\Arduino\libraries\U8g2\src\clib/u8x8_d_ssd1306_128x32.c:147
+      u8x8_cad_SendArg(u8x8, arg_int );	/* ssd1306 has range from 0 to 255 */
+      u8x8_cad_EndTransfer(u8x8);
+      break;
+#endif
+    case U8X8_MSG_DISPLAY_DRAW_TILE:
+      u8x8_cad_StartTransfer(u8x8);
+ 4d0:	6b df       	rcall	.-298    	; 0x3a8 <u8x8_cad_StartTransfer>
+C:\Users\Pavel\Documents\Arduino\libraries\U8g2\src\clib/u8x8_d_ssd1306_128x32.c:148
+      x = ((u8x8_tile_t *)arg_ptr)->x_pos;    
+ 4d2:	f7 01       	movw	r30, r14
+ 4d4:	13 81       	ldd	r17, Z+3	; 0x03
+C:\Users\Pavel\Documents\Arduino\libraries\U8g2\src\clib/u8x8_d_ssd1306_128x32.c:149
+      x *= 8;
+ 4d6:	11 0f       	add	r17, r17
+ 4d8:	11 0f       	add	r17, r17
+ 4da:	11 0f       	add	r17, r17
+C:\Users\Pavel\Documents\Arduino\libraries\U8g2\src\clib/u8x8_d_ssd1306_128x32.c:150
+      x += u8x8->x_offset;
+ 4dc:	6c 89       	ldd	r22, Y+20	; 0x14
+ 4de:	16 0f       	add	r17, r22
+C:\Users\Pavel\Documents\Arduino\libraries\U8g2\src\clib/u8x8_d_ssd1306_128x32.c:151
+      u8x8_cad_SendCmd(u8x8, 0x010 | (x>>4) );
+ 4e0:	61 2f       	mov	r22, r17
+ 4e2:	62 95       	swap	r22
+ 4e4:	6f 70       	andi	r22, 0x0F	; 15
+ 4e6:	60 61       	ori	r22, 0x10	; 16
+ 4e8:	ce 01       	movw	r24, r28
+ 4ea:	c1 df       	rcall	.-126    	; 0x46e <u8x8_cad_SendCmd>
+C:\Users\Pavel\Documents\Arduino\libraries\U8g2\src\clib/u8x8_d_ssd1306_128x32.c:152
+      u8x8_cad_SendCmd(u8x8, 0x000 | ((x&15)));
+ 4ec:	61 2f       	mov	r22, r17
+ 4ee:	6f 70       	andi	r22, 0x0F	; 15
+ 4f0:	ce 01       	movw	r24, r28
+ 4f2:	bd df       	rcall	.-134    	; 0x46e <u8x8_cad_SendCmd>
+C:\Users\Pavel\Documents\Arduino\libraries\U8g2\src\clib/u8x8_d_ssd1306_128x32.c:153
+      u8x8_cad_SendCmd(u8x8, 0x0b0 | (((u8x8_tile_t *)arg_ptr)->y_pos));
+ 4f4:	f7 01       	movw	r30, r14
+ 4f6:	64 81       	ldd	r22, Z+4	; 0x04
+ 4f8:	60 6b       	ori	r22, 0xB0	; 176
+ 4fa:	ce 01       	movw	r24, r28
+ 4fc:	b8 df       	rcall	.-144    	; 0x46e <u8x8_cad_SendCmd>
+C:\Users\Pavel\Documents\Arduino\libraries\U8g2\src\clib/u8x8_d_ssd1306_128x32.c:159
+      
+      do
+      {
+	c = ((u8x8_tile_t *)arg_ptr)->cnt;
+	ptr = ((u8x8_tile_t *)arg_ptr)->tile_ptr;
+	u8x8_cad_SendData(u8x8, c*8, ptr); 	/* note: SendData can not handle more than 255 bytes */
+ 4fe:	f7 01       	movw	r30, r14
+ 500:	40 81       	ld	r20, Z
+ 502:	51 81       	ldd	r21, Z+1	; 0x01
+ 504:	62 81       	ldd	r22, Z+2	; 0x02
+ 506:	66 0f       	add	r22, r22
+ 508:	66 0f       	add	r22, r22
+ 50a:	66 0f       	add	r22, r22
+ 50c:	ce 01       	movw	r24, r28
+ 50e:	55 df       	rcall	.-342    	; 0x3ba <u8x8_cad_SendData>
+C:\Users\Pavel\Documents\Arduino\libraries\U8g2\src\clib/u8x8_d_ssd1306_128x32.c:168
+	  u8x8_cad_SendData(u8x8, 8, ptr);
+	  ptr += 8;
+	  c--;
+	} while( c > 0 );
+	*/
+	arg_int--;
+ 510:	01 50       	subi	r16, 0x01	; 1
+C:\Users\Pavel\Documents\Arduino\libraries\U8g2\src\clib/u8x8_d_ssd1306_128x32.c:169
+      } while( arg_int > 0 );
+ 512:	a9 f7       	brne	.-22     	; 0x4fe <u8x8_d_ssd1306_128x32_univision+0x7e>
+ 514:	51 c0       	rjmp	.+162    	; 0x5b8 <u8x8_d_ssd1306_128x32_univision+0x138>
+u8x8_d_helper_display_init():
+C:\Users\Pavel\Documents\Arduino\libraries\U8g2\src\clib/u8x8_display.c:67
+  
+*/
+void u8x8_d_helper_display_init(u8x8_t *u8x8)
+{
+      /* 2) apply port directions to the GPIO lines and apply default values for the IO lines*/
+      u8x8_gpio_Init(u8x8);
+ 516:	ea 85       	ldd	r30, Y+10	; 0x0a
+ 518:	fb 85       	ldd	r31, Y+11	; 0x0b
+ 51a:	30 e0       	ldi	r19, 0x00	; 0
+ 51c:	20 e0       	ldi	r18, 0x00	; 0
+ 51e:	40 e0       	ldi	r20, 0x00	; 0
+ 520:	68 e2       	ldi	r22, 0x28	; 40
+ 522:	09 95       	icall
+C:\Users\Pavel\Documents\Arduino\libraries\U8g2\src\clib/u8x8_display.c:68
+      u8x8_cad_Init(u8x8);
+ 524:	ee 81       	ldd	r30, Y+6	; 0x06
+ 526:	ff 81       	ldd	r31, Y+7	; 0x07
+ 528:	30 e0       	ldi	r19, 0x00	; 0
+ 52a:	20 e0       	ldi	r18, 0x00	; 0
+ 52c:	40 e0       	ldi	r20, 0x00	; 0
+ 52e:	64 e1       	ldi	r22, 0x14	; 20
+ 530:	ce 01       	movw	r24, r28
+ 532:	09 95       	icall
+C:\Users\Pavel\Documents\Arduino\libraries\U8g2\src\clib/u8x8_display.c:71
+
+      /* 3) do reset */
+      u8x8_gpio_SetReset(u8x8, 1);
+ 534:	41 e0       	ldi	r20, 0x01	; 1
+ 536:	6b e4       	ldi	r22, 0x4B	; 75
+ 538:	ce 01       	movw	r24, r28
+ 53a:	d9 de       	rcall	.-590    	; 0x2ee <u8x8_gpio_call>
+C:\Users\Pavel\Documents\Arduino\libraries\U8g2\src\clib/u8x8_display.c:72
+      u8x8_gpio_Delay(u8x8, U8X8_MSG_DELAY_MILLI, u8x8->display_info->reset_pulse_width_ms);
+ 53c:	e8 81       	ld	r30, Y
+ 53e:	f9 81       	ldd	r31, Y+1	; 0x01
+ 540:	44 81       	ldd	r20, Z+4	; 0x04
+ 542:	69 e2       	ldi	r22, 0x29	; 41
+ 544:	ce 01       	movw	r24, r28
+ 546:	d3 de       	rcall	.-602    	; 0x2ee <u8x8_gpio_call>
+C:\Users\Pavel\Documents\Arduino\libraries\U8g2\src\clib/u8x8_display.c:73
+      u8x8_gpio_SetReset(u8x8, 0);
+ 548:	40 e0       	ldi	r20, 0x00	; 0
+ 54a:	6b e4       	ldi	r22, 0x4B	; 75
+ 54c:	ce 01       	movw	r24, r28
+ 54e:	cf de       	rcall	.-610    	; 0x2ee <u8x8_gpio_call>
+C:\Users\Pavel\Documents\Arduino\libraries\U8g2\src\clib/u8x8_display.c:74
+      u8x8_gpio_Delay(u8x8, U8X8_MSG_DELAY_MILLI, u8x8->display_info->reset_pulse_width_ms);
+ 550:	e8 81       	ld	r30, Y
+ 552:	f9 81       	ldd	r31, Y+1	; 0x01
+ 554:	44 81       	ldd	r20, Z+4	; 0x04
+ 556:	69 e2       	ldi	r22, 0x29	; 41
+ 558:	ce 01       	movw	r24, r28
+ 55a:	c9 de       	rcall	.-622    	; 0x2ee <u8x8_gpio_call>
+C:\Users\Pavel\Documents\Arduino\libraries\U8g2\src\clib/u8x8_display.c:75
+      u8x8_gpio_SetReset(u8x8, 1);
+ 55c:	41 e0       	ldi	r20, 0x01	; 1
+ 55e:	6b e4       	ldi	r22, 0x4B	; 75
+ 560:	ce 01       	movw	r24, r28
+ 562:	c5 de       	rcall	.-630    	; 0x2ee <u8x8_gpio_call>
+C:\Users\Pavel\Documents\Arduino\libraries\U8g2\src\clib/u8x8_display.c:76
+      u8x8_gpio_Delay(u8x8, U8X8_MSG_DELAY_MILLI, u8x8->display_info->post_reset_wait_ms);
+ 564:	e8 81       	ld	r30, Y
+ 566:	f9 81       	ldd	r31, Y+1	; 0x01
+ 568:	45 81       	ldd	r20, Z+5	; 0x05
+ 56a:	69 e2       	ldi	r22, 0x29	; 41
+ 56c:	ce 01       	movw	r24, r28
+ 56e:	bf de       	rcall	.-642    	; 0x2ee <u8x8_gpio_call>
+u8x8_d_ssd1306_128x32_generic():
+C:\Users\Pavel\Documents\Arduino\libraries\U8g2\src\clib/u8x8_d_ssd1306_128x32.c:118
+      u8x8_d_helper_display_setup_memory(u8x8, &u8x8_ssd1306_128x32_univision_display_info);
+      break;
+    */
+    case U8X8_MSG_DISPLAY_INIT:
+      u8x8_d_helper_display_init(u8x8);
+      u8x8_cad_SendSequence(u8x8, u8x8_d_ssd1306_128x32_univision_init_seq);    
+ 570:	60 e9       	ldi	r22, 0x90	; 144
+ 572:	70 e0       	ldi	r23, 0x00	; 0
+C:\Users\Pavel\Documents\Arduino\libraries\U8g2\src\clib/u8x8_d_ssd1306_128x32.c:124
+      break;
+    case U8X8_MSG_DISPLAY_SET_POWER_SAVE:
+      if ( arg_int == 0 )
+	u8x8_cad_SendSequence(u8x8, u8x8_d_ssd1306_128x32_univision_powersave0_seq);
+      else
+	u8x8_cad_SendSequence(u8x8, u8x8_d_ssd1306_128x32_univision_powersave1_seq);
+ 574:	ce 01       	movw	r24, r28
+ 576:	29 df       	rcall	.-430    	; 0x3ca <u8x8_cad_SendSequence>
+ 578:	93 cf       	rjmp	.-218    	; 0x4a0 <u8x8_d_ssd1306_128x32_univision+0x20>
+C:\Users\Pavel\Documents\Arduino\libraries\U8g2\src\clib/u8x8_d_ssd1306_128x32.c:122
+      u8x8_d_helper_display_init(u8x8);
+      u8x8_cad_SendSequence(u8x8, u8x8_d_ssd1306_128x32_univision_init_seq);    
+      break;
+    case U8X8_MSG_DISPLAY_SET_POWER_SAVE:
+      if ( arg_int == 0 )
+	u8x8_cad_SendSequence(u8x8, u8x8_d_ssd1306_128x32_univision_powersave0_seq);
+ 57a:	6b e8       	ldi	r22, 0x8B	; 139
+ 57c:	70 e0       	ldi	r23, 0x00	; 0
+C:\Users\Pavel\Documents\Arduino\libraries\U8g2\src\clib/u8x8_d_ssd1306_128x32.c:121
+    case U8X8_MSG_DISPLAY_INIT:
+      u8x8_d_helper_display_init(u8x8);
+      u8x8_cad_SendSequence(u8x8, u8x8_d_ssd1306_128x32_univision_init_seq);    
+      break;
+    case U8X8_MSG_DISPLAY_SET_POWER_SAVE:
+      if ( arg_int == 0 )
+ 57e:	44 23       	and	r20, r20
+ 580:	c9 f3       	breq	.-14     	; 0x574 <u8x8_d_ssd1306_128x32_univision+0xf4>
+C:\Users\Pavel\Documents\Arduino\libraries\U8g2\src\clib/u8x8_d_ssd1306_128x32.c:124
+	u8x8_cad_SendSequence(u8x8, u8x8_d_ssd1306_128x32_univision_powersave0_seq);
+      else
+	u8x8_cad_SendSequence(u8x8, u8x8_d_ssd1306_128x32_univision_powersave1_seq);
+ 582:	66 e8       	ldi	r22, 0x86	; 134
+ 584:	70 e0       	ldi	r23, 0x00	; 0
+ 586:	f6 cf       	rjmp	.-20     	; 0x574 <u8x8_d_ssd1306_128x32_univision+0xf4>
+C:\Users\Pavel\Documents\Arduino\libraries\U8g2\src\clib/u8x8_d_ssd1306_128x32.c:127
+      break;
+    case U8X8_MSG_DISPLAY_SET_FLIP_MODE:
+      if ( arg_int == 0 )
+ 588:	41 11       	cpse	r20, r1
+ 58a:	08 c0       	rjmp	.+16     	; 0x59c <u8x8_d_ssd1306_128x32_univision+0x11c>
+C:\Users\Pavel\Documents\Arduino\libraries\U8g2\src\clib/u8x8_d_ssd1306_128x32.c:129
+      {
+	u8x8_cad_SendSequence(u8x8, u8x8_d_ssd1306_128x32_univision_flip0_seq);
+ 58c:	6f e7       	ldi	r22, 0x7F	; 127
+ 58e:	70 e0       	ldi	r23, 0x00	; 0
+ 590:	1c df       	rcall	.-456    	; 0x3ca <u8x8_cad_SendSequence>
+C:\Users\Pavel\Documents\Arduino\libraries\U8g2\src\clib/u8x8_d_ssd1306_128x32.c:130
+	u8x8->x_offset = u8x8->display_info->default_x_offset;
+ 592:	e8 81       	ld	r30, Y
+ 594:	f9 81       	ldd	r31, Y+1	; 0x01
+ 596:	82 89       	ldd	r24, Z+18	; 0x12
+C:\Users\Pavel\Documents\Arduino\libraries\U8g2\src\clib/u8x8_d_ssd1306_128x32.c:135
+      }
+      else
+      {
+	u8x8_cad_SendSequence(u8x8, u8x8_d_ssd1306_128x32_univision_flip1_seq);
+	u8x8->x_offset = u8x8->display_info->flipmode_x_offset;
+ 598:	8c 8b       	std	Y+20, r24	; 0x14
+ 59a:	82 cf       	rjmp	.-252    	; 0x4a0 <u8x8_d_ssd1306_128x32_univision+0x20>
+C:\Users\Pavel\Documents\Arduino\libraries\U8g2\src\clib/u8x8_d_ssd1306_128x32.c:134
+	u8x8_cad_SendSequence(u8x8, u8x8_d_ssd1306_128x32_univision_flip0_seq);
+	u8x8->x_offset = u8x8->display_info->default_x_offset;
+      }
+      else
+      {
+	u8x8_cad_SendSequence(u8x8, u8x8_d_ssd1306_128x32_univision_flip1_seq);
+ 59c:	68 e7       	ldi	r22, 0x78	; 120
+ 59e:	70 e0       	ldi	r23, 0x00	; 0
+ 5a0:	14 df       	rcall	.-472    	; 0x3ca <u8x8_cad_SendSequence>
+C:\Users\Pavel\Documents\Arduino\libraries\U8g2\src\clib/u8x8_d_ssd1306_128x32.c:135
+	u8x8->x_offset = u8x8->display_info->flipmode_x_offset;
+ 5a2:	e8 81       	ld	r30, Y
+ 5a4:	f9 81       	ldd	r31, Y+1	; 0x01
+ 5a6:	83 89       	ldd	r24, Z+19	; 0x13
+ 5a8:	f7 cf       	rjmp	.-18     	; 0x598 <u8x8_d_ssd1306_128x32_univision+0x118>
+C:\Users\Pavel\Documents\Arduino\libraries\U8g2\src\clib/u8x8_d_ssd1306_128x32.c:140
+      }
+      break;
+#ifdef U8X8_WITH_SET_CONTRAST
+    case U8X8_MSG_DISPLAY_SET_CONTRAST:
+      u8x8_cad_StartTransfer(u8x8);
+ 5aa:	fe de       	rcall	.-516    	; 0x3a8 <u8x8_cad_StartTransfer>
+C:\Users\Pavel\Documents\Arduino\libraries\U8g2\src\clib/u8x8_d_ssd1306_128x32.c:141
+      u8x8_cad_SendCmd(u8x8, 0x081 );
+ 5ac:	61 e8       	ldi	r22, 0x81	; 129
+ 5ae:	ce 01       	movw	r24, r28
+ 5b0:	5e df       	rcall	.-324    	; 0x46e <u8x8_cad_SendCmd>
+C:\Users\Pavel\Documents\Arduino\libraries\U8g2\src\clib/u8x8_d_ssd1306_128x32.c:142
+      u8x8_cad_SendArg(u8x8, arg_int );	/* ssd1306 has range from 0 to 255 */
+ 5b2:	60 2f       	mov	r22, r16
+ 5b4:	ce 01       	movw	r24, r28
+ 5b6:	52 df       	rcall	.-348    	; 0x45c <u8x8_cad_SendArg>
+C:\Users\Pavel\Documents\Arduino\libraries\U8g2\src\clib/u8x8_d_ssd1306_128x32.c:171
+	} while( c > 0 );
+	*/
+	arg_int--;
+      } while( arg_int > 0 );
+      
+      u8x8_cad_EndTransfer(u8x8);
+ 5b8:	ce 01       	movw	r24, r28
+ 5ba:	ed de       	rcall	.-550    	; 0x396 <u8x8_cad_EndTransfer>
+ 5bc:	71 cf       	rjmp	.-286    	; 0x4a0 <u8x8_d_ssd1306_128x32_univision+0x20>
+
+000005be <u8x8_byte_EndTransfer>:
+u8x8_byte_EndTransfer():
+C:\Users\Pavel\Documents\Arduino\libraries\U8g2\src\clib/u8x8_byte.c:61
+  return u8x8->byte_cb(u8x8, U8X8_MSG_BYTE_START_TRANSFER, 0, NULL);
+}
+
+uint8_t u8x8_byte_EndTransfer(u8x8_t *u8x8)
+{
+  return u8x8->byte_cb(u8x8, U8X8_MSG_BYTE_END_TRANSFER, 0, NULL);
+ 5be:	dc 01       	movw	r26, r24
+ 5c0:	18 96       	adiw	r26, 0x08	; 8
+ 5c2:	ed 91       	ld	r30, X+
+ 5c4:	fc 91       	ld	r31, X
+ 5c6:	30 e0       	ldi	r19, 0x00	; 0
+ 5c8:	20 e0       	ldi	r18, 0x00	; 0
+ 5ca:	40 e0       	ldi	r20, 0x00	; 0
+ 5cc:	69 e1       	ldi	r22, 0x19	; 25
+ 5ce:	09 94       	ijmp
+
+000005d0 <u8x8_byte_StartTransfer>:
+u8x8_byte_StartTransfer():
+C:\Users\Pavel\Documents\Arduino\libraries\U8g2\src\clib/u8x8_byte.c:56
+  return u8x8_byte_SendBytes(u8x8, 1, &byte);
+}
+
+uint8_t u8x8_byte_StartTransfer(u8x8_t *u8x8)
+{
+  return u8x8->byte_cb(u8x8, U8X8_MSG_BYTE_START_TRANSFER, 0, NULL);
+ 5d0:	dc 01       	movw	r26, r24
+ 5d2:	18 96       	adiw	r26, 0x08	; 8
+ 5d4:	ed 91       	ld	r30, X+
+ 5d6:	fc 91       	ld	r31, X
+ 5d8:	30 e0       	ldi	r19, 0x00	; 0
+ 5da:	20 e0       	ldi	r18, 0x00	; 0
+ 5dc:	40 e0       	ldi	r20, 0x00	; 0
+ 5de:	68 e1       	ldi	r22, 0x18	; 24
+ 5e0:	09 94       	ijmp
+
+000005e2 <u8x8_byte_SendByte>:
+u8x8_byte_SendByte():
+C:\Users\Pavel\Documents\Arduino\libraries\U8g2\src\clib/u8x8_byte.c:50
+{
+  return u8x8->byte_cb(u8x8, U8X8_MSG_BYTE_SEND, cnt, (void *)data);
+}
+
+uint8_t u8x8_byte_SendByte(u8x8_t *u8x8, uint8_t byte)
+{
+ 5e2:	cf 93       	push	r28
+ 5e4:	df 93       	push	r29
+ 5e6:	1f 92       	push	r1
+ 5e8:	cd b7       	in	r28, 0x3d	; 61
+ 5ea:	de b7       	in	r29, 0x3e	; 62
+ 5ec:	69 83       	std	Y+1, r22	; 0x01
+C:\Users\Pavel\Documents\Arduino\libraries\U8g2\src\clib/u8x8_byte.c:51
+  return u8x8_byte_SendBytes(u8x8, 1, &byte);
+ 5ee:	be 01       	movw	r22, r28
+ 5f0:	6f 5f       	subi	r22, 0xFF	; 255
+ 5f2:	7f 4f       	sbci	r23, 0xFF	; 255
+ 5f4:	af dd       	rcall	.-1186   	; 0x154 <u8x8_byte_SendBytes.constprop.1>
+C:\Users\Pavel\Documents\Arduino\libraries\U8g2\src\clib/u8x8_byte.c:52
+}
+ 5f6:	0f 90       	pop	r0
+ 5f8:	df 91       	pop	r29
+ 5fa:	cf 91       	pop	r28
+ 5fc:	08 95       	ret
+
+000005fe <u8x8_i2c_data_transfer>:
+u8x8_i2c_data_transfer():
+C:\Users\Pavel\Documents\Arduino\libraries\U8g2\src\clib/u8x8_cad.c:403
+/* U8X8_MSG_BYTE_START_TRANSFER starts i2c transfer, U8X8_MSG_BYTE_END_TRANSFER stops transfer */
+/* After transfer start, a full byte indicates command or data mode */
+
+static void u8x8_i2c_data_transfer(u8x8_t *u8x8, uint8_t arg_int, void *arg_ptr) U8X8_NOINLINE;
+static void u8x8_i2c_data_transfer(u8x8_t *u8x8, uint8_t arg_int, void *arg_ptr)
+{
+ 5fe:	ef 92       	push	r14
+ 600:	ff 92       	push	r15
+ 602:	1f 93       	push	r17
+ 604:	cf 93       	push	r28
+ 606:	df 93       	push	r29
+ 608:	ec 01       	movw	r28, r24
+ 60a:	16 2f       	mov	r17, r22
+ 60c:	7a 01       	movw	r14, r20
+C:\Users\Pavel\Documents\Arduino\libraries\U8g2\src\clib/u8x8_cad.c:404
+    u8x8_byte_StartTransfer(u8x8);    
+ 60e:	e0 df       	rcall	.-64     	; 0x5d0 <u8x8_byte_StartTransfer>
+C:\Users\Pavel\Documents\Arduino\libraries\U8g2\src\clib/u8x8_cad.c:405
+    u8x8_byte_SendByte(u8x8, 0x040);
+ 610:	60 e4       	ldi	r22, 0x40	; 64
+ 612:	ce 01       	movw	r24, r28
+ 614:	e6 df       	rcall	.-52     	; 0x5e2 <u8x8_byte_SendByte>
+C:\Users\Pavel\Documents\Arduino\libraries\U8g2\src\clib/u8x8_cad.c:406
+    u8x8->byte_cb(u8x8, U8X8_MSG_CAD_SEND_DATA, arg_int, arg_ptr);
+ 616:	e8 85       	ldd	r30, Y+8	; 0x08
+ 618:	f9 85       	ldd	r31, Y+9	; 0x09
+ 61a:	97 01       	movw	r18, r14
+ 61c:	41 2f       	mov	r20, r17
+ 61e:	67 e1       	ldi	r22, 0x17	; 23
+ 620:	ce 01       	movw	r24, r28
+ 622:	09 95       	icall
+C:\Users\Pavel\Documents\Arduino\libraries\U8g2\src\clib/u8x8_cad.c:407
+    u8x8_byte_EndTransfer(u8x8);
+ 624:	ce 01       	movw	r24, r28
+C:\Users\Pavel\Documents\Arduino\libraries\U8g2\src\clib/u8x8_cad.c:408
+}
+ 626:	df 91       	pop	r29
+ 628:	cf 91       	pop	r28
+ 62a:	1f 91       	pop	r17
+ 62c:	ff 90       	pop	r15
+ 62e:	ef 90       	pop	r14
+C:\Users\Pavel\Documents\Arduino\libraries\U8g2\src\clib/u8x8_cad.c:407
+static void u8x8_i2c_data_transfer(u8x8_t *u8x8, uint8_t arg_int, void *arg_ptr)
+{
+    u8x8_byte_StartTransfer(u8x8);    
+    u8x8_byte_SendByte(u8x8, 0x040);
+    u8x8->byte_cb(u8x8, U8X8_MSG_CAD_SEND_DATA, arg_int, arg_ptr);
+    u8x8_byte_EndTransfer(u8x8);
+ 630:	c6 cf       	rjmp	.-116    	; 0x5be <u8x8_byte_EndTransfer>
+
+00000632 <u8x8_cad_ssd13xx_i2c>:
+u8x8_cad_ssd13xx_i2c():
+C:\Users\Pavel\Documents\Arduino\libraries\U8g2\src\clib/u8x8_cad.c:411
+}
+
+uint8_t u8x8_cad_ssd13xx_i2c(u8x8_t *u8x8, uint8_t msg, uint8_t arg_int, void *arg_ptr)
+{
+ 632:	ef 92       	push	r14
+ 634:	ff 92       	push	r15
+ 636:	1f 93       	push	r17
+ 638:	cf 93       	push	r28
+ 63a:	df 93       	push	r29
+ 63c:	ec 01       	movw	r28, r24
+ 63e:	14 2f       	mov	r17, r20
+ 640:	79 01       	movw	r14, r18
+C:\Users\Pavel\Documents\Arduino\libraries\U8g2\src\clib/u8x8_cad.c:413
+  uint8_t *p;
+  switch(msg)
+ 642:	67 31       	cpi	r22, 0x17	; 23
+ 644:	30 f4       	brcc	.+12     	; 0x652 <u8x8_cad_ssd13xx_i2c+0x20>
+ 646:	65 31       	cpi	r22, 0x15	; 21
+ 648:	78 f4       	brcc	.+30     	; 0x668 <u8x8_cad_ssd13xx_i2c+0x36>
+ 64a:	64 31       	cpi	r22, 0x14	; 20
+ 64c:	29 f1       	breq	.+74     	; 0x698 <u8x8_cad_ssd13xx_i2c+0x66>
+C:\Users\Pavel\Documents\Arduino\libraries\U8g2\src\clib/u8x8_cad.c:454
+    case U8X8_MSG_CAD_START_TRANSFER:
+    case U8X8_MSG_CAD_END_TRANSFER:
+      /* cad transfer commands are ignored */
+      break;
+    default:
+      return 0;
+ 64e:	80 e0       	ldi	r24, 0x00	; 0
+ 650:	05 c0       	rjmp	.+10     	; 0x65c <u8x8_cad_ssd13xx_i2c+0x2a>
+C:\Users\Pavel\Documents\Arduino\libraries\U8g2\src\clib/u8x8_cad.c:413
+}
+
+uint8_t u8x8_cad_ssd13xx_i2c(u8x8_t *u8x8, uint8_t msg, uint8_t arg_int, void *arg_ptr)
+{
+  uint8_t *p;
+  switch(msg)
+ 652:	67 31       	cpi	r22, 0x17	; 23
+ 654:	d1 f0       	breq	.+52     	; 0x68a <u8x8_cad_ssd13xx_i2c+0x58>
+ 656:	6a 31       	cpi	r22, 0x1A	; 26
+ 658:	d0 f7       	brcc	.-12     	; 0x64e <u8x8_cad_ssd13xx_i2c+0x1c>
+C:\Users\Pavel\Documents\Arduino\libraries\U8g2\src\clib/u8x8_cad.c:456
+      /* cad transfer commands are ignored */
+      break;
+    default:
+      return 0;
+  }
+  return 1;
+ 65a:	81 e0       	ldi	r24, 0x01	; 1
+C:\Users\Pavel\Documents\Arduino\libraries\U8g2\src\clib/u8x8_cad.c:457
+}
+ 65c:	df 91       	pop	r29
+ 65e:	cf 91       	pop	r28
+ 660:	1f 91       	pop	r17
+ 662:	ff 90       	pop	r15
+ 664:	ef 90       	pop	r14
+ 666:	08 95       	ret
+C:\Users\Pavel\Documents\Arduino\libraries\U8g2\src\clib/u8x8_cad.c:419
+  {
+    case U8X8_MSG_CAD_SEND_CMD:
+    case U8X8_MSG_CAD_SEND_ARG:
+      /* 7 Nov 2016: Can this be improved?  */
+      //u8x8_byte_SetDC(u8x8, 0);
+      u8x8_byte_StartTransfer(u8x8);
+ 668:	b3 df       	rcall	.-154    	; 0x5d0 <u8x8_byte_StartTransfer>
+C:\Users\Pavel\Documents\Arduino\libraries\U8g2\src\clib/u8x8_cad.c:421
+      //u8x8_byte_SendByte(u8x8, u8x8_GetI2CAddress(u8x8));
+      u8x8_byte_SendByte(u8x8, 0x000);
+ 66a:	60 e0       	ldi	r22, 0x00	; 0
+ 66c:	ce 01       	movw	r24, r28
+ 66e:	b9 df       	rcall	.-142    	; 0x5e2 <u8x8_byte_SendByte>
+C:\Users\Pavel\Documents\Arduino\libraries\U8g2\src\clib/u8x8_cad.c:422
+      u8x8_byte_SendByte(u8x8, arg_int);
+ 670:	61 2f       	mov	r22, r17
+ 672:	ce 01       	movw	r24, r28
+ 674:	b6 df       	rcall	.-148    	; 0x5e2 <u8x8_byte_SendByte>
+C:\Users\Pavel\Documents\Arduino\libraries\U8g2\src\clib/u8x8_cad.c:423
+      u8x8_byte_EndTransfer(u8x8);      
+ 676:	ce 01       	movw	r24, r28
+ 678:	a2 df       	rcall	.-188    	; 0x5be <u8x8_byte_EndTransfer>
+ 67a:	ef cf       	rjmp	.-34     	; 0x65a <u8x8_cad_ssd13xx_i2c+0x28>
+C:\Users\Pavel\Documents\Arduino\libraries\U8g2\src\clib/u8x8_cad.c:438
+      /* so this is done here. Even further, only 24 bytes will be sent, */
+      /* because there will be another byte (DC) required during the transfer */
+      p = arg_ptr;
+       while( arg_int > 24 )
+      {
+	u8x8_i2c_data_transfer(u8x8, 24, p);
+ 67c:	68 e1       	ldi	r22, 0x18	; 24
+ 67e:	ce 01       	movw	r24, r28
+ 680:	be df       	rcall	.-132    	; 0x5fe <u8x8_i2c_data_transfer>
+C:\Users\Pavel\Documents\Arduino\libraries\U8g2\src\clib/u8x8_cad.c:439
+	arg_int-=24;
+ 682:	18 51       	subi	r17, 0x18	; 24
+C:\Users\Pavel\Documents\Arduino\libraries\U8g2\src\clib/u8x8_cad.c:440
+	p+=24;
+ 684:	88 e1       	ldi	r24, 0x18	; 24
+ 686:	e8 0e       	add	r14, r24
+ 688:	f1 1c       	adc	r15, r1
+C:\Users\Pavel\Documents\Arduino\libraries\U8g2\src\clib/u8x8_cad.c:438
+      /* so this is done here. Even further, only 24 bytes will be sent, */
+      /* because there will be another byte (DC) required during the transfer */
+      p = arg_ptr;
+       while( arg_int > 24 )
+      {
+	u8x8_i2c_data_transfer(u8x8, 24, p);
+ 68a:	a7 01       	movw	r20, r14
+C:\Users\Pavel\Documents\Arduino\libraries\U8g2\src\clib/u8x8_cad.c:436
+      /* I guess this is related to the size of the Wire buffers in Arduino */
+      /* Unfortunately, this can not be handled in the byte level drivers, */
+      /* so this is done here. Even further, only 24 bytes will be sent, */
+      /* because there will be another byte (DC) required during the transfer */
+      p = arg_ptr;
+       while( arg_int > 24 )
+ 68c:	19 31       	cpi	r17, 0x19	; 25
+ 68e:	b0 f7       	brcc	.-20     	; 0x67c <u8x8_cad_ssd13xx_i2c+0x4a>
+C:\Users\Pavel\Documents\Arduino\libraries\U8g2\src\clib/u8x8_cad.c:442
+      {
+	u8x8_i2c_data_transfer(u8x8, 24, p);
+	arg_int-=24;
+	p+=24;
+      }
+      u8x8_i2c_data_transfer(u8x8, arg_int, p);
+ 690:	61 2f       	mov	r22, r17
+ 692:	ce 01       	movw	r24, r28
+ 694:	b4 df       	rcall	.-152    	; 0x5fe <u8x8_i2c_data_transfer>
+ 696:	e1 cf       	rjmp	.-62     	; 0x65a <u8x8_cad_ssd13xx_i2c+0x28>
+C:\Users\Pavel\Documents\Arduino\libraries\U8g2\src\clib/u8x8_cad.c:446
+      break;
+    case U8X8_MSG_CAD_INIT:
+      /* apply default i2c adr if required so that the start transfer msg can use this */
+      if ( u8x8->i2c_address == 255 )
+ 698:	8e 89       	ldd	r24, Y+22	; 0x16
+ 69a:	8f 3f       	cpi	r24, 0xFF	; 255
+ 69c:	11 f4       	brne	.+4      	; 0x6a2 <u8x8_cad_ssd13xx_i2c+0x70>
+C:\Users\Pavel\Documents\Arduino\libraries\U8g2\src\clib/u8x8_cad.c:447
+	u8x8->i2c_address = 0x078;
+ 69e:	88 e7       	ldi	r24, 0x78	; 120
+ 6a0:	8e 8b       	std	Y+22, r24	; 0x16
+C:\Users\Pavel\Documents\Arduino\libraries\U8g2\src\clib/u8x8_cad.c:448
+      return u8x8->byte_cb(u8x8, msg, arg_int, arg_ptr);
+ 6a2:	e8 85       	ldd	r30, Y+8	; 0x08
+ 6a4:	f9 85       	ldd	r31, Y+9	; 0x09
+ 6a6:	97 01       	movw	r18, r14
+ 6a8:	41 2f       	mov	r20, r17
+ 6aa:	64 e1       	ldi	r22, 0x14	; 20
+ 6ac:	ce 01       	movw	r24, r28
+C:\Users\Pavel\Documents\Arduino\libraries\U8g2\src\clib/u8x8_cad.c:457
+      break;
+    default:
+      return 0;
+  }
+  return 1;
+}
+ 6ae:	df 91       	pop	r29
+ 6b0:	cf 91       	pop	r28
+ 6b2:	1f 91       	pop	r17
+ 6b4:	ff 90       	pop	r15
+ 6b6:	ef 90       	pop	r14
+C:\Users\Pavel\Documents\Arduino\libraries\U8g2\src\clib/u8x8_cad.c:448
+      break;
+    case U8X8_MSG_CAD_INIT:
+      /* apply default i2c adr if required so that the start transfer msg can use this */
+      if ( u8x8->i2c_address == 255 )
+	u8x8->i2c_address = 0x078;
+      return u8x8->byte_cb(u8x8, msg, arg_int, arg_ptr);
+ 6b8:	09 94       	ijmp
+
+000006ba <u8x8_get_glyph_data>:
+u8x8_get_glyph_data():
+C:\Users\Pavel\Documents\Arduino\libraries\U8g2\src\clib/u8x8_8x8.c:63
+   encoding: glyph for which the data is requested (must be between 0 and 255)
+   buf: pointer to 8 bytes
+*/
+static void u8x8_get_glyph_data(u8x8_t *u8x8, uint8_t encoding, uint8_t *buf) U8X8_NOINLINE;
+static void u8x8_get_glyph_data(u8x8_t *u8x8, uint8_t encoding, uint8_t *buf) 
+{
+ 6ba:	cf 93       	push	r28
+ 6bc:	df 93       	push	r29
+ 6be:	dc 01       	movw	r26, r24
+C:\Users\Pavel\Documents\Arduino\libraries\U8g2\src\clib/u8x8_8x8.c:66
+  uint8_t first, last, i;
+  uint16_t offset;
+  first = u8x8_pgm_read(u8x8->font+0);
+ 6c0:	50 96       	adiw	r26, 0x10	; 16
+ 6c2:	ed 91       	ld	r30, X+
+ 6c4:	fc 91       	ld	r31, X
+ 6c6:	51 97       	sbiw	r26, 0x11	; 17
+ 6c8:	84 91       	lpm	r24, Z
+C:\Users\Pavel\Documents\Arduino\libraries\U8g2\src\clib/u8x8_8x8.c:67
+  last = u8x8_pgm_read(u8x8->font+1);
+ 6ca:	31 96       	adiw	r30, 0x01	; 1
+ 6cc:	e4 91       	lpm	r30, Z
+C:\Users\Pavel\Documents\Arduino\libraries\U8g2\src\clib/u8x8_8x8.c:70
+  
+  /* get the glyph bitmap from the font */
+  if ( first <= encoding && encoding <= last )
+ 6ce:	68 17       	cp	r22, r24
+ 6d0:	68 f1       	brcs	.+90     	; 0x72c <u8x8_get_glyph_data+0x72>
+ 6d2:	e6 17       	cp	r30, r22
+ 6d4:	58 f1       	brcs	.+86     	; 0x72c <u8x8_get_glyph_data+0x72>
+C:\Users\Pavel\Documents\Arduino\libraries\U8g2\src\clib/u8x8_8x8.c:73
+  {
+    offset = encoding;
+    offset -= first;
+ 6d6:	68 1b       	sub	r22, r24
+ 6d8:	77 0b       	sbc	r23, r23
+C:\Users\Pavel\Documents\Arduino\libraries\U8g2\src\clib/u8x8_8x8.c:74
+    offset *= 8;
+ 6da:	83 e0       	ldi	r24, 0x03	; 3
+ 6dc:	66 0f       	add	r22, r22
+ 6de:	77 1f       	adc	r23, r23
+ 6e0:	8a 95       	dec	r24
+ 6e2:	e1 f7       	brne	.-8      	; 0x6dc <u8x8_get_glyph_data+0x22>
+C:\Users\Pavel\Documents\Arduino\libraries\U8g2\src\clib/u8x8_8x8.c:75
+    offset +=2;
+ 6e4:	cb 01       	movw	r24, r22
+ 6e6:	02 96       	adiw	r24, 0x02	; 2
+ 6e8:	ea 01       	movw	r28, r20
+ 6ea:	66 5f       	subi	r22, 0xF6	; 246
+ 6ec:	7f 4f       	sbci	r23, 0xFF	; 255
+C:\Users\Pavel\Documents\Arduino\libraries\U8g2\src\clib/u8x8_8x8.c:78
+    for( i = 0; i < 8; i++ )
+    {
+      buf[i] = u8x8_pgm_read(u8x8->font+offset);
+ 6ee:	50 96       	adiw	r26, 0x10	; 16
+ 6f0:	ed 91       	ld	r30, X+
+ 6f2:	fc 91       	ld	r31, X
+ 6f4:	51 97       	sbiw	r26, 0x11	; 17
+ 6f6:	e8 0f       	add	r30, r24
+ 6f8:	f9 1f       	adc	r31, r25
+ 6fa:	e4 91       	lpm	r30, Z
+ 6fc:	e9 93       	st	Y+, r30
+C:\Users\Pavel\Documents\Arduino\libraries\U8g2\src\clib/u8x8_8x8.c:79
+      offset++;
+ 6fe:	01 96       	adiw	r24, 0x01	; 1
+C:\Users\Pavel\Documents\Arduino\libraries\U8g2\src\clib/u8x8_8x8.c:76
+  {
+    offset = encoding;
+    offset -= first;
+    offset *= 8;
+    offset +=2;
+    for( i = 0; i < 8; i++ )
+ 700:	86 17       	cp	r24, r22
+ 702:	97 07       	cpc	r25, r23
+ 704:	a1 f7       	brne	.-24     	; 0x6ee <u8x8_get_glyph_data+0x34>
+C:\Users\Pavel\Documents\Arduino\libraries\U8g2\src\clib/u8x8_8x8.c:91
+      buf[i] = 0;
+    }
+  }
+  
+  /* invert the bitmap if required */
+  if ( u8x8->is_font_inverse_mode )
+ 706:	55 96       	adiw	r26, 0x15	; 21
+ 708:	8c 91       	ld	r24, X
+ 70a:	88 23       	and	r24, r24
+ 70c:	61 f0       	breq	.+24     	; 0x726 <u8x8_get_glyph_data+0x6c>
+ 70e:	fa 01       	movw	r30, r20
+ 710:	9a 01       	movw	r18, r20
+ 712:	28 5f       	subi	r18, 0xF8	; 248
+ 714:	3f 4f       	sbci	r19, 0xFF	; 255
+C:\Users\Pavel\Documents\Arduino\libraries\U8g2\src\clib/u8x8_8x8.c:95
+  {
+    for( i = 0; i < 8; i++ )
+    {
+      buf[i] ^= 255;
+ 716:	81 91       	ld	r24, Z+
+ 718:	df 01       	movw	r26, r30
+ 71a:	11 97       	sbiw	r26, 0x01	; 1
+ 71c:	80 95       	com	r24
+ 71e:	8c 93       	st	X, r24
+C:\Users\Pavel\Documents\Arduino\libraries\U8g2\src\clib/u8x8_8x8.c:93
+  }
+  
+  /* invert the bitmap if required */
+  if ( u8x8->is_font_inverse_mode )
+  {
+    for( i = 0; i < 8; i++ )
+ 720:	2e 17       	cp	r18, r30
+ 722:	3f 07       	cpc	r19, r31
+ 724:	c1 f7       	brne	.-16     	; 0x716 <u8x8_get_glyph_data+0x5c>
+C:\Users\Pavel\Documents\Arduino\libraries\U8g2\src\clib/u8x8_8x8.c:99
+    {
+      buf[i] ^= 255;
+    }
+  }
+  
+}
+ 726:	df 91       	pop	r29
+ 728:	cf 91       	pop	r28
+ 72a:	08 95       	ret
+ 72c:	fa 01       	movw	r30, r20
+ 72e:	ca 01       	movw	r24, r20
+ 730:	08 96       	adiw	r24, 0x08	; 8
+C:\Users\Pavel\Documents\Arduino\libraries\U8g2\src\clib/u8x8_8x8.c:86
+  }
+  else
+  {
+    for( i = 0; i < 8; i++ )
+    {
+      buf[i] = 0;
+ 732:	11 92       	st	Z+, r1
+C:\Users\Pavel\Documents\Arduino\libraries\U8g2\src\clib/u8x8_8x8.c:84
+      offset++;
+    }
+  }
+  else
+  {
+    for( i = 0; i < 8; i++ )
+ 734:	e8 17       	cp	r30, r24
+ 736:	f9 07       	cpc	r31, r25
+ 738:	e1 f7       	brne	.-8      	; 0x732 <u8x8_get_glyph_data+0x78>
+ 73a:	e5 cf       	rjmp	.-54     	; 0x706 <u8x8_get_glyph_data+0x4c>
+
+0000073c <u8x8_byte_arduino_hw_i2c>:
+u8x8_byte_arduino_hw_i2c():
+C:\Users\Pavel\Documents\Arduino\libraries\U8g2\src/U8x8lib.cpp:1014
+    default:
+      return 0;
+  }
+#endif
+  return 1;
+}
+ 73c:	81 e0       	ldi	r24, 0x01	; 1
+ 73e:	08 95       	ret
+
+00000740 <u8x8_gpio_and_delay_arduino>:
+u8x8_gpio_and_delay_arduino():
+C:\Users\Pavel\Documents\Arduino\libraries\U8g2\src/U8x8lib.cpp:72
+/*=============================================*/
+/* callbacks */
+
+#ifdef U8X8_USE_PINS
+extern "C" uint8_t u8x8_gpio_and_delay_arduino(u8x8_t *u8x8, uint8_t msg, uint8_t arg_int, U8X8_UNUSED void *arg_ptr)
+{
+ 740:	cf 92       	push	r12
+ 742:	df 92       	push	r13
+ 744:	ef 92       	push	r14
+ 746:	ff 92       	push	r15
+ 748:	1f 93       	push	r17
+ 74a:	cf 93       	push	r28
+ 74c:	df 93       	push	r29
+ 74e:	ec 01       	movw	r28, r24
+C:\Users\Pavel\Documents\Arduino\libraries\U8g2\src/U8x8lib.cpp:74
+  uint8_t i;
+  switch(msg)
+ 750:	6c 32       	cpi	r22, 0x2C	; 44
+ 752:	b0 f4       	brcc	.+44     	; 0x780 <u8x8_gpio_and_delay_arduino+0x40>
+ 754:	6a 32       	cpi	r22, 0x2A	; 42
+ 756:	d0 f5       	brcc	.+116    	; 0x7cc <u8x8_gpio_and_delay_arduino+0x8c>
+ 758:	68 32       	cpi	r22, 0x28	; 40
+ 75a:	31 f1       	breq	.+76     	; 0x7a8 <u8x8_gpio_and_delay_arduino+0x68>
+ 75c:	69 32       	cpi	r22, 0x29	; 41
+ 75e:	09 f4       	brne	.+2      	; 0x762 <u8x8_gpio_and_delay_arduino+0x22>
+ 760:	3e c0       	rjmp	.+124    	; 0x7de <u8x8_gpio_and_delay_arduino+0x9e>
+C:\Users\Pavel\Documents\Arduino\libraries\U8g2\src/U8x8lib.cpp:161
+	  }
+	}
+	break;
+      }
+      
+      return 0;
+ 762:	80 e0       	ldi	r24, 0x00	; 0
+C:\Users\Pavel\Documents\Arduino\libraries\U8g2\src/U8x8lib.cpp:139
+	digitalWrite(u8x8_GetPinValue(u8x8, msg), 1);
+#endif 
+      }
+      break;
+    default:
+      if ( msg >= U8X8_MSG_GPIO(0) )
+ 764:	60 34       	cpi	r22, 0x40	; 64
+ 766:	98 f1       	brcs	.+102    	; 0x7ce <u8x8_gpio_and_delay_arduino+0x8e>
+ 768:	6f 73       	andi	r22, 0x3F	; 63
+C:\Users\Pavel\Documents\Arduino\libraries\U8g2\src/U8x8lib.cpp:141
+      {
+	i = u8x8_GetPinValue(u8x8, msg);
+ 76a:	fe 01       	movw	r30, r28
+ 76c:	e6 0f       	add	r30, r22
+ 76e:	f1 1d       	adc	r31, r1
+ 770:	87 8d       	ldd	r24, Z+31	; 0x1f
+C:\Users\Pavel\Documents\Arduino\libraries\U8g2\src/U8x8lib.cpp:142
+	if ( i != U8X8_PIN_NONE )
+ 772:	8f 3f       	cpi	r24, 0xFF	; 255
+ 774:	59 f1       	breq	.+86     	; 0x7cc <u8x8_gpio_and_delay_arduino+0x8c>
+C:\Users\Pavel\Documents\Arduino\libraries\U8g2\src/U8x8lib.cpp:144
+	{
+	  if ( u8x8_GetPinIndex(u8x8, msg) < U8X8_PIN_OUTPUT_CNT )
+ 776:	60 31       	cpi	r22, 0x10	; 16
+ 778:	08 f0       	brcs	.+2      	; 0x77c <u8x8_gpio_and_delay_arduino+0x3c>
+ 77a:	5a c0       	rjmp	.+180    	; 0x830 <u8x8_gpio_and_delay_arduino+0xf0>
+C:\Users\Pavel\Documents\Arduino\libraries\U8g2\src/U8x8lib.cpp:146
+	  {
+	    digitalWrite(i, arg_int);
+ 77c:	64 2f       	mov	r22, r20
+ 77e:	12 c0       	rjmp	.+36     	; 0x7a4 <u8x8_gpio_and_delay_arduino+0x64>
+C:\Users\Pavel\Documents\Arduino\libraries\U8g2\src/U8x8lib.cpp:74
+
+#ifdef U8X8_USE_PINS
+extern "C" uint8_t u8x8_gpio_and_delay_arduino(u8x8_t *u8x8, uint8_t msg, uint8_t arg_int, U8X8_UNUSED void *arg_ptr)
+{
+  uint8_t i;
+  switch(msg)
+ 780:	6d 32       	cpi	r22, 0x2D	; 45
+ 782:	09 f4       	brne	.+2      	; 0x786 <u8x8_gpio_and_delay_arduino+0x46>
+ 784:	4b c0       	rjmp	.+150    	; 0x81c <u8x8_gpio_and_delay_arduino+0xdc>
+ 786:	68 f3       	brcs	.-38     	; 0x762 <u8x8_gpio_and_delay_arduino+0x22>
+ 788:	84 eb       	ldi	r24, 0xB4	; 180
+ 78a:	86 0f       	add	r24, r22
+ 78c:	82 30       	cpi	r24, 0x02	; 2
+ 78e:	48 f7       	brcc	.-46     	; 0x762 <u8x8_gpio_and_delay_arduino+0x22>
+ 790:	6f 73       	andi	r22, 0x3F	; 63
+ 792:	c6 0f       	add	r28, r22
+ 794:	d1 1d       	adc	r29, r1
+ 796:	8f 8d       	ldd	r24, Y+31	; 0x1f
+C:\Users\Pavel\Documents\Arduino\libraries\U8g2\src/U8x8lib.cpp:123
+      /* arg_int is 1 or 4: 100KHz (5us) or 400KHz (1.25us) */
+      delayMicroseconds(arg_int<=2?5:2);
+      break;
+    case U8X8_MSG_GPIO_I2C_CLOCK:
+    case U8X8_MSG_GPIO_I2C_DATA:
+      if ( arg_int == 0 )
+ 798:	41 11       	cpse	r20, r1
+ 79a:	47 c0       	rjmp	.+142    	; 0x82a <u8x8_gpio_and_delay_arduino+0xea>
+C:\Users\Pavel\Documents\Arduino\libraries\U8g2\src/U8x8lib.cpp:125
+      {
+	pinMode(u8x8_GetPinValue(u8x8, msg), OUTPUT);
+ 79c:	61 e0       	ldi	r22, 0x01	; 1
+ 79e:	3b dd       	rcall	.-1418   	; 0x216 <pinMode>
+C:\Users\Pavel\Documents\Arduino\libraries\U8g2\src/U8x8lib.cpp:126
+	digitalWrite(u8x8_GetPinValue(u8x8, msg), 0);
+ 7a0:	60 e0       	ldi	r22, 0x00	; 0
+ 7a2:	8f 8d       	ldd	r24, Y+31	; 0x1f
+C:\Users\Pavel\Documents\Arduino\libraries\U8g2\src/U8x8lib.cpp:146
+	i = u8x8_GetPinValue(u8x8, msg);
+	if ( i != U8X8_PIN_NONE )
+	{
+	  if ( u8x8_GetPinIndex(u8x8, msg) < U8X8_PIN_OUTPUT_CNT )
+	  {
+	    digitalWrite(i, arg_int);
+ 7a4:	f6 dc       	rcall	.-1556   	; 0x192 <digitalWrite>
+ 7a6:	12 c0       	rjmp	.+36     	; 0x7cc <u8x8_gpio_and_delay_arduino+0x8c>
+ 7a8:	7c 01       	movw	r14, r24
+ 7aa:	8f e1       	ldi	r24, 0x1F	; 31
+ 7ac:	e8 0e       	add	r14, r24
+ 7ae:	f1 1c       	adc	r15, r1
+C:\Users\Pavel\Documents\Arduino\libraries\U8g2\src/U8x8lib.cpp:78
+  uint8_t i;
+  switch(msg)
+  {
+    case U8X8_MSG_GPIO_AND_DELAY_INIT:
+    
+      for( i = 0; i < U8X8_PIN_CNT; i++ )
+ 7b0:	d0 e0       	ldi	r29, 0x00	; 0
+C:\Users\Pavel\Documents\Arduino\libraries\U8g2\src/U8x8lib.cpp:79
+	if ( u8x8->pins[i] != U8X8_PIN_NONE )
+ 7b2:	f7 01       	movw	r30, r14
+ 7b4:	81 91       	ld	r24, Z+
+ 7b6:	7f 01       	movw	r14, r30
+ 7b8:	8f 3f       	cpi	r24, 0xFF	; 255
+ 7ba:	29 f0       	breq	.+10     	; 0x7c6 <u8x8_gpio_and_delay_arduino+0x86>
+C:\Users\Pavel\Documents\Arduino\libraries\U8g2\src/U8x8lib.cpp:83
+	{
+	  if ( i < U8X8_PIN_OUTPUT_CNT )
+	  {
+	    pinMode(u8x8->pins[i], OUTPUT);
+ 7bc:	61 e0       	ldi	r22, 0x01	; 1
+C:\Users\Pavel\Documents\Arduino\libraries\U8g2\src/U8x8lib.cpp:81
+    case U8X8_MSG_GPIO_AND_DELAY_INIT:
+    
+      for( i = 0; i < U8X8_PIN_CNT; i++ )
+	if ( u8x8->pins[i] != U8X8_PIN_NONE )
+	{
+	  if ( i < U8X8_PIN_OUTPUT_CNT )
+ 7be:	d0 31       	cpi	r29, 0x10	; 16
+ 7c0:	08 f0       	brcs	.+2      	; 0x7c4 <u8x8_gpio_and_delay_arduino+0x84>
+C:\Users\Pavel\Documents\Arduino\libraries\U8g2\src/U8x8lib.cpp:88
+	    pinMode(u8x8->pins[i], OUTPUT);
+	  }
+	  else
+	  {
+#ifdef INPUT_PULLUP
+	    pinMode(u8x8->pins[i], INPUT_PULLUP);
+ 7c2:	62 e0       	ldi	r22, 0x02	; 2
+ 7c4:	28 dd       	rcall	.-1456   	; 0x216 <pinMode>
+C:\Users\Pavel\Documents\Arduino\libraries\U8g2\src/U8x8lib.cpp:78
+  uint8_t i;
+  switch(msg)
+  {
+    case U8X8_MSG_GPIO_AND_DELAY_INIT:
+    
+      for( i = 0; i < U8X8_PIN_CNT; i++ )
+ 7c6:	df 5f       	subi	r29, 0xFF	; 255
+ 7c8:	d6 31       	cpi	r29, 0x16	; 22
+ 7ca:	99 f7       	brne	.-26     	; 0x7b2 <u8x8_gpio_and_delay_arduino+0x72>
+C:\Users\Pavel\Documents\Arduino\libraries\U8g2\src/U8x8lib.cpp:163
+	break;
+      }
+      
+      return 0;
+  }
+  return 1;
+ 7cc:	81 e0       	ldi	r24, 0x01	; 1
+C:\Users\Pavel\Documents\Arduino\libraries\U8g2\src/U8x8lib.cpp:164
+}
+ 7ce:	df 91       	pop	r29
+ 7d0:	cf 91       	pop	r28
+ 7d2:	1f 91       	pop	r17
+ 7d4:	ff 90       	pop	r15
+ 7d6:	ef 90       	pop	r14
+ 7d8:	df 90       	pop	r13
+ 7da:	cf 90       	pop	r12
+ 7dc:	08 95       	ret
+C:\Users\Pavel\Documents\Arduino\libraries\U8g2\src/U8x8lib.cpp:115
+    case U8X8_MSG_DELAY_100NANO:
+      /* not used at the moment */
+      break;
+   
+    case U8X8_MSG_DELAY_MILLI:
+      delay(arg_int);
+ 7de:	c4 2e       	mov	r12, r20
+ 7e0:	d1 2c       	mov	r13, r1
+ 7e2:	f1 2c       	mov	r15, r1
+ 7e4:	e1 2c       	mov	r14, r1
+delay():
+C:\Users\Pavel\AppData\Local\Arduino15\packages\ATTinyCore\hardware\avr\1.3.1\cores\tiny/wiring.c:279
+void yield(void) __attribute__ ((weak, alias("__empty")));
+
+void delay(unsigned long ms)
+{
+  #if (F_CPU>=1000000L)
+  uint16_t start = (uint16_t)micros();
+ 7e6:	5b dd       	rcall	.-1354   	; 0x29e <micros>
+ 7e8:	eb 01       	movw	r28, r22
+C:\Users\Pavel\AppData\Local\Arduino15\packages\ATTinyCore\hardware\avr\1.3.1\cores\tiny/wiring.c:281
+
+  while (ms > 0) {
+ 7ea:	c1 14       	cp	r12, r1
+ 7ec:	d1 04       	cpc	r13, r1
+ 7ee:	e1 04       	cpc	r14, r1
+ 7f0:	f1 04       	cpc	r15, r1
+ 7f2:	41 f4       	brne	.+16     	; 0x804 <u8x8_gpio_and_delay_arduino+0xc4>
+ 7f4:	eb cf       	rjmp	.-42     	; 0x7cc <u8x8_gpio_and_delay_arduino+0x8c>
+C:\Users\Pavel\AppData\Local\Arduino15\packages\ATTinyCore\hardware\avr\1.3.1\cores\tiny/wiring.c:284
+    yield();
+    while (((uint16_t)micros() - start) >= 1000 && ms) {
+      ms--;
+ 7f6:	f1 e0       	ldi	r31, 0x01	; 1
+ 7f8:	cf 1a       	sub	r12, r31
+ 7fa:	d1 08       	sbc	r13, r1
+ 7fc:	e1 08       	sbc	r14, r1
+ 7fe:	f1 08       	sbc	r15, r1
+C:\Users\Pavel\AppData\Local\Arduino15\packages\ATTinyCore\hardware\avr\1.3.1\cores\tiny/wiring.c:285
+      start += 1000;
+ 800:	c8 51       	subi	r28, 0x18	; 24
+ 802:	dc 4f       	sbci	r29, 0xFC	; 252
+C:\Users\Pavel\AppData\Local\Arduino15\packages\ATTinyCore\hardware\avr\1.3.1\cores\tiny/wiring.c:283
+  #if (F_CPU>=1000000L)
+  uint16_t start = (uint16_t)micros();
+
+  while (ms > 0) {
+    yield();
+    while (((uint16_t)micros() - start) >= 1000 && ms) {
+ 804:	4c dd       	rcall	.-1384   	; 0x29e <micros>
+ 806:	6c 1b       	sub	r22, r28
+ 808:	7d 0b       	sbc	r23, r29
+ 80a:	68 3e       	cpi	r22, 0xE8	; 232
+ 80c:	73 40       	sbci	r23, 0x03	; 3
+ 80e:	68 f3       	brcs	.-38     	; 0x7ea <u8x8_gpio_and_delay_arduino+0xaa>
+ 810:	c1 14       	cp	r12, r1
+ 812:	d1 04       	cpc	r13, r1
+ 814:	e1 04       	cpc	r14, r1
+ 816:	f1 04       	cpc	r15, r1
+ 818:	71 f7       	brne	.-36     	; 0x7f6 <u8x8_gpio_and_delay_arduino+0xb6>
+ 81a:	d8 cf       	rjmp	.-80     	; 0x7cc <u8x8_gpio_and_delay_arduino+0x8c>
+u8x8_gpio_and_delay_arduino():
+C:\Users\Pavel\Documents\Arduino\libraries\U8g2\src/U8x8lib.cpp:119
+      break;
+    case U8X8_MSG_DELAY_I2C:
+      /* arg_int is 1 or 4: 100KHz (5us) or 400KHz (1.25us) */
+      delayMicroseconds(arg_int<=2?5:2);
+ 81c:	43 30       	cpi	r20, 0x03	; 3
+ 81e:	b0 f6       	brcc	.-84     	; 0x7cc <u8x8_gpio_and_delay_arduino+0x8c>
+delayMicroseconds():
+C:\Users\Pavel\AppData\Local\Arduino15\packages\ATTinyCore\hardware\avr\1.3.1\cores\tiny/wiring.c:482
+
+
+#endif
+
+  // busy wait
+  __asm__ __volatile__ (
+ 820:	86 e0       	ldi	r24, 0x06	; 6
+ 822:	90 e0       	ldi	r25, 0x00	; 0
+ 824:	01 97       	sbiw	r24, 0x01	; 1
+ 826:	f1 f7       	brne	.-4      	; 0x824 <u8x8_gpio_and_delay_arduino+0xe4>
+ 828:	d1 cf       	rjmp	.-94     	; 0x7cc <u8x8_gpio_and_delay_arduino+0x8c>
+u8x8_gpio_and_delay_arduino():
+C:\Users\Pavel\Documents\Arduino\libraries\U8g2\src/U8x8lib.cpp:131
+	digitalWrite(u8x8_GetPinValue(u8x8, msg), 0);
+      }
+      else
+      {
+#ifdef INPUT_PULLUP
+	pinMode(u8x8_GetPinValue(u8x8, msg), INPUT_PULLUP);
+ 82a:	62 e0       	ldi	r22, 0x02	; 2
+ 82c:	f4 dc       	rcall	.-1560   	; 0x216 <pinMode>
+ 82e:	ce cf       	rjmp	.-100    	; 0x7cc <u8x8_gpio_and_delay_arduino+0x8c>
+digitalRead():
+C:\Users\Pavel\AppData\Local\Arduino15\packages\ATTinyCore\hardware\avr\1.3.1\cores\tiny/wiring_digital.c:167
+  }
+}
+
+int digitalRead(uint8_t pin)
+{
+  if (pin&128) {pin=analogInputToDigitalPin((pin&127));}
+ 830:	87 ff       	sbrs	r24, 7
+ 832:	09 c0       	rjmp	.+18     	; 0x846 <u8x8_gpio_and_delay_arduino+0x106>
+ 834:	8f 77       	andi	r24, 0x7F	; 127
+ 836:	41 f1       	breq	.+80     	; 0x888 <u8x8_gpio_and_delay_arduino+0x148>
+ 838:	81 30       	cpi	r24, 0x01	; 1
+ 83a:	41 f1       	breq	.+80     	; 0x88c <u8x8_gpio_and_delay_arduino+0x14c>
+ 83c:	82 30       	cpi	r24, 0x02	; 2
+ 83e:	41 f1       	breq	.+80     	; 0x890 <u8x8_gpio_and_delay_arduino+0x150>
+ 840:	83 30       	cpi	r24, 0x03	; 3
+ 842:	41 f1       	breq	.+80     	; 0x894 <u8x8_gpio_and_delay_arduino+0x154>
+u8x8_gpio_and_delay_arduino():
+ 844:	8f ef       	ldi	r24, 0xFF	; 255
+digitalRead():
+C:\Users\Pavel\AppData\Local\Arduino15\packages\ATTinyCore\hardware\avr\1.3.1\cores\tiny/wiring_digital.c:168
+  uint8_t timer = digitalPinToTimer(pin);
+ 846:	28 2f       	mov	r18, r24
+ 848:	30 e0       	ldi	r19, 0x00	; 0
+ 84a:	f9 01       	movw	r30, r18
+ 84c:	e4 5c       	subi	r30, 0xC4	; 196
+ 84e:	ff 4f       	sbci	r31, 0xFF	; 255
+ 850:	84 91       	lpm	r24, Z
+C:\Users\Pavel\AppData\Local\Arduino15\packages\ATTinyCore\hardware\avr\1.3.1\cores\tiny/wiring_digital.c:169
+  uint8_t bit = digitalPinToBitMask(pin);
+ 852:	f9 01       	movw	r30, r18
+ 854:	ea 5c       	subi	r30, 0xCA	; 202
+ 856:	ff 4f       	sbci	r31, 0xFF	; 255
+ 858:	f4 90       	lpm	r15, Z
+C:\Users\Pavel\AppData\Local\Arduino15\packages\ATTinyCore\hardware\avr\1.3.1\cores\tiny/wiring_digital.c:170
+  uint8_t port = digitalPinToPort(pin);
+ 85a:	f9 01       	movw	r30, r18
+ 85c:	e0 5d       	subi	r30, 0xD0	; 208
+ 85e:	ff 4f       	sbci	r31, 0xFF	; 255
+ 860:	14 91       	lpm	r17, Z
+C:\Users\Pavel\AppData\Local\Arduino15\packages\ATTinyCore\hardware\avr\1.3.1\cores\tiny/wiring_digital.c:172
+
+  if (port == NOT_A_PIN) return LOW;
+ 862:	11 23       	and	r17, r17
+ 864:	71 f0       	breq	.+28     	; 0x882 <u8x8_gpio_and_delay_arduino+0x142>
+C:\Users\Pavel\AppData\Local\Arduino15\packages\ATTinyCore\hardware\avr\1.3.1\cores\tiny/wiring_digital.c:176
+
+  // If the pin that support PWM output, we need to turn it off
+  // before getting a digital reading.
+  if (timer != NOT_ON_TIMER) turnOffPWM(timer);
+ 866:	81 11       	cpse	r24, r1
+ 868:	7d dc       	rcall	.-1798   	; 0x164 <turnOffPWM>
+C:\Users\Pavel\AppData\Local\Arduino15\packages\ATTinyCore\hardware\avr\1.3.1\cores\tiny/wiring_digital.c:178
+
+  if (*portInputRegister(port) & bit) return HIGH;
+ 86a:	e1 2f       	mov	r30, r17
+ 86c:	f0 e0       	ldi	r31, 0x00	; 0
+ 86e:	ee 0f       	add	r30, r30
+ 870:	ff 1f       	adc	r31, r31
+ 872:	e2 5e       	subi	r30, 0xE2	; 226
+ 874:	ff 4f       	sbci	r31, 0xFF	; 255
+ 876:	a5 91       	lpm	r26, Z+
+ 878:	b4 91       	lpm	r27, Z
+ 87a:	ec 91       	ld	r30, X
+ 87c:	fe 22       	and	r15, r30
+ 87e:	81 e0       	ldi	r24, 0x01	; 1
+ 880:	09 f4       	brne	.+2      	; 0x884 <u8x8_gpio_and_delay_arduino+0x144>
+u8x8_gpio_and_delay_arduino():
+C:\Users\Pavel\AppData\Local\Arduino15\packages\ATTinyCore\hardware\avr\1.3.1\cores\tiny/wiring_digital.c:172
+  if (pin&128) {pin=analogInputToDigitalPin((pin&127));}
+  uint8_t timer = digitalPinToTimer(pin);
+  uint8_t bit = digitalPinToBitMask(pin);
+  uint8_t port = digitalPinToPort(pin);
+
+  if (port == NOT_A_PIN) return LOW;
+ 882:	80 e0       	ldi	r24, 0x00	; 0
+C:\Users\Pavel\Documents\Arduino\libraries\U8g2\src/U8x8lib.cpp:155
+	    if ( u8x8_GetPinIndex(u8x8, msg) == U8X8_PIN_OUTPUT_CNT )
+	    {
+	      // call yield() for the first pin only, u8x8 will always request all the pins, so this should be ok
+	      yield();
+	    }
+	    u8x8_SetGPIOResult(u8x8, digitalRead(i) == 0 ? 0 : 1);
+ 884:	8a 8f       	std	Y+26, r24	; 0x1a
+ 886:	a2 cf       	rjmp	.-188    	; 0x7cc <u8x8_gpio_and_delay_arduino+0x8c>
+C:\Users\Pavel\AppData\Local\Arduino15\packages\ATTinyCore\hardware\avr\1.3.1\cores\tiny/wiring_digital.c:167
+  }
+}
+
+int digitalRead(uint8_t pin)
+{
+  if (pin&128) {pin=analogInputToDigitalPin((pin&127));}
+ 888:	85 e0       	ldi	r24, 0x05	; 5
+ 88a:	dd cf       	rjmp	.-70     	; 0x846 <u8x8_gpio_and_delay_arduino+0x106>
+ 88c:	82 e0       	ldi	r24, 0x02	; 2
+ 88e:	db cf       	rjmp	.-74     	; 0x846 <u8x8_gpio_and_delay_arduino+0x106>
+ 890:	84 e0       	ldi	r24, 0x04	; 4
+ 892:	d9 cf       	rjmp	.-78     	; 0x846 <u8x8_gpio_and_delay_arduino+0x106>
+ 894:	83 e0       	ldi	r24, 0x03	; 3
+ 896:	d7 cf       	rjmp	.-82     	; 0x846 <u8x8_gpio_and_delay_arduino+0x106>
+
+00000898 <U8X8::write(unsigned char)>:
+write():
+C:\Users\Pavel\Documents\Arduino\libraries\U8g2\src/U8x8lib.cpp:51
+#endif
+
+/*=============================================*/
+
+size_t U8X8::write(uint8_t v) 
+{
+ 898:	af 92       	push	r10
+ 89a:	bf 92       	push	r11
+ 89c:	cf 92       	push	r12
+ 89e:	df 92       	push	r13
+ 8a0:	ef 92       	push	r14
+ 8a2:	ff 92       	push	r15
+ 8a4:	0f 93       	push	r16
+ 8a6:	1f 93       	push	r17
+ 8a8:	cf 93       	push	r28
+ 8aa:	df 93       	push	r29
+ 8ac:	cd b7       	in	r28, 0x3d	; 61
+ 8ae:	de b7       	in	r29, 0x3e	; 62
+ 8b0:	28 97       	sbiw	r28, 0x08	; 8
+ 8b2:	0f b6       	in	r0, 0x3f	; 63
+ 8b4:	f8 94       	cli
+ 8b6:	de bf       	out	0x3e, r29	; 62
+ 8b8:	0f be       	out	0x3f, r0	; 63
+ 8ba:	cd bf       	out	0x3d, r28	; 61
+ 8bc:	fc 01       	movw	r30, r24
+ 8be:	d2 ac       	ldd	r13, Z+58	; 0x3a
+C:\Users\Pavel\Documents\Arduino\libraries\U8g2\src/U8x8lib.cpp:52
+  if ( v == '\n' )
+ 8c0:	6a 30       	cpi	r22, 0x0A	; 10
+ 8c2:	b1 f4       	brne	.+44     	; 0x8f0 <U8X8::write(unsigned char)+0x58>
+C:\Users\Pavel\Documents\Arduino\libraries\U8g2\src/U8x8lib.cpp:54
+  {
+    ty++;
+ 8c4:	d3 94       	inc	r13
+ 8c6:	d2 ae       	std	Z+58, r13	; 0x3a
+C:\Users\Pavel\Documents\Arduino\libraries\U8g2\src/U8x8lib.cpp:55
+    tx=0;
+ 8c8:	11 ae       	std	Z+57, r1	; 0x39
+C:\Users\Pavel\Documents\Arduino\libraries\U8g2\src/U8x8lib.cpp:63
+  {
+    u8x8_DrawGlyph(&u8x8, tx, ty, v);
+    tx++;
+  }
+  return 1;
+}
+ 8ca:	81 e0       	ldi	r24, 0x01	; 1
+ 8cc:	90 e0       	ldi	r25, 0x00	; 0
+ 8ce:	28 96       	adiw	r28, 0x08	; 8
+ 8d0:	0f b6       	in	r0, 0x3f	; 63
+ 8d2:	f8 94       	cli
+ 8d4:	de bf       	out	0x3e, r29	; 62
+ 8d6:	0f be       	out	0x3f, r0	; 63
+ 8d8:	cd bf       	out	0x3d, r28	; 61
+ 8da:	df 91       	pop	r29
+ 8dc:	cf 91       	pop	r28
+ 8de:	1f 91       	pop	r17
+ 8e0:	0f 91       	pop	r16
+ 8e2:	ff 90       	pop	r15
+ 8e4:	ef 90       	pop	r14
+ 8e6:	df 90       	pop	r13
+ 8e8:	cf 90       	pop	r12
+ 8ea:	bf 90       	pop	r11
+ 8ec:	af 90       	pop	r10
+ 8ee:	08 95       	ret
+ 8f0:	7c 01       	movw	r14, r24
+C:\Users\Pavel\Documents\Arduino\libraries\U8g2\src/U8x8lib.cpp:59
+    ty++;
+    tx=0;
+  }
+  else
+  {
+    u8x8_DrawGlyph(&u8x8, tx, ty, v);
+ 8f2:	c1 ac       	ldd	r12, Z+57	; 0x39
+ 8f4:	5c 01       	movw	r10, r24
+ 8f6:	84 e0       	ldi	r24, 0x04	; 4
+ 8f8:	a8 0e       	add	r10, r24
+ 8fa:	b1 1c       	adc	r11, r1
+u8x8_DrawGlyph():
+C:\Users\Pavel\Documents\Arduino\libraries\U8g2\src\clib/u8x8_8x8.c:104
+}
+
+void u8x8_DrawGlyph(u8x8_t *u8x8, uint8_t x, uint8_t y, uint8_t encoding)
+{
+  uint8_t buf[8];
+  u8x8_get_glyph_data(u8x8, encoding, buf);
+ 8fc:	ae 01       	movw	r20, r28
+ 8fe:	4f 5f       	subi	r20, 0xFF	; 255
+ 900:	5f 4f       	sbci	r21, 0xFF	; 255
+ 902:	c5 01       	movw	r24, r10
+ 904:	da de       	rcall	.-588    	; 0x6ba <u8x8_get_glyph_data>
+C:\Users\Pavel\Documents\Arduino\libraries\U8g2\src\clib/u8x8_8x8.c:105
+  u8x8_DrawTile(u8x8, x, y, 1, buf);
+ 906:	8e 01       	movw	r16, r28
+ 908:	0f 5f       	subi	r16, 0xFF	; 255
+ 90a:	1f 4f       	sbci	r17, 0xFF	; 255
+ 90c:	21 e0       	ldi	r18, 0x01	; 1
+ 90e:	4d 2d       	mov	r20, r13
+ 910:	6c 2d       	mov	r22, r12
+ 912:	c5 01       	movw	r24, r10
+ 914:	f3 dc       	rcall	.-1562   	; 0x2fc <u8x8_DrawTile>
+write():
+C:\Users\Pavel\Documents\Arduino\libraries\U8g2\src/U8x8lib.cpp:60
+    tx++;
+ 916:	f7 01       	movw	r30, r14
+ 918:	81 ad       	ldd	r24, Z+57	; 0x39
+ 91a:	8f 5f       	subi	r24, 0xFF	; 255
+ 91c:	81 af       	std	Z+57, r24	; 0x39
+ 91e:	d5 cf       	rjmp	.-86     	; 0x8ca <U8X8::write(unsigned char)+0x32>
+
+00000920 <U8X8::write(unsigned char const*, unsigned int)>:
+C:\Users\Pavel\Documents\Arduino\libraries\U8g2\src/U8x8lib.h:279
+      tx++;
+      return 1;
+     }
+      */
+     
+    size_t write(const uint8_t *buffer, size_t size) {
+ 920:	cf 92       	push	r12
+ 922:	df 92       	push	r13
+ 924:	ef 92       	push	r14
+ 926:	ff 92       	push	r15
+ 928:	0f 93       	push	r16
+ 92a:	1f 93       	push	r17
+ 92c:	cf 93       	push	r28
+ 92e:	df 93       	push	r29
+ 930:	6c 01       	movw	r12, r24
+ 932:	eb 01       	movw	r28, r22
+ 934:	7b 01       	movw	r14, r22
+ 936:	e4 0e       	add	r14, r20
+ 938:	f5 1e       	adc	r15, r21
+C:\Users\Pavel\Documents\Arduino\libraries\U8g2\src/U8x8lib.h:280
+      size_t cnt = 0;
+ 93a:	10 e0       	ldi	r17, 0x00	; 0
+ 93c:	00 e0       	ldi	r16, 0x00	; 0
+C:\Users\Pavel\Documents\Arduino\libraries\U8g2\src/U8x8lib.h:281
+      while( size > 0 ) {
+ 93e:	ce 15       	cp	r28, r14
+ 940:	df 05       	cpc	r29, r15
+ 942:	61 f0       	breq	.+24     	; 0x95c <U8X8::write(unsigned char const*, unsigned int)+0x3c>
+C:\Users\Pavel\Documents\Arduino\libraries\U8g2\src/U8x8lib.h:282
+	cnt += write(*buffer++); 
+ 944:	69 91       	ld	r22, Y+
+ 946:	d6 01       	movw	r26, r12
+ 948:	ed 91       	ld	r30, X+
+ 94a:	fc 91       	ld	r31, X
+ 94c:	01 90       	ld	r0, Z+
+ 94e:	f0 81       	ld	r31, Z
+ 950:	e0 2d       	mov	r30, r0
+ 952:	c6 01       	movw	r24, r12
+ 954:	09 95       	icall
+ 956:	08 0f       	add	r16, r24
+ 958:	19 1f       	adc	r17, r25
+ 95a:	f1 cf       	rjmp	.-30     	; 0x93e <U8X8::write(unsigned char const*, unsigned int)+0x1e>
+C:\Users\Pavel\Documents\Arduino\libraries\U8g2\src/U8x8lib.h:286
+	size--;
+      }
+      return cnt;
+    }
+ 95c:	c8 01       	movw	r24, r16
+ 95e:	df 91       	pop	r29
+ 960:	cf 91       	pop	r28
+ 962:	1f 91       	pop	r17
+ 964:	0f 91       	pop	r16
+ 966:	ff 90       	pop	r15
+ 968:	ef 90       	pop	r14
+ 96a:	df 90       	pop	r13
+ 96c:	cf 90       	pop	r12
+ 96e:	08 95       	ret
+
+00000970 <__vector_5>:
+__vector_5():
+C:\Users\Pavel\AppData\Local\Arduino15\packages\ATTinyCore\hardware\avr\1.3.1\cores\tiny/wiring.c:130
+#else
+
+#error Millis() timer not defined!
+
+#endif
+{
+ 970:	1f 92       	push	r1
+ 972:	0f 92       	push	r0
+ 974:	0f b6       	in	r0, 0x3f	; 63
+ 976:	0f 92       	push	r0
+ 978:	11 24       	eor	r1, r1
+ 97a:	2f 93       	push	r18
+ 97c:	3f 93       	push	r19
+ 97e:	8f 93       	push	r24
+ 980:	9f 93       	push	r25
+ 982:	af 93       	push	r26
+ 984:	bf 93       	push	r27
+C:\Users\Pavel\AppData\Local\Arduino15\packages\ATTinyCore\hardware\avr\1.3.1\cores\tiny/wiring.c:133
+  // copy these to local variables so they can be stored in registers
+  // (volatile variables must be read from memory on every access)
+  unsigned long m = millis_timer_millis;
+ 986:	80 91 df 00 	lds	r24, 0x00DF	; 0x8000df <millis_timer_millis>
+ 98a:	90 91 e0 00 	lds	r25, 0x00E0	; 0x8000e0 <millis_timer_millis+0x1>
+ 98e:	a0 91 e1 00 	lds	r26, 0x00E1	; 0x8000e1 <millis_timer_millis+0x2>
+ 992:	b0 91 e2 00 	lds	r27, 0x00E2	; 0x8000e2 <millis_timer_millis+0x3>
+C:\Users\Pavel\AppData\Local\Arduino15\packages\ATTinyCore\hardware\avr\1.3.1\cores\tiny/wiring.c:134
+  unsigned char f = millis_timer_fract;
+ 996:	30 91 de 00 	lds	r19, 0x00DE	; 0x8000de <__data_end>
+C:\Users\Pavel\AppData\Local\Arduino15\packages\ATTinyCore\hardware\avr\1.3.1\cores\tiny/wiring.c:146
+    f -= FRACT_MAX;
+    m += 1;
+  }
+...rmv */
+
+  f += FRACT_INC;
+ 99a:	26 e0       	ldi	r18, 0x06	; 6
+ 99c:	23 0f       	add	r18, r19
+C:\Users\Pavel\AppData\Local\Arduino15\packages\ATTinyCore\hardware\avr\1.3.1\cores\tiny/wiring.c:148
+
+  if (f >= FRACT_MAX)
+ 99e:	2d 37       	cpi	r18, 0x7D	; 125
+ 9a0:	68 f1       	brcs	.+90     	; 0x9fc <__vector_5+0x8c>
+C:\Users\Pavel\AppData\Local\Arduino15\packages\ATTinyCore\hardware\avr\1.3.1\cores\tiny/wiring.c:150
+  {
+    f -= FRACT_MAX;
+ 9a2:	29 e8       	ldi	r18, 0x89	; 137
+ 9a4:	23 0f       	add	r18, r19
+C:\Users\Pavel\AppData\Local\Arduino15\packages\ATTinyCore\hardware\avr\1.3.1\cores\tiny/wiring.c:152
+  m += 1;
+    m += MILLIS_INC;
+ 9a6:	03 96       	adiw	r24, 0x03	; 3
+ 9a8:	a1 1d       	adc	r26, r1
+ 9aa:	b1 1d       	adc	r27, r1
+C:\Users\Pavel\AppData\Local\Arduino15\packages\ATTinyCore\hardware\avr\1.3.1\cores\tiny/wiring.c:159
+  else
+  {
+    m += MILLIS_INC;
+  }
+
+  millis_timer_fract = f;
+ 9ac:	20 93 de 00 	sts	0x00DE, r18	; 0x8000de <__data_end>
+C:\Users\Pavel\AppData\Local\Arduino15\packages\ATTinyCore\hardware\avr\1.3.1\cores\tiny/wiring.c:160
+  millis_timer_millis = m;
+ 9b0:	80 93 df 00 	sts	0x00DF, r24	; 0x8000df <millis_timer_millis>
+ 9b4:	90 93 e0 00 	sts	0x00E0, r25	; 0x8000e0 <millis_timer_millis+0x1>
+ 9b8:	a0 93 e1 00 	sts	0x00E1, r26	; 0x8000e1 <millis_timer_millis+0x2>
+ 9bc:	b0 93 e2 00 	sts	0x00E2, r27	; 0x8000e2 <millis_timer_millis+0x3>
+C:\Users\Pavel\AppData\Local\Arduino15\packages\ATTinyCore\hardware\avr\1.3.1\cores\tiny/wiring.c:161
+  millis_timer_overflow_count++;
+ 9c0:	80 91 e3 00 	lds	r24, 0x00E3	; 0x8000e3 <millis_timer_overflow_count>
+ 9c4:	90 91 e4 00 	lds	r25, 0x00E4	; 0x8000e4 <millis_timer_overflow_count+0x1>
+ 9c8:	a0 91 e5 00 	lds	r26, 0x00E5	; 0x8000e5 <millis_timer_overflow_count+0x2>
+ 9cc:	b0 91 e6 00 	lds	r27, 0x00E6	; 0x8000e6 <millis_timer_overflow_count+0x3>
+ 9d0:	01 96       	adiw	r24, 0x01	; 1
+ 9d2:	a1 1d       	adc	r26, r1
+ 9d4:	b1 1d       	adc	r27, r1
+ 9d6:	80 93 e3 00 	sts	0x00E3, r24	; 0x8000e3 <millis_timer_overflow_count>
+ 9da:	90 93 e4 00 	sts	0x00E4, r25	; 0x8000e4 <millis_timer_overflow_count+0x1>
+ 9de:	a0 93 e5 00 	sts	0x00E5, r26	; 0x8000e5 <millis_timer_overflow_count+0x2>
+ 9e2:	b0 93 e6 00 	sts	0x00E6, r27	; 0x8000e6 <millis_timer_overflow_count+0x3>
+C:\Users\Pavel\AppData\Local\Arduino15\packages\ATTinyCore\hardware\avr\1.3.1\cores\tiny/wiring.c:168
+
+//MICROSECONDS_PER_MILLIS_OVERFLOW=2048
+//MILLIS_INC=2
+//FRACT_INC=6
+//FRACT_MAX=125
+}
+ 9e6:	bf 91       	pop	r27
+ 9e8:	af 91       	pop	r26
+ 9ea:	9f 91       	pop	r25
+ 9ec:	8f 91       	pop	r24
+ 9ee:	3f 91       	pop	r19
+ 9f0:	2f 91       	pop	r18
+ 9f2:	0f 90       	pop	r0
+ 9f4:	0f be       	out	0x3f, r0	; 63
+ 9f6:	0f 90       	pop	r0
+ 9f8:	1f 90       	pop	r1
+ 9fa:	18 95       	reti
+C:\Users\Pavel\AppData\Local\Arduino15\packages\ATTinyCore\hardware\avr\1.3.1\cores\tiny/wiring.c:156
+  m += 1;
+    m += MILLIS_INC;
+  }
+  else
+  {
+    m += MILLIS_INC;
+ 9fc:	02 96       	adiw	r24, 0x02	; 2
+ 9fe:	a1 1d       	adc	r26, r1
+ a00:	b1 1d       	adc	r27, r1
+ a02:	d4 cf       	rjmp	.-88     	; 0x9ac <__vector_5+0x3c>
+
+00000a04 <main>:
+main():
+C:\Users\Pavel\AppData\Local\Arduino15\packages\ATTinyCore\hardware\avr\1.3.1\cores\tiny/main.cpp:4
+#include <Arduino.h>
+
+int main(void)
+{
+ a04:	cf 93       	push	r28
+ a06:	df 93       	push	r29
+ a08:	cd b7       	in	r28, 0x3d	; 61
+ a0a:	de b7       	in	r29, 0x3e	; 62
+ a0c:	60 97       	sbiw	r28, 0x10	; 16
+ a0e:	0f b6       	in	r0, 0x3f	; 63
+ a10:	f8 94       	cli
+ a12:	de bf       	out	0x3e, r29	; 62
+ a14:	0f be       	out	0x3f, r0	; 63
+ a16:	cd bf       	out	0x3d, r28	; 61
+C:\Users\Pavel\AppData\Local\Arduino15\packages\ATTinyCore\hardware\avr\1.3.1\cores\tiny/main.cpp:6
+  #ifdef TUNED_OSCCAL_VALUE
+  OSCCAL = TUNED_OSCCAL_VALUE; //set the oscillator calibration value based on the pins_arduino.h file. If this is not set, it will be optimised away
+ a18:	81 b7       	in	r24, 0x31	; 49
+ a1a:	81 bf       	out	0x31, r24	; 49
+init():
+C:\Users\Pavel\AppData\Local\Arduino15\packages\ATTinyCore\hardware\avr\1.3.1\cores\tiny/wiring.c:802
+  #endif
+  #endif
+
+  // Use the Millis Timer for fast PWM (unless it doesn't have an output).
+  #if (TIMER_TO_USE_FOR_MILLIS == 0) && defined(WGM01)
+  sbi(TCCR0A, WGM01);
+ a1c:	8a b5       	in	r24, 0x2a	; 42
+ a1e:	82 60       	ori	r24, 0x02	; 2
+ a20:	8a bd       	out	0x2a, r24	; 42
+C:\Users\Pavel\AppData\Local\Arduino15\packages\ATTinyCore\hardware\avr\1.3.1\cores\tiny/wiring.c:803
+  sbi(TCCR0A, WGM00);
+ a22:	8a b5       	in	r24, 0x2a	; 42
+ a24:	81 60       	ori	r24, 0x01	; 1
+ a26:	8a bd       	out	0x2a, r24	; 42
+C:\Users\Pavel\AppData\Local\Arduino15\packages\ATTinyCore\hardware\avr\1.3.1\cores\tiny/wiring.c:826
+  #endif
+
+  // Millis timer is always processor clock divided by MillisTimer_Prescale_Value (64)
+  #if (TIMER_TO_USE_FOR_MILLIS == 0)
+   #ifdef TCCR0B
+    TCCR0B = (TCCR0B & ~((1<<CS02)|(1<<CS01)|(1<<CS00))) | (MillisTimer_Prescale_Index << CS00);
+ a28:	83 b7       	in	r24, 0x33	; 51
+ a2a:	88 7f       	andi	r24, 0xF8	; 248
+ a2c:	83 60       	ori	r24, 0x03	; 3
+ a2e:	83 bf       	out	0x33, r24	; 51
+C:\Users\Pavel\AppData\Local\Arduino15\packages\ATTinyCore\hardware\avr\1.3.1\cores\tiny/wiring.c:838
+  TCCR1B = (TCCR1B & ~((1<<CS13)|(1<<CS12)|(1<<CS11)|(1<<CS10))) | (MillisTimer_Prescale_Index << CS10);
+  #elif (TIMER_TO_USE_FOR_MILLIS == 1)
+  TCCR1B = (TCCR1B & ~((1<<CS12)|(1<<CS11)|(1<<CS10))) | (MillisTimer_Prescale_Index << CS10);
+  #endif
+  // this needs to be called before setup() or some functions won't work there
+  sei();
+ a30:	78 94       	sei
+C:\Users\Pavel\AppData\Local\Arduino15\packages\ATTinyCore\hardware\avr\1.3.1\cores\tiny/wiring.c:842
+
+  // Enable the overlow interrupt (this is the basic system tic-toc for millis)
+  #if defined(TIMSK) && defined(TOIE0) && (TIMER_TO_USE_FOR_MILLIS == 0)
+  sbi(TIMSK, TOIE0);
+ a32:	89 b7       	in	r24, 0x39	; 57
+ a34:	82 60       	ori	r24, 0x02	; 2
+ a36:	89 bf       	out	0x39, r24	; 57
+initToneTimerInternal():
+C:\Users\Pavel\AppData\Local\Arduino15\packages\ATTinyCore\hardware\avr\1.3.1\cores\tiny/wiring.c:504
+  TCCR0B |= (ToneTimer_Prescale_Index << CS00);
+  #elif defined(__AVR_ATtiny43__)
+  TCCR1A = 3; //WGM 10=1, WGM11=1
+  TCCR1B = 3; //prescaler of 64
+  #elif (TIMER_TO_USE_FOR_TONE == 1) && defined(TCCR1)
+  TCCR1 &= ~((1<<CS13) | (1<<CS12) | (1<<CS11) | (1<<CS10)); //stop the clock to configure
+ a38:	80 b7       	in	r24, 0x30	; 48
+ a3a:	80 7f       	andi	r24, 0xF0	; 240
+ a3c:	80 bf       	out	0x30, r24	; 48
+C:\Users\Pavel\AppData\Local\Arduino15\packages\ATTinyCore\hardware\avr\1.3.1\cores\tiny/wiring.c:506
+  // Use the Tone Timer for fast PWM as phase correct not supported by this timer
+  sbi(TCCR1, CTC1);
+ a3e:	80 b7       	in	r24, 0x30	; 48
+ a40:	80 68       	ori	r24, 0x80	; 128
+ a42:	80 bf       	out	0x30, r24	; 48
+C:\Users\Pavel\AppData\Local\Arduino15\packages\ATTinyCore\hardware\avr\1.3.1\cores\tiny/wiring.c:508
+  //#if !defined(__AVR_ATtiny85__)
+  sbi(TCCR1, PWM1A); //for the tiny 85, Timer0 is used instead.
+ a44:	80 b7       	in	r24, 0x30	; 48
+ a46:	80 64       	ori	r24, 0x40	; 64
+ a48:	80 bf       	out	0x30, r24	; 48
+C:\Users\Pavel\AppData\Local\Arduino15\packages\ATTinyCore\hardware\avr\1.3.1\cores\tiny/wiring.c:510
+  //#endif
+  sbi(GTCCR, PWM1B);
+ a4a:	8c b5       	in	r24, 0x2c	; 44
+ a4c:	80 64       	ori	r24, 0x40	; 64
+ a4e:	8c bd       	out	0x2c, r24	; 44
+C:\Users\Pavel\AppData\Local\Arduino15\packages\ATTinyCore\hardware\avr\1.3.1\cores\tiny/wiring.c:511
+  OCR1C = 0xFF; //Use 255 as the top to match with the others as this module doesn't have a 8bit PWM mode.
+ a50:	8f ef       	ldi	r24, 0xFF	; 255
+ a52:	8d bd       	out	0x2d, r24	; 45
+C:\Users\Pavel\AppData\Local\Arduino15\packages\ATTinyCore\hardware\avr\1.3.1\cores\tiny/wiring.c:512
+  TCCR1 |= (ToneTimer_Prescale_Index << CS10);
+ a54:	80 b7       	in	r24, 0x30	; 48
+ a56:	87 60       	ori	r24, 0x07	; 7
+ a58:	80 bf       	out	0x30, r24	; 48
+init():
+C:\Users\Pavel\AppData\Local\Arduino15\packages\ATTinyCore\hardware\avr\1.3.1\cores\tiny/wiring.c:862
+
+  // Initialize the ADC
+  #if defined( INITIALIZE_ANALOG_TO_DIGITAL_CONVERTER ) && INITIALIZE_ANALOG_TO_DIGITAL_CONVERTER
+  #if defined(ADCSRA)
+    // set a2d prescale factor
+  ADCSRA = (ADCSRA & ~((1<<ADPS2)|(1<<ADPS1)|(1<<ADPS0))) | (ADC_ARDUINO_PRESCALER << ADPS0) | (1<<ADEN);
+ a5a:	86 b1       	in	r24, 0x06	; 6
+ a5c:	88 77       	andi	r24, 0x78	; 120
+ a5e:	86 68       	ori	r24, 0x86	; 134
+ a60:	86 b9       	out	0x06, r24	; 6
+C:\Users\Pavel\AppData\Local\Arduino15\packages\ATTinyCore\hardware\avr\1.3.1\cores\tiny/wiring.c:864
+    // enable a2d conversions
+    sbi(ADCSRA, ADEN);
+ a62:	37 9a       	sbi	0x06, 7	; 6
+u8x8_InitDisplay():
+C:\Users\Pavel\Documents\Arduino\libraries\U8g2\src\clib/u8x8_display.c:100
+  u8x8->display_cb(u8x8, U8X8_MSG_DISPLAY_SETUP_MEMORY, 0, NULL);  
+}
+
+void u8x8_InitDisplay(u8x8_t *u8x8)
+{
+  u8x8->display_cb(u8x8, U8X8_MSG_DISPLAY_INIT, 0, NULL);  
+ a64:	e0 91 f7 00 	lds	r30, 0x00F7	; 0x8000f7 <u8x8+0x8>
+ a68:	f0 91 f8 00 	lds	r31, 0x00F8	; 0x8000f8 <u8x8+0x9>
+ a6c:	30 e0       	ldi	r19, 0x00	; 0
+ a6e:	20 e0       	ldi	r18, 0x00	; 0
+ a70:	40 e0       	ldi	r20, 0x00	; 0
+ a72:	6a e0       	ldi	r22, 0x0A	; 10
+ a74:	83 ef       	ldi	r24, 0xF3	; 243
+ a76:	90 e0       	ldi	r25, 0x00	; 0
+ a78:	09 95       	icall
+u8x8_ClearDisplay():
+C:\Users\Pavel\Documents\Arduino\libraries\U8g2\src\clib/u8x8_display.c:143
+  } while( tile.y_pos < h );
+}
+
+void u8x8_ClearDisplay(u8x8_t *u8x8)
+{
+  uint8_t buf[8] = { 0, 0, 0, 0, 0, 0, 0, 0 };
+ a7a:	ce 01       	movw	r24, r28
+ a7c:	01 96       	adiw	r24, 0x01	; 1
+ a7e:	7c 01       	movw	r14, r24
+ a80:	88 e0       	ldi	r24, 0x08	; 8
+ a82:	f7 01       	movw	r30, r14
+ a84:	11 92       	st	Z+, r1
+ a86:	8a 95       	dec	r24
+ a88:	e9 f7       	brne	.-6      	; 0xa84 <main+0x80>
+C:\Users\Pavel\Documents\Arduino\libraries\U8g2\src\clib/u8x8_display.c:144
+  u8x8_ClearDisplayWithTile(u8x8, buf);
+ a8a:	c7 01       	movw	r24, r14
+ a8c:	31 db       	rcall	.-2462   	; 0xf0 <u8x8_ClearDisplayWithTile.constprop.12>
+u8x8_SetPowerSave():
+C:\Users\Pavel\Documents\Arduino\libraries\U8g2\src\clib/u8x8_display.c:105
+  u8x8->display_cb(u8x8, U8X8_MSG_DISPLAY_INIT, 0, NULL);  
+}
+
+void u8x8_SetPowerSave(u8x8_t *u8x8, uint8_t is_enable)
+{
+  u8x8->display_cb(u8x8, U8X8_MSG_DISPLAY_SET_POWER_SAVE, is_enable, NULL);  
+ a8e:	e0 91 f7 00 	lds	r30, 0x00F7	; 0x8000f7 <u8x8+0x8>
+ a92:	f0 91 f8 00 	lds	r31, 0x00F8	; 0x8000f8 <u8x8+0x9>
+ a96:	30 e0       	ldi	r19, 0x00	; 0
+ a98:	20 e0       	ldi	r18, 0x00	; 0
+ a9a:	40 e0       	ldi	r20, 0x00	; 0
+ a9c:	6b e0       	ldi	r22, 0x0B	; 11
+ a9e:	83 ef       	ldi	r24, 0xF3	; 243
+ aa0:	90 e0       	ldi	r25, 0x00	; 0
+ aa2:	09 95       	icall
+loop():
+C:\src\Tennp\Git\ChainSawDIY\Firmware\diychainsaw/diychainsaw.ino:25
+
+
+void loop() {
+  uint8_t tiles[16] = { 0x0f,0x0f,0x0f,0x0f,0xf0,0xf0,0xf0,0xf0, 1, 3, 7, 15, 31, 63, 127, 255};
+ aa4:	80 e1       	ldi	r24, 0x10	; 16
+ aa6:	e0 e6       	ldi	r30, 0x60	; 96
+ aa8:	f0 e0       	ldi	r31, 0x00	; 0
+ aaa:	d7 01       	movw	r26, r14
+ aac:	01 90       	ld	r0, Z+
+ aae:	0d 92       	st	X+, r0
+ ab0:	8a 95       	dec	r24
+ ab2:	e1 f7       	brne	.-8      	; 0xaac <main+0xa8>
+_ZN4U8X88drawTileEhhhPh():
+C:\Users\Pavel\Documents\Arduino\libraries\U8g2\src/U8x8lib.h:171
+
+    uint8_t getCols(void) { return u8x8_GetCols(&u8x8); }
+    uint8_t getRows(void) { return u8x8_GetRows(&u8x8); }
+    
+    void drawTile(uint8_t x, uint8_t y, uint8_t cnt, uint8_t *tile_ptr) {
+      u8x8_DrawTile(&u8x8, x, y, cnt, tile_ptr); }
+ ab4:	87 01       	movw	r16, r14
+ ab6:	22 e0       	ldi	r18, 0x02	; 2
+ ab8:	40 e0       	ldi	r20, 0x00	; 0
+ aba:	66 e0       	ldi	r22, 0x06	; 6
+ abc:	83 ef       	ldi	r24, 0xF3	; 243
+ abe:	90 e0       	ldi	r25, 0x00	; 0
+ ac0:	1d dc       	rcall	.-1990   	; 0x2fc <u8x8_DrawTile>
+loop():
+C:\src\Tennp\Git\ChainSawDIY\Firmware\diychainsaw/diychainsaw.ino:31
+  //uint8_t bat0[32] = {254,255,3,251,251,251,251,251,  251,251,251,251,3,251,251,251,  251,251,251,251,251,251,3,251,  251,251,251,251,251,251,251,251};
+  //uint8_t bat1[32] = {255,255,0,255,255,255,255,255,  255,255,255,255,0,255,255,255,  255,255,255,255,255,255,0,255,  255,255,255,255,255,255,255,255};
+  //uint8_t bat2[32] = {127,255,192,223,223,223,223,223,  223,223,223,223,192,223,223,223,  223,223,223,223,223,223,192,223,  223,223,223,223,223,223,223,223};
+
+  u8x8.drawTile(6, 0, 2, tiles);
+  drawTileF(0, 0, 4, bat0);
+ ac2:	62 e8       	ldi	r22, 0x82	; 130
+ ac4:	70 e0       	ldi	r23, 0x00	; 0
+ ac6:	80 e0       	ldi	r24, 0x00	; 0
+ ac8:	3b dc       	rcall	.-1930   	; 0x340 <drawTileF(unsigned char, unsigned char, unsigned char, unsigned char const*) [clone .constprop.2]>
+C:\src\Tennp\Git\ChainSawDIY\Firmware\diychainsaw/diychainsaw.ino:32
+  drawTileF(0, 1, 4, bat1);
+ aca:	62 e6       	ldi	r22, 0x62	; 98
+ acc:	70 e0       	ldi	r23, 0x00	; 0
+ ace:	81 e0       	ldi	r24, 0x01	; 1
+ ad0:	37 dc       	rcall	.-1938   	; 0x340 <drawTileF(unsigned char, unsigned char, unsigned char, unsigned char const*) [clone .constprop.2]>
+C:\src\Tennp\Git\ChainSawDIY\Firmware\diychainsaw/diychainsaw.ino:33
+  drawTileF(0, 2, 4, bat1);
+ ad2:	62 e6       	ldi	r22, 0x62	; 98
+ ad4:	70 e0       	ldi	r23, 0x00	; 0
+ ad6:	82 e0       	ldi	r24, 0x02	; 2
+ ad8:	33 dc       	rcall	.-1946   	; 0x340 <drawTileF(unsigned char, unsigned char, unsigned char, unsigned char const*) [clone .constprop.2]>
+C:\src\Tennp\Git\ChainSawDIY\Firmware\diychainsaw/diychainsaw.ino:34
+  drawTileF(0, 3, 4, bat2);
+ ada:	62 e4       	ldi	r22, 0x42	; 66
+ adc:	70 e0       	ldi	r23, 0x00	; 0
+ ade:	83 e0       	ldi	r24, 0x03	; 3
+ ae0:	2f dc       	rcall	.-1954   	; 0x340 <drawTileF(unsigned char, unsigned char, unsigned char, unsigned char const*) [clone .constprop.2]>
+ ae2:	e0 cf       	rjmp	.-64     	; 0xaa4 <main+0xa0>
+
+00000ae4 <_GLOBAL__sub_I_u8x8>:
+_GLOBAL__sub_I_u8x8():
+C:\src\Tennp\Git\ChainSawDIY\Firmware\diychainsaw/diychainsaw.ino:35
+}
+ ae4:	cf 93       	push	r28
+_ZN5PrintC2Ev():
+C:\Users\Pavel\AppData\Local\Arduino15\packages\ATTinyCore\hardware\avr\1.3.1\cores\tiny/Print.h:75
+    size_t printNumber(unsigned long, uint8_t);
+    size_t printFloat(double, uint8_t);
+  protected:
+    void setWriteError(int err = 1) { write_error = err; }
+  public:
+    Print() : write_error(0) {}
+ ae6:	10 92 f2 00 	sts	0x00F2, r1	; 0x8000f2 <u8x8+0x3>
+ aea:	10 92 f1 00 	sts	0x00F1, r1	; 0x8000f1 <u8x8+0x2>
+_ZN4U8X84homeEv():
+C:\Users\Pavel\Documents\Arduino\libraries\U8g2\src/U8x8lib.h:304
+      return u8x8_UserInterfaceMessage(&u8x8, title1, title2, title3, buttons); }
+    uint8_t userInterfaceInputValue(const char *title, const char *pre, uint8_t *value, uint8_t lo, uint8_t hi, uint8_t digits, const char *post) {
+      return u8x8_UserInterfaceInputValue(&u8x8, title, pre, value, lo, hi, digits, post); }
+         
+     /* LiquidCrystal compatible functions */
+    void home(void) { tx = 0; ty = 0; }
+ aee:	10 92 28 01 	sts	0x0128, r1	; 0x800128 <u8x8+0x39>
+ af2:	10 92 29 01 	sts	0x0129, r1	; 0x800129 <u8x8+0x3a>
+__base_ctor ():
+C:\Users\Pavel\Documents\Arduino\libraries\U8g2\src/U8x8lib.h:1275
+    u8x8_Setup(getU8x8(), u8x8_d_ssd1306_128x32_univision, u8x8_cad_ssd13xx_i2c, u8x8_byte_arduino_sw_i2c, u8x8_gpio_and_delay_arduino);
+    u8x8_SetPin_SW_I2C(getU8x8(), clock,  data,  reset);
+  }
+};
+class U8X8_SSD1306_128X32_UNIVISION_HW_I2C : public U8X8 {
+  public: U8X8_SSD1306_128X32_UNIVISION_HW_I2C(uint8_t reset = U8X8_PIN_NONE, uint8_t clock = U8X8_PIN_NONE, uint8_t data = U8X8_PIN_NONE) : U8X8() {
+ af6:	84 e7       	ldi	r24, 0x74	; 116
+ af8:	90 e0       	ldi	r25, 0x00	; 0
+ afa:	90 93 f0 00 	sts	0x00F0, r25	; 0x8000f0 <u8x8+0x1>
+ afe:	80 93 ef 00 	sts	0x00EF, r24	; 0x8000ef <u8x8>
+u8x8_SetupDefaults():
+C:\Users\Pavel\Documents\Arduino\libraries\U8g2\src\clib/u8x8_setup.c:97
+  Args:
+    u8x8	An empty u8x8 structure
+*/
+void u8x8_SetupDefaults(u8x8_t *u8x8)
+{
+    u8x8->display_info = NULL;
+ b02:	10 92 f4 00 	sts	0x00F4, r1	; 0x8000f4 <u8x8+0x5>
+ b06:	10 92 f3 00 	sts	0x00F3, r1	; 0x8000f3 <u8x8+0x4>
+C:\Users\Pavel\Documents\Arduino\libraries\U8g2\src\clib/u8x8_setup.c:102
+    u8x8->display_cb = u8x8_dummy_cb;
+    u8x8->cad_cb = u8x8_dummy_cb;
+    u8x8->byte_cb = u8x8_dummy_cb;
+    u8x8->gpio_and_delay_cb = u8x8_dummy_cb;
+    u8x8->is_font_inverse_mode = 0;
+ b0a:	10 92 08 01 	sts	0x0108, r1	; 0x800108 <u8x8+0x19>
+C:\Users\Pavel\Documents\Arduino\libraries\U8g2\src\clib/u8x8_setup.c:103
+    u8x8->device_address = 0;
+ b0e:	10 92 0b 01 	sts	0x010B, r1	; 0x80010b <u8x8+0x1c>
+C:\Users\Pavel\Documents\Arduino\libraries\U8g2\src\clib/u8x8_setup.c:104
+    u8x8->utf8_state = 0;		/* also reset by u8x8_utf8_init */
+ b12:	10 92 0c 01 	sts	0x010C, r1	; 0x80010c <u8x8+0x1d>
+C:\Users\Pavel\Documents\Arduino\libraries\U8g2\src\clib/u8x8_setup.c:105
+    u8x8->i2c_address = 255;
+ b16:	8f ef       	ldi	r24, 0xFF	; 255
+ b18:	80 93 09 01 	sts	0x0109, r24	; 0x800109 <u8x8+0x1a>
+C:\Users\Pavel\Documents\Arduino\libraries\U8g2\src\clib/u8x8_setup.c:106
+    u8x8->debounce_default_pin_state = 255;	/* assume all low active buttons */
+ b1c:	80 93 0e 01 	sts	0x010E, r24	; 0x80010e <u8x8+0x1f>
+ b20:	e2 e1       	ldi	r30, 0x12	; 18
+ b22:	f1 e0       	ldi	r31, 0x01	; 1
+ b24:	88 e2       	ldi	r24, 0x28	; 40
+ b26:	91 e0       	ldi	r25, 0x01	; 1
+C:\Users\Pavel\Documents\Arduino\libraries\U8g2\src\clib/u8x8_setup.c:112
+  
+#ifdef U8X8_USE_PINS 
+  {
+    uint8_t i;
+    for( i = 0; i < U8X8_PIN_CNT; i++ )
+      u8x8->pins[i] = U8X8_PIN_NONE;
+ b28:	cf ef       	ldi	r28, 0xFF	; 255
+ b2a:	c1 93       	st	Z+, r28
+C:\Users\Pavel\Documents\Arduino\libraries\U8g2\src\clib/u8x8_setup.c:111
+    u8x8->debounce_default_pin_state = 255;	/* assume all low active buttons */
+  
+#ifdef U8X8_USE_PINS 
+  {
+    uint8_t i;
+    for( i = 0; i < U8X8_PIN_CNT; i++ )
+ b2c:	8e 17       	cp	r24, r30
+ b2e:	9f 07       	cpc	r25, r31
+ b30:	e1 f7       	brne	.-8      	; 0xb2a <_GLOBAL__sub_I_u8x8+0x46>
+u8x8_Setup():
+C:\Users\Pavel\Documents\Arduino\libraries\U8g2\src\clib/u8x8_setup.c:138
+{
+  /* setup defaults and reset pins to U8X8_PIN_NONE */
+  u8x8_SetupDefaults(u8x8);
+
+  /* setup specific callbacks */
+  u8x8->display_cb = display_cb;
+ b32:	80 e4       	ldi	r24, 0x40	; 64
+ b34:	92 e0       	ldi	r25, 0x02	; 2
+ b36:	90 93 f8 00 	sts	0x00F8, r25	; 0x8000f8 <u8x8+0x9>
+ b3a:	80 93 f7 00 	sts	0x00F7, r24	; 0x8000f7 <u8x8+0x8>
+C:\Users\Pavel\Documents\Arduino\libraries\U8g2\src\clib/u8x8_setup.c:139
+  u8x8->cad_cb = cad_cb;
+ b3e:	89 e1       	ldi	r24, 0x19	; 25
+ b40:	93 e0       	ldi	r25, 0x03	; 3
+ b42:	90 93 fa 00 	sts	0x00FA, r25	; 0x8000fa <u8x8+0xb>
+ b46:	80 93 f9 00 	sts	0x00F9, r24	; 0x8000f9 <u8x8+0xa>
+C:\Users\Pavel\Documents\Arduino\libraries\U8g2\src\clib/u8x8_setup.c:140
+  u8x8->byte_cb = byte_cb;
+ b4a:	8e e9       	ldi	r24, 0x9E	; 158
+ b4c:	93 e0       	ldi	r25, 0x03	; 3
+ b4e:	90 93 fc 00 	sts	0x00FC, r25	; 0x8000fc <u8x8+0xd>
+ b52:	80 93 fb 00 	sts	0x00FB, r24	; 0x8000fb <u8x8+0xc>
+C:\Users\Pavel\Documents\Arduino\libraries\U8g2\src\clib/u8x8_setup.c:141
+  u8x8->gpio_and_delay_cb = gpio_and_delay_cb;
+ b56:	80 ea       	ldi	r24, 0xA0	; 160
+ b58:	93 e0       	ldi	r25, 0x03	; 3
+ b5a:	90 93 fe 00 	sts	0x00FE, r25	; 0x8000fe <u8x8+0xf>
+ b5e:	80 93 fd 00 	sts	0x00FD, r24	; 0x8000fd <u8x8+0xe>
+u8x8_SetupMemory():
+C:\Users\Pavel\Documents\Arduino\libraries\U8g2\src\clib/u8x8_display.c:95
+}
+
+/* should be implemented as macro */
+void u8x8_SetupMemory(u8x8_t *u8x8)
+{
+  u8x8->display_cb(u8x8, U8X8_MSG_DISPLAY_SETUP_MEMORY, 0, NULL);  
+ b62:	30 e0       	ldi	r19, 0x00	; 0
+ b64:	20 e0       	ldi	r18, 0x00	; 0
+ b66:	40 e0       	ldi	r20, 0x00	; 0
+ b68:	69 e0       	ldi	r22, 0x09	; 9
+ b6a:	83 ef       	ldi	r24, 0xF3	; 243
+ b6c:	90 e0       	ldi	r25, 0x00	; 0
+ b6e:	88 dc       	rcall	.-1776   	; 0x480 <u8x8_d_ssd1306_128x32_univision>
+u8x8_SetPin_HW_I2C():
+C:\Users\Pavel\Documents\Arduino\libraries\U8g2\src/U8x8lib.cpp:1417
+}
+#endif /* obsolete com specific setup */
+
+void u8x8_SetPin_HW_I2C(u8x8_t *u8x8, uint8_t reset, uint8_t clock, uint8_t data)
+{
+  u8x8_SetPin(u8x8, U8X8_PIN_RESET, reset);
+ b70:	c0 93 1d 01 	sts	0x011D, r28	; 0x80011d <u8x8+0x2e>
+C:\Users\Pavel\Documents\Arduino\libraries\U8g2\src/U8x8lib.cpp:1418
+  u8x8_SetPin(u8x8, U8X8_PIN_I2C_CLOCK, clock);
+ b74:	c0 93 1e 01 	sts	0x011E, r28	; 0x80011e <u8x8+0x2f>
+C:\Users\Pavel\Documents\Arduino\libraries\U8g2\src/U8x8lib.cpp:1419
+  u8x8_SetPin(u8x8, U8X8_PIN_I2C_DATA, data);
+ b78:	c0 93 1f 01 	sts	0x011F, r28	; 0x80011f <u8x8+0x30>
+_GLOBAL__sub_I_u8x8():
+C:\src\Tennp\Git\ChainSawDIY\Firmware\diychainsaw/diychainsaw.ino:35
+ b7c:	cf 91       	pop	r28
+ b7e:	08 95       	ret
+
+00000b80 <__tablejump2__>:
+__tablejump2__():
+/home/jenkins-mingw32/workspace/avr-gcc-staging/label/Ubuntu14.04x64-mingw32/gcc-build/avr/avr25/libgcc/../../../../gcc/libgcc/config/avr/lib1funcs.S:2296
+ b80:	ee 0f       	add	r30, r30
+/home/jenkins-mingw32/workspace/avr-gcc-staging/label/Ubuntu14.04x64-mingw32/gcc-build/avr/avr25/libgcc/../../../../gcc/libgcc/config/avr/lib1funcs.S:2297
+ b82:	ff 1f       	adc	r31, r31
+/home/jenkins-mingw32/workspace/avr-gcc-staging/label/Ubuntu14.04x64-mingw32/gcc-build/avr/avr25/libgcc/../../../../gcc/libgcc/config/avr/lib1funcs.S:2328
+ b84:	05 90       	lpm	r0, Z+
+/home/jenkins-mingw32/workspace/avr-gcc-staging/label/Ubuntu14.04x64-mingw32/gcc-build/avr/avr25/libgcc/../../../../gcc/libgcc/config/avr/lib1funcs.S:2329
+ b86:	f4 91       	lpm	r31, Z
+/home/jenkins-mingw32/workspace/avr-gcc-staging/label/Ubuntu14.04x64-mingw32/gcc-build/avr/avr25/libgcc/../../../../gcc/libgcc/config/avr/lib1funcs.S:2330
+ b88:	e0 2d       	mov	r30, r0
+/home/jenkins-mingw32/workspace/avr-gcc-staging/label/Ubuntu14.04x64-mingw32/gcc-build/avr/avr25/libgcc/../../../../gcc/libgcc/config/avr/lib1funcs.S:2331
+ b8a:	09 94       	ijmp
+
+00000b8c <_exit>:
+exit():
+/home/jenkins-mingw32/workspace/avr-gcc-staging/label/Ubuntu14.04x64-mingw32/gcc-build/avr/avr25/libgcc/../../../../gcc/libgcc/config/avr/lib1funcs.S:2278
+ b8c:	f8 94       	cli
+
+00000b8e <__stop_program>:
+__stop_program():
+/home/jenkins-mingw32/workspace/avr-gcc-staging/label/Ubuntu14.04x64-mingw32/gcc-build/avr/avr25/libgcc/../../../../gcc/libgcc/config/avr/lib1funcs.S:2280
+ b8e:	ff cf       	rjmp	.-2      	; 0xb8e <__stop_program>

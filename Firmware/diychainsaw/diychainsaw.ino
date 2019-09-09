@@ -2,21 +2,30 @@
 
 #define CELLS 4	// define LiIon cells count
 
+#define MAXMEASUREDVOLT 27.22
+#define CELLMINVOLT 3.0
+#define CELLMAXVOLT 4.2
+
+
+//#define ADCFULLCHARGE (CELLS * (CELLMAXVOLT * 1000 * 1024 / MAXMEASUREDVOLT * 1000)) / 1000
+//#define ADCMINCHARGE (CELLS * (CELLMINVOLT * 1000 * 1024 / MAXMEASUREDVOLT * 1000)) / 1000
+//#define ADC1MARK (ADCFULLCHARGE-ADCMINCHARGE) / 6
+
 // with current resistor divider (120K/27K) we can measure max 27.22 volts
-// so, the formula is: V = 27.22 * RAWADC / 1023
+// so, the formula is: V = 27.22 * RAWADC / 1024
 // or RAWADC = V * 1023 / 27.22
 // for 4S: fully charged is 631 (4.2v per cell); 451 - fully discharged (3v per cell)
 
 
 static const uint8_t PROGMEM stateOK[32*4] = {
-  252,254,7,3,3,3,3,3,3,3,3,3,131,195,227,131,3,3,3,3,3,3,3,3,3,3,3,3,3,,7,254,252,
+  252,254,7,3,3,3,3,3,3,3,3,3,131,195,227,131,3,3,3,3,3,3,3,3,3,3,3,3,3,7,254,252,
   255,255,0,0,0,0,4,14,30,62,63,127,119,227,227,193,128,0,0,0,0,0,0,0,0,0,0,0,0,0,255,255,
   255,255,0,0,0,0,0,0,0,0,0,0,0,0,1,1,3,7,15,14,28,56,112,192,128,0,0,0,0,0,255,255,
-  63,127,224,192,192,192,192,192,192,192,192,192,192,192,192,192,192,192,192,192,192,192,192,192,1,5,4,0,0,224,127,63,
+  63,127,224,192,192,192,192,192,192,192,192,192,192,192,192,192,192,192,192,192,192,192,192,192,193,197,196,192,192,224,127,63,
 };
 
 static const uint8_t PROGMEM stateDANGER[32*4] = {
-  0,0,128,192,240,240,248,252,  252,126,60,62,63,31,31,31,31, 31,31,31,31,63,190,254,252,  252,248,240,240,192,128,0,0,
+  0,0,128,192,240,240,248,252,  252,126,62,63,31,31,31,31, 31,31,31,31,63,190,254,252,  252,248,240,240,192,128,0,0,
   248,254,255,255,255,15,3,1,   0,0,0,0,0,128,192,224,    240,248,252,254,127,63,31,15,    7,3,15,255,255,255,254,248,
   31,127,255,255,255,240,192,224,  240,248,252,254,127,63,31,15,  7,3,1,0,0,0,0,0,   128,192,240,255,255,255,127,31,
   0,0,1,3,15,15,31,63,  63,127,125,252,248,248,248,248,  248,248,248,248,252,124,126,63,  63,31,15,15,3,1,0,0,
@@ -59,11 +68,11 @@ static const uint8_t PROGMEM batEnd[7*4] = {
 
 void draw_Bat(uint8_t val){
 	if(val==0){oled.bitmap(0,0,13,4,batBot0);} else {oled.bitmap(0,0,13,4,batBot1);}
-	for(ix=2;ix<=6;ix++){if(ix<=val){oled.bitmap(13+ix*10,0,10,4,bat1);}else{oled.bitmap(13+ix*10,0,10,4,bat0);}}
+	for(uint8_t ix=2;ix<=6;ix++){if(ix<=val){oled.bitmap(13+(ix-2)*10,0,10,4,bat1);}else{oled.bitmap(13+(ix-2)*10,0,10,4,bat0);}}
 	oled.bitmap(13+50,0,7,4,batEnd);
 }
 
-void draw_clear()(uint8_t x0, uint8_t y0, uint8_t x1, uint8_t y1) {
+void draw_clear(uint8_t x0, uint8_t y0, uint8_t x1, uint8_t y1) {
 	uint16_t j = 0;
  	for (uint8_t y = y0; y < y0 + y1; y++) {
 		oled.setCursor(x0,y);
@@ -71,16 +80,45 @@ void draw_clear()(uint8_t x0, uint8_t y0, uint8_t x1, uint8_t y1) {
 	}
 }
 
-void setup() {
-  // set the timer
-  cli();
-  TCCR0A = (0<<COM0A1) | (0<<COM0A0) | (0<<COM0B1) | (0<<COM0B0) | (1<<WGM01) | (1<<WGM00) ; // Fast PWM mode (value 3)
-  TCCR0B = (0<<WGM02) | (0<<CS02) | (1<<CS01) | (1<<CS00); // Speed (value 3)
-  TIMSK |= (1<<OCIE0A) | (1<<TOIE0); // enable compare match and overflow interrupts
-  sei();
+uint8_t getbatIndicatorVal(uint16_t rawadc){
+  uint16_t adcmaxcharge = (uint16_t)((CELLS * (CELLMAXVOLT * 1000 * 1024 / MAXMEASUREDVOLT)) / 1000);
+  uint16_t adcmincharge = (uint16_t)((CELLS * (CELLMINVOLT * 1000 * 1024 / MAXMEASUREDVOLT)) / 1000);
+  uint16_t adc1mark = (uint16_t)((adcmaxcharge-adcmincharge) / 6);
+/*
+  oled.clear();
+  oled.setCursor(0, 0);
+  oled.print(rawadc);
+  oled.setCursor(64, 0);
+  oled.print(adc1mark);
+  oled.setCursor(0, 2);
+  oled.print(adcmaxcharge);
+  oled.setCursor(64, 2);
+  oled.print(adcmincharge);
+  oled.switchFrame();
+*/
+  if(rawadc>adcmaxcharge) return 6;
+  if(rawadc<adcmincharge) return 0;
+  return   (rawadc - adcmincharge) / adc1mark;
+}
 
-  OCR0A = 20; // value to test
+uint16_t tmrval=0;
+uint16_t tmrval1=0;
+
+void setup() {
+  //disable mosfet
+  bitClear(PORTB, 3);
+  bitSet(DDRB, 3);
+  // set the timer
+
+  cli();
+  TCCR1 = (1<<CS13) | (1<<CS11) ; // Fast PWM mode (value 3)
+  //TCCR0B = (0<<WGM02) | (1<<CS02) | (0<<CS01) | (0<<CS00); // Speed (value 3)
+  TIMSK |= (1<<OCIE1A) | (1<<OCIE1B) ;//(1<<TOIE1); // enable compare match and overflow interrupts
+  sei();
   
+  OCR1A = 50; // value to test
+  OCR1B = 254; // value to test
+
   // configure ADC
   ADMUX =
            (0 << ADLAR) |     // do not left shift result (for 10-bit values)
@@ -100,22 +138,29 @@ void setup() {
 
   ADCSRA |= (1 << ADSC); // start first conversion
 
+  oled.setFont(FONT8X16);
   oled.begin();
   oled.clear();
   draw_Bat(0); // prefill byffer with empty battery bitmap
-  oled.switchFrame();
   oled.on();
+  oled.switchRenderFrame();
+  delay(50);
+  oled.clear(); //clear invisible frame
   
 }
 
-ISR(TIMER0_OVF_vect){
+
+ISR(TIMER1_COMPA_vect){
   // set pin
-  bitSet(PORTB, 3);
+  bitClear(PORTB, 3);
+  tmrval1 = TCNT1;
 }
 
-ISR(TIMER0_COMPA_vect){
+//ISR(TIMER1_OVF_vect){
+ISR(TIMER1_COMPB_vect){
   //clear pin
-  bitClear(PORTB, 3);
+  bitSet(PORTB, 3);
+  tmrval = TCNT1;
 }
 
 uint16_t readADC(void){
@@ -129,18 +174,32 @@ uint16_t readADC(void){
 
 void loop() {  
   for(uint8_t i=0;i<7;i++){
-	oled.bitmap(127-32,0,32,4,stateOK);
+	oled.bitmap(128-32,0,32,4,stateOK);
 	draw_Bat(i);
+  //delay(10);
 	oled.switchFrame();
-	delay(1000);
-	readADC();
+	delay(300);
   }
-  for(uint8_t i=6;i>=0;i--){
-	oled.bitmap(127-32,0,32,4,stateDANGER);
-	draw_Bat(i);
+  for(uint8_t i=7;i>0;i--){
+	oled.bitmap(128-32,0,32,4,stateDANGER);
+	draw_Bat(i-1);
+  //delay(10);
 	oled.switchFrame();
-	delay(1000);
-	readADC();
+	delay(300);
+	}
+  while(1){
+
+    uint16_t rawadc = readADC();
+    oled.clear();
+    oled.print(tmrval);
+    oled.setCursor(0,2);
+    oled.print(tmrval1);
+    tmrval=0;
+    tmrval1=0;
+    //draw_Bat(getbatIndicatorVal(rawadc));
+    oled.switchFrame();
+  // Write text to oled RAM (which is not currently being displayed).
+    delay(500);
   }
 }
 

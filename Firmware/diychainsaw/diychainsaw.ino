@@ -2,20 +2,19 @@
 
 #define CELLS 4	// define LiIon cells count
 
+// PB1 is ON/OFF switch
+
 #define MAXMEASUREDVOLT 27.22
 #define CELLMINVOLT 3.0
 #define CELLMAXVOLT 4.2
 
-
-//#define ADCFULLCHARGE (CELLS * (CELLMAXVOLT * 1000 * 1024 / MAXMEASUREDVOLT * 1000)) / 1000
-//#define ADCMINCHARGE (CELLS * (CELLMINVOLT * 1000 * 1024 / MAXMEASUREDVOLT * 1000)) / 1000
-//#define ADC1MARK (ADCFULLCHARGE-ADCMINCHARGE) / 6
 
 // with current resistor divider (120K/27K) we can measure max 27.22 volts
 // so, the formula is: V = 27.22 * RAWADC / 1024
 // or RAWADC = V * 1023 / 27.22
 // for 4S: fully charged is 631 (4.2v per cell); 451 - fully discharged (3v per cell)
 
+uint8_t run_state = 0; // 0 - stopped; 1 - running
 
 static const uint8_t PROGMEM stateOK[32*4] = {
   252,254,7,3,3,3,3,3,3,3,3,3,131,195,227,131,3,3,3,3,3,3,3,3,3,3,3,3,3,7,254,252,
@@ -84,30 +83,25 @@ uint8_t getbatIndicatorVal(uint16_t rawadc){
   uint16_t adcmaxcharge = (uint16_t)((CELLS * (CELLMAXVOLT * 1000 * 1024 / MAXMEASUREDVOLT)) / 1000);
   uint16_t adcmincharge = (uint16_t)((CELLS * (CELLMINVOLT * 1000 * 1024 / MAXMEASUREDVOLT)) / 1000);
   uint16_t adc1mark = (uint16_t)((adcmaxcharge-adcmincharge) / 6);
-/*
-  oled.clear();
-  oled.setCursor(0, 0);
-  oled.print(rawadc);
-  oled.setCursor(64, 0);
-  oled.print(adc1mark);
-  oled.setCursor(0, 2);
-  oled.print(adcmaxcharge);
-  oled.setCursor(64, 2);
-  oled.print(adcmincharge);
-  oled.switchFrame();
-*/
   if(rawadc>adcmaxcharge) return 6;
   if(rawadc<adcmincharge) return 0;
   return   (rawadc - adcmincharge) / adc1mark;
 }
 
-uint16_t tmrval=0;
-uint16_t tmrval1=0;
+bool getButtonState(){
+  bool tmp = bitRead(PINB, 1);
+  delay(10);
+  if(tmp == bitRead(PINB, 1)){return tmp;}else{return !tmp;}
+}
 
 void setup() {
   //disable mosfet
   bitClear(PORTB, 3);
   bitSet(DDRB, 3);
+
+  bitClear(DDRB, 1); // Input
+  bitSet(PORTB, 1); // Enable pullup
+
   // set the timer
 
   cli();
@@ -116,8 +110,8 @@ void setup() {
   TIMSK |= (1<<OCIE1A) | (1<<OCIE1B) ;//(1<<TOIE1); // enable compare match and overflow interrupts
   sei();
   
-  OCR1A = 50; // value to test
-  OCR1B = 254; // value to test
+  OCR1A = 128; // value to test
+  OCR1B = 255; // value to test
 
   // configure ADC
   ADMUX =
@@ -146,21 +140,32 @@ void setup() {
   oled.switchRenderFrame();
   delay(50);
   oled.clear(); //clear invisible frame
-  
+
+  //if switch is ON then show warning
+  if(getButtonState()==0){
+    oled.bitmap(128-32,0,32,4,stateDANGER);
+    oled.switchFrame();
+    delay(500);
+  }
+  //wait until button is released
+  while(getButtonState()==0){
+    // button is pressed
+    delay(100);
+  }  
 }
 
 
 ISR(TIMER1_COMPA_vect){
   // set pin
   bitClear(PORTB, 3);
-  tmrval1 = TCNT1;
+  //tmrval1 = TCNT1;
 }
 
 //ISR(TIMER1_OVF_vect){
 ISR(TIMER1_COMPB_vect){
   //clear pin
   bitSet(PORTB, 3);
-  tmrval = TCNT1;
+  //tmrval = TCNT1;
 }
 
 uint16_t readADC(void){
@@ -173,34 +178,48 @@ uint16_t readADC(void){
 }
 
 void loop() {  
+  uint16_t rawadc = readADC();
+  draw_Bat(getbatIndicatorVal(rawadc));
+  oled.bitmap(128-32,0,32,4,stateOK);
+  oled.switchFrame();
+  delay(50); // make sure, that page switch doesn't occur too often
+  // check button and start/stop motor
+  if(getButtonState()==1){
+    // button is not pressed
+    // make sure that motor is off?
+    run_state=0;
+    // stop timer
+    TCCR1 = 0;
+    bitClear(PORTB,3);
+  } else {
+    // button is pressed
+    // shuld we initiate start process?
+  }
+
+  // check battery and stop if battery empty
+/*
   for(uint8_t i=0;i<7;i++){
 	oled.bitmap(128-32,0,32,4,stateOK);
-	draw_Bat(i);
   //delay(10);
 	oled.switchFrame();
 	delay(300);
   }
-  for(uint8_t i=7;i>0;i--){
-	oled.bitmap(128-32,0,32,4,stateDANGER);
-	draw_Bat(i-1);
-  //delay(10);
-	oled.switchFrame();
-	delay(300);
-	}
+
   while(1){
 
     uint16_t rawadc = readADC();
+    //draw_Bat(getbatIndicatorVal(rawadc));
     oled.clear();
-    oled.print(tmrval);
+    //oled.print(tmrval);
     oled.setCursor(0,2);
-    oled.print(tmrval1);
-    tmrval=0;
-    tmrval1=0;
+    //oled.print(tmrval1);
+    //tmrval=0;
+    //tmrval1=0;
     //draw_Bat(getbatIndicatorVal(rawadc));
     oled.switchFrame();
   // Write text to oled RAM (which is not currently being displayed).
     delay(500);
   }
+*/
 }
-
 

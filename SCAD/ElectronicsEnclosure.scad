@@ -1,9 +1,14 @@
-$fn=80;
-/*
-translate([-15,70,-66+10])rotate([-90,0,-90])holder();
-translate([0,-45,-30])rotate([90,0,0]){cylinder(d=11.5,h=6,$fn=6);cylinder(d=6,h=20);}
+$fn=40;
+translate([0,-115,-20])rotate([10,0,0])cube([16,120,25],true);
+translate([0,-115,-80])cube([24,120,8],true);
+translate([0,-60,-55])cube([24,15,100],true);
+
+translate([-15,70.4,-66+10])rotate([-90,0,-90])holder();
+translate([0,-45,-35])rotate([90,0,0]){cylinder(d=11.5,h=6,$fn=6);cylinder(d=6,h=20);}
+translate([0,-62,-35])rotate([90,0,0])cylinder(d=10.22,h=6);
+//translate([-8,-45,-30])rotate([90,0,0]){cylinder(d=10.4,h=6,$fn=6);cylinder(d=5,h=20);}
 translate([0,-45,-30-65])rotate([90,0,0]){cylinder(d=11.5,h=6,$fn=6);cylinder(d=6,h=20);}
-*/
+
 
 color("Gray"){
 difference(){

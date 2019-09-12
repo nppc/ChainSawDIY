@@ -95,23 +95,13 @@ bool getButtonState(){
 }
 
 void setup() {
-  //disable mosfet
+  //stop motor
   bitClear(PORTB, 3);
   bitSet(DDRB, 3);
 
   bitClear(DDRB, 1); // Input
   bitSet(PORTB, 1); // Enable pullup
 
-  // set the timer
-
-  cli();
-  TCCR1 = (1<<CS13) | (1<<CS11) ; // Fast PWM mode (value 3)
-  //TCCR0B = (0<<WGM02) | (1<<CS02) | (0<<CS01) | (0<<CS00); // Speed (value 3)
-  TIMSK |= (1<<OCIE1A) | (1<<OCIE1B) ;//(1<<TOIE1); // enable compare match and overflow interrupts
-  sei();
-  
-  OCR1A = 128; // value to test
-  OCR1B = 255; // value to test
 
   // configure ADC
   ADMUX =
@@ -177,6 +167,31 @@ uint16_t readADC(void){
 	return (high<<8) | low;
 }
 
+// start motor smoothly
+void startMotor(){
+  cli();
+  OCR1A = 128; // value to test
+  OCR1B = 255; // value to test	
+  TCCR1 = (1<<CS13) | (1<<CS11) ; // Fast PWM mode (value 3)
+  //TCCR0B = (0<<WGM02) | (1<<CS02) | (0<<CS01) | (0<<CS00); // Speed (value 3)
+  TIMSK |= (1<<OCIE1A) | (1<<OCIE1B) ;//(1<<TOIE1); // enable compare match and overflow interrupts
+  sei();
+  delay(30);
+  //now motor starts at 50%. Increase the speed to 100%
+  for(uint8_t i=130;i<220;i+=5){
+    OCR1A = i;
+	delay(30);
+  }
+  // at the end run motor at full speed
+  cli();
+  TCCR1 = 0; // stop timer
+  sei();
+  bitSet(PORTB, 3);
+  delay(5);
+  bitSet(PORTB, 3); // make sure motor is on. can be done with resetting interrupts flags.
+  run_state=1;
+}
+
 void loop() {  
   uint16_t rawadc = readADC();
   draw_Bat(getbatIndicatorVal(rawadc));
@@ -189,11 +204,18 @@ void loop() {
     // make sure that motor is off?
     run_state=0;
     // stop timer
+	cli();
     TCCR1 = 0;
+	sei();
     bitClear(PORTB,3);
+	delay(5);
+    bitClear(PORTB,3);  
   } else {
     // button is pressed
     // shuld we initiate start process?
+	if(run_state!=1;){
+		startMotor();
+	}
   }
 
   // check battery and stop if battery empty

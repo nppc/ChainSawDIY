@@ -1,4 +1,5 @@
-$fn=40;
+$fn=80;
+/*
 translate([0,-115,-20])rotate([10,0,0])cube([16,120,25],true);
 translate([0,-115,-80])cube([24,120,8],true);
 translate([0,-60,-55])cube([24,15,100],true);
@@ -8,7 +9,7 @@ translate([0,-45,-35])rotate([90,0,0]){cylinder(d=11.5,h=6,$fn=6);cylinder(d=6,h
 translate([0,-62,-35])rotate([90,0,0])cylinder(d=10.22,h=6);
 //translate([-8,-45,-30])rotate([90,0,0]){cylinder(d=10.4,h=6,$fn=6);cylinder(d=5,h=20);}
 translate([0,-45,-30-65])rotate([90,0,0]){cylinder(d=11.5,h=6,$fn=6);cylinder(d=6,h=20);}
-
+*/
 
 color("Gray"){
 difference(){
@@ -18,27 +19,27 @@ difference(){
     translate([-8.99,-25,3.5])swProtect();
   }
   enclosure(1.5);
-  //translate([0,0,-50])cube(100);
+  //translate([0,20,-50])cube(100);
   translate([0.75,0,0]){
     translate([-0.75,0,0])cube([7,24,5],true); //oled hole
     translate([0,3,-3])cube([12.5,34,5],true); // place for glass
   }
   translate([0,-32,0])translate([0,0,-5])cube([13.5,20,11],true); //switch
-  translate([0,-50,-18])cube([10,50,14],true); //wires hole
+  translate([0,-50,-18])cube([6,50,8],true); //wires hole
 }
 translate([7,-19,-5])cube([2,38,3.5]);
 translate([-9,-19,-5])cube([3.5,38,3.5]);
 }
 
-translate([0,0,-0.5])oled();
-translate([0,-32,0])switch();
+//translate([0,0,-0.5])oled();
+//translate([0,-32,0])switch();
 
 module enclosure(wall){
   translate([0,-14,-8.5]){
       hull(){
-      translate([0,80/2-10-wall/2,17/2-3-wall/2])cylinderRounded(20-wall,6-wall);
+      translate([0,80/2-10,17/2-3-wall/2])cylinderRounded(20-wall*2,6-wall);
       translate([0,-60/2+wall/2,2.5-wall/2])cylinderRound2(20-wall*2,6-wall);
-      translate([0,80/2-10-wall/2,-17/2-wall])cylinder(d=20-wall,h=1+wall);
+      translate([0,80/2-10,-17/2-wall])cylinder(d=20-wall*2,h=1+wall);
       translate([20/2-3-wall/2,-72/2+3+wall/2,-17/2-wall])cylinder(d=6-wall,h=1+wall,$fn=30);
       translate([-20/2+3+wall/2,-72/2+3+wall/2,-17/2-wall])cylinder(d=6-wall,h=1+wall,$fn=30);
       }      

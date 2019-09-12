@@ -11,10 +11,13 @@
 
 // with current resistor divider (120K/27K) we can measure max 27.22 volts
 // so, the formula is: V = 27.22 * RAWADC / 1024
-// or RAWADC = V * 1023 / 27.22
+// or RAWADC = V * 1024 / 27.22
 // for 4S: fully charged is 631 (4.2v per cell); 451 - fully discharged (3v per cell)
 
 uint8_t run_state = 0; // 0 - stopped; 1 - running
+
+uint16_t adcmaxcharge = (uint16_t)((CELLS * (CELLMAXVOLT * 1000 * 1024 / MAXMEASUREDVOLT)) / 1000);
+uint16_t adcmincharge = (uint16_t)((CELLS * (CELLMINVOLT * 1000 * 1024 / MAXMEASUREDVOLT)) / 1000);
 
 static const uint8_t PROGMEM stateOK[32*4] = {
   252,254,7,3,3,3,3,3,3,3,3,3,131,195,227,131,3,3,3,3,3,3,3,3,3,3,3,3,3,7,254,252,
@@ -79,9 +82,11 @@ void draw_clear(uint8_t x0, uint8_t y0, uint8_t x1, uint8_t y1) {
 	}
 }
 
+bool isBatteryEmpty(uint16_t rawadc){
+  return (rawadc >= adcmincharge ? FALSE : TRUE);
+}
+
 uint8_t getbatIndicatorVal(uint16_t rawadc){
-  uint16_t adcmaxcharge = (uint16_t)((CELLS * (CELLMAXVOLT * 1000 * 1024 / MAXMEASUREDVOLT)) / 1000);
-  uint16_t adcmincharge = (uint16_t)((CELLS * (CELLMINVOLT * 1000 * 1024 / MAXMEASUREDVOLT)) / 1000);
   uint16_t adc1mark = (uint16_t)((adcmaxcharge-adcmincharge) / 6);
   if(rawadc>adcmaxcharge) return 6;
   if(rawadc<adcmincharge) return 0;
@@ -181,6 +186,12 @@ void startMotor(){
   for(uint8_t i=130;i<220;i+=5){
     OCR1A = i;
 	delay(30);
+	// check battery
+	uint16_t rawadc = readADC();
+    if(isBatteryEmpty(rawadc)){
+      stopMotor();
+	  return; // exit
+	} 
   }
   // at the end run motor at full speed
   cli();
@@ -192,16 +203,8 @@ void startMotor(){
   run_state=1;
 }
 
-void loop() {  
-  uint16_t rawadc = readADC();
-  draw_Bat(getbatIndicatorVal(rawadc));
-  oled.bitmap(128-32,0,32,4,stateOK);
-  oled.switchFrame();
-  delay(50); // make sure, that page switch doesn't occur too often
-  // check button and start/stop motor
-  if(getButtonState()==1){
-    // button is not pressed
-    // make sure that motor is off?
+void stopMotor(){
+    // make sure that motor is off
     run_state=0;
     // stop timer
 	cli();
@@ -210,15 +213,45 @@ void loop() {
     bitClear(PORTB,3);
 	delay(5);
     bitClear(PORTB,3);  
+}
+
+void loop() {  
+  uint16_t rawadc = readADC();
+  draw_Bat(getbatIndicatorVal(rawadc));
+  bool batEmpty = isBatteryEmpty(rawadc);
+  if(batEmpty){
+    oled.bitmap(128-32,0,32,4,stateOK);
+  }else{
+    oled.bitmap(128-32,0,32,4,stateDANGER);
+  }
+  oled.switchFrame();
+  delay(50); // make sure, that page switch doesn't occur too often
+  // check button and start/stop motor
+  if(getButtonState()==1){
+    // button is not pressed
+	stopMotor();
   } else {
     // button is pressed
     // shuld we initiate start process?
 	if(run_state!=1;){
-		startMotor();
+      startMotor();
 	}
   }
-
-  // check battery and stop if battery empty
+  // If battery empty - stop the motor and hang the firmware
+  if(batEmpty){
+    stopMotor();
+	while(1==1){
+		bitClear(PORTB,3); // just to be 100% sure that motor will not start
+		draw_Bat(0);
+		oled.bitmap(128-32,0,32,4,stateDANGER);
+		oled.switchFrame();
+		delay(500);
+		draw_clear(0,0,70,4);
+		oled.bitmap(128-32,0,32,4,stateDANGER);
+		oled.switchFrame();
+		delay(500);
+	}
+  }
 /*
   for(uint8_t i=0;i<7;i++){
 	oled.bitmap(128-32,0,32,4,stateOK);

@@ -1,12 +1,24 @@
 #include <Tiny4kOLED.h> //https://github.com/datacute/Tiny4kOLED
 
+//#define NOHANG
+
 #define CELLS 4	// define LiIon cells count
 
 // PB1 is ON/OFF switch
 
 #define MAXMEASUREDVOLT 27.22
-#define CELLMINVOLT 3.0
-#define CELLMAXVOLT 4.2
+
+// formula: 1SVolt * 1024 * 128 / MAXMEASUREDVOLT
+#define V1S6 (uint32_t)19725 * CELLS //4.15
+#define V1S5 (uint32_t)19012 * CELLS //4.00
+#define V1S4 (uint32_t)18299 * CELLS //3.85
+#define V1S3 (uint32_t)17586 * CELLS //3.70
+#define V1S2 (uint32_t)17111 * CELLS //3.60
+#define V1S1 (uint32_t)16635 * CELLS //3.50
+#define V1S0 (uint32_t)14259 * CELLS //3.00
+
+//#define CELLMINVOLT 3.0
+//#define CELLMAXVOLT 4.2
 
 
 // with current resistor divider (120K/27K) we can measure max 27.22 volts
@@ -15,9 +27,7 @@
 // for 4S: fully charged is 631 (4.2v per cell); 451 - fully discharged (3v per cell)
 
 uint8_t run_state = 0; // 0 - stopped; 1 - running
-
-uint16_t adcmaxcharge = (uint16_t)((CELLS * (CELLMAXVOLT * 1000 * 1024 / MAXMEASUREDVOLT)) / 1000);
-uint16_t adcmincharge = (uint16_t)((CELLS * (CELLMINVOLT * 1000 * 1024 / MAXMEASUREDVOLT)) / 1000);
+uint8_t prev_batInd = 0;
 
 static const uint8_t PROGMEM stateOK[32*4] = {
   252,254,7,3,3,3,3,3,3,3,3,3,131,195,227,131,3,3,3,3,3,3,3,3,3,3,3,3,3,7,254,252,
@@ -83,14 +93,27 @@ void draw_clear(uint8_t x0, uint8_t y0, uint8_t x1, uint8_t y1) {
 }
 
 bool isBatteryEmpty(uint16_t rawadc){
-  return (rawadc >= adcmincharge ? FALSE : TRUE);
+  return ((uint32_t)rawadc*128 >= V1S0 ? LOW : HIGH);
 }
 
+// 3.0v - 0%
+// 3.5v - 15%
+// 3.6v - 33%
+// 3.7v - 50%
+// 3.85v - 66%
+// 4.0v - 83%
+// 4.2v - 100%
+
 uint8_t getbatIndicatorVal(uint16_t rawadc){
-  uint16_t adc1mark = (uint16_t)((adcmaxcharge-adcmincharge) / 6);
-  if(rawadc>adcmaxcharge) return 6;
-  if(rawadc<adcmincharge) return 0;
-  return   (rawadc - adcmincharge) / adc1mark;
+  uint32_t adc128 = (uint32_t)rawadc * 128;
+  if(adc128>=V1S6) return 6;
+  if(adc128>=V1S5) return 5;
+  if(adc128>=V1S4) return 4;
+  if(adc128>=V1S3) return 3;
+  if(adc128>=V1S2) return 2;
+  if(adc128>=V1S1) return 1;
+  if(adc128<V1S0) return 0;
+  return 0;
 }
 
 bool getButtonState(){
@@ -165,11 +188,15 @@ ISR(TIMER1_COMPB_vect){
 
 uint16_t readADC(void){
 	while (bit_is_set(ADCSRA,ADSC)); // wait for any previous conversion
-	ADCSRA |= (1 << ADSC); // start new conversion
-	while (bit_is_set(ADCSRA,ADSC)); // wait for current conversion to complete
-	uint8_t low  = ADCL; // must read ADCL first
-	uint8_t high = ADCH;
-	return (high<<8) | low;
+	uint16_t res32=0;
+	for(uint8_t i=0;i<32;i++){
+	  ADCSRA |= (1 << ADSC); // start new conversion
+	  while (bit_is_set(ADCSRA,ADSC)); // wait for current conversion to complete
+	  uint8_t low  = ADCL; // must read ADCL first
+	  uint8_t high = ADCH;
+    res32+=(uint16_t)((high<<8) | low);
+	}
+	  return res32 /32;
 }
 
 // start motor smoothly
@@ -219,10 +246,15 @@ void loop() {
   uint16_t rawadc = readADC();
   draw_Bat(getbatIndicatorVal(rawadc));
   bool batEmpty = isBatteryEmpty(rawadc);
+    //oled.clear();
+//    oled.setCursor(72,0);
+//    oled.print((uint32_t)rawadc * 128);
+    //oled.switchFrame();
+
   if(batEmpty){
-    oled.bitmap(128-32,0,32,4,stateOK);
-  }else{
     oled.bitmap(128-32,0,32,4,stateDANGER);
+  }else{
+    oled.bitmap(128-32,0,32,4,stateOK);
   }
   oled.switchFrame();
   delay(50); // make sure, that page switch doesn't occur too often
@@ -233,24 +265,26 @@ void loop() {
   } else {
     // button is pressed
     // shuld we initiate start process?
-	if(run_state!=1;){
+	if(run_state!=1){
       startMotor();
 	}
   }
   // If battery empty - stop the motor and hang the firmware
   if(batEmpty){
     stopMotor();
+#ifndef NOHANG
 	while(1==1){
 		bitClear(PORTB,3); // just to be 100% sure that motor will not start
 		draw_Bat(0);
 		oled.bitmap(128-32,0,32,4,stateDANGER);
 		oled.switchFrame();
-		delay(500);
+		delay(300);
 		draw_clear(0,0,70,4);
 		oled.bitmap(128-32,0,32,4,stateDANGER);
 		oled.switchFrame();
-		delay(500);
+		delay(600);
 	}
+#endif
   }
 /*
   for(uint8_t i=0;i<7;i++){

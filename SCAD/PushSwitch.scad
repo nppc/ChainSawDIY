@@ -4,7 +4,7 @@
 rotate([-90,0,0]){ // rotate for printing
   case();
   casecover();
-  translate([0,2.5,-12])internalMechanics();
+  translate([0,2.5-0.15,-12])internalMechanics();
 }
 
 module casecover(){
@@ -60,6 +60,9 @@ module case(){
     translate([-8.5,-4.2+1,1])cube([1.5,2,10]);
     translate([7.5,-4.2+1,14.5])cube([7,2,2]);
     translate([25.5,-4.2+1,-5])cube([7,2,2]);    
+
+    translate([0,5-0.15,0])cube([100,2,100],true);   // make case thinner
+
   }
 }
 

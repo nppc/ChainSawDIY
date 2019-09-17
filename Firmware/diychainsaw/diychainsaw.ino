@@ -1,8 +1,9 @@
+#include <avr/wdt.h>
 #include <Tiny4kOLED.h> //https://github.com/datacute/Tiny4kOLED
 
 //#define NOHANG
 
-#define CELLS 4	// define LiIon cells count
+#define CELLS 5	// define LiIon cells count
 
 // PB1 is ON/OFF switch
 
@@ -122,6 +123,10 @@ bool getButtonState(){
   if(tmp == bitRead(PINB, 1)){return tmp;}else{return !tmp;}
 }
 
+void disableWatchdog(){
+  wdt_disable();
+}
+
 void setup() {
   //stop motor
   bitClear(PORTB, 3);
@@ -130,7 +135,8 @@ void setup() {
   bitClear(DDRB, 1); // Input
   bitSet(PORTB, 1); // Enable pullup
 
-
+  disableWatchdog();
+  
   // configure ADC
   ADMUX =
            (0 << ADLAR) |     // do not left shift result (for 10-bit values)
@@ -170,6 +176,12 @@ void setup() {
     // button is pressed
     delay(100);
   }  
+
+  // enable 1s watchdog with reset
+  cli();
+  WDTCR = (1<<WDCE);
+  WDTCR = (1<<WDE) | (1<<WDP1) | (1<<WDP2); // 1s
+  sei();
 }
 
 
@@ -211,14 +223,15 @@ void startMotor(){
   delay(30);
   //now motor starts at 50%. Increase the speed to 100%
   for(uint8_t i=130;i<220;i+=5){
+    wdt_reset();
     OCR1A = i;
-	delay(30);
-	// check battery
-	uint16_t rawadc = readADC();
-    if(isBatteryEmpty(rawadc)){
+  	delay(25);
+  	// check battery and button
+  	uint16_t rawadc = readADC();
+    if(isBatteryEmpty(rawadc) || getButtonState()==1){
       stopMotor();
-	  return; // exit
-	} 
+	    return; // exit
+  	} 
   }
   // at the end run motor at full speed
   cli();
@@ -243,21 +256,23 @@ void stopMotor(){
 }
 
 void loop() {  
+  wdt_reset();
   uint16_t rawadc = readADC();
-  draw_Bat(getbatIndicatorVal(rawadc));
+  uint8_t batInd = getbatIndicatorVal(rawadc);
   bool batEmpty = isBatteryEmpty(rawadc);
-    //oled.clear();
-//    oled.setCursor(72,0);
-//    oled.print((uint32_t)rawadc * 128);
-    //oled.switchFrame();
-
-  if(batEmpty){
-    oled.bitmap(128-32,0,32,4,stateDANGER);
-  }else{
-    oled.bitmap(128-32,0,32,4,stateOK);
+  // redraw screen only when needed (to avoid unnecesarry i2c traffic)
+  if(batInd!=prev_batInd || batEmpty){
+    prev_batInd = batInd;
+	draw_Bat(batInd);
+    
+    if(batEmpty){
+      oled.bitmap(128-32,0,32,4,stateDANGER);
+    }else{
+      oled.bitmap(128-32,0,32,4,stateOK);
+    }
+    oled.switchFrame();
+    delay(50); // make sure, that page switch doesn't occur too often
   }
-  oled.switchFrame();
-  delay(50); // make sure, that page switch doesn't occur too often
   // check button and start/stop motor
   if(getButtonState()==1){
     // button is not pressed
@@ -272,6 +287,7 @@ void loop() {
   // If battery empty - stop the motor and hang the firmware
   if(batEmpty){
     stopMotor();
+    disableWatchdog();
 #ifndef NOHANG
 	while(1==1){
 		bitClear(PORTB,3); // just to be 100% sure that motor will not start

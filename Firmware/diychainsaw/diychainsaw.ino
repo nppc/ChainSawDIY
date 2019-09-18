@@ -2,6 +2,7 @@
 #include <Tiny4kOLED.h> //https://github.com/datacute/Tiny4kOLED
 
 //#define NOHANG
+//#define ENABLEFONT
 
 #define CELLS 5	// define LiIon cells count
 
@@ -17,9 +18,6 @@
 #define V1S2 (uint32_t)17111 * CELLS //3.60
 #define V1S1 (uint32_t)16635 * CELLS //3.50
 #define V1S0 (uint32_t)14259 * CELLS //3.00
-
-//#define CELLMINVOLT 3.0
-//#define CELLMAXVOLT 4.2
 
 
 // with current resistor divider (120K/27K) we can measure max 27.22 volts
@@ -155,11 +153,13 @@ void setup() {
 
 
   ADCSRA |= (1 << ADSC); // start first conversion
-
+  
+  #ifdef ENABLEFONT
   oled.setFont(FONT8X16);
+  #endif
   oled.begin();
   oled.clear();
-  draw_Bat(0); // prefill byffer with empty battery bitmap
+  draw_Bat(0); // prefill bufer with empty battery bitmap
   oled.on();
   oled.switchRenderFrame();
   delay(50);
@@ -214,7 +214,7 @@ uint16_t readADC(void){
 // start motor smoothly
 void startMotor(){
   cli();
-  OCR1A = 128; // value to test
+  OCR1A = 95; // value to test
   OCR1B = 255; // value to test	
   TCCR1 = (1<<CS13) | (1<<CS11) ; // Fast PWM mode (value 3)
   //TCCR0B = (0<<WGM02) | (1<<CS02) | (0<<CS01) | (0<<CS00); // Speed (value 3)
@@ -222,15 +222,16 @@ void startMotor(){
   sei();
   delay(30);
   //now motor starts at 50%. Increase the speed to 100%
-  for(uint8_t i=130;i<220;i+=5){
+  for(uint8_t i=100;i<190;i+=5){
     wdt_reset();
     OCR1A = i;
   	delay(25);
   	// check battery and button
   	uint16_t rawadc = readADC();
-    if(isBatteryEmpty(rawadc) || getButtonState()==1){
+	bool isBemp = isBatteryEmpty(rawadc);
+    if(isBemp || getButtonState()==1){
       stopMotor();
-	    return; // exit
+	    return HIGH; // exit with low bat indication
   	} 
   }
   // at the end run motor at full speed
@@ -241,6 +242,7 @@ void startMotor(){
   delay(5);
   bitSet(PORTB, 3); // make sure motor is on. can be done with resetting interrupts flags.
   run_state=1;
+  return LOW;
 }
 
 void stopMotor(){
@@ -281,7 +283,7 @@ void loop() {
     // button is pressed
     // shuld we initiate start process?
 	if(run_state!=1){
-      startMotor();
+      batEmpty = startMotor();
 	}
   }
   // If battery empty - stop the motor and hang the firmware
@@ -302,29 +304,6 @@ void loop() {
 	}
 #endif
   }
-/*
-  for(uint8_t i=0;i<7;i++){
-	oled.bitmap(128-32,0,32,4,stateOK);
-  //delay(10);
-	oled.switchFrame();
-	delay(300);
-  }
 
-  while(1){
-
-    uint16_t rawadc = readADC();
-    //draw_Bat(getbatIndicatorVal(rawadc));
-    oled.clear();
-    //oled.print(tmrval);
-    oled.setCursor(0,2);
-    //oled.print(tmrval1);
-    //tmrval=0;
-    //tmrval1=0;
-    //draw_Bat(getbatIndicatorVal(rawadc));
-    oled.switchFrame();
-  // Write text to oled RAM (which is not currently being displayed).
-    delay(500);
-  }
-*/
 }
 

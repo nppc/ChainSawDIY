@@ -212,7 +212,7 @@ uint16_t readADC(void){
 }
 
 // start motor smoothly
-void startMotor(){
+bool startMotor(void){
   cli();
   OCR1A = 95; // value to test
   OCR1B = 255; // value to test	

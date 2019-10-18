@@ -1,21 +1,26 @@
 $fn=80;
+
+!coverMotor(55,1.5);
+
+translate([65,0,2.9])rotate([180,0,0])coverMotor(55,1.5);
+
 //difference(){
   //projection(cut = true)
-    translate([-5,0,35])rotate([180,0,0])holder();
+    translate([-5,0,33])rotate([180,0,0])holder();
 //  cube([100,100,100]);
 //}
 
 //translate([0,0,-10])color("Gray")mainGear();
 //drillAdapter();
 //translate([0,0,5])color("LightGray")cylinder(d=8,h=46);
-//translate([0,0,24])ballBearing8();
-//translate([0,0,3])ballBearing15();
+translate([0,0,24])ballBearing8();
+translate([0,0,3])ballBearing15();
 
-//translate([0,0,35])pulley36T();
+translate([0,0,35])pulley36T();
 
 // belt length = 200mm
-//translate([70,0,-38])motor775();
-//translate([70,0,35])pulley16T();
+translate([70,0,-38])motor775();
+translate([70,0,35])pulley16T();
 
 
 //projection(cut = false)
@@ -36,28 +41,28 @@ module drillAdapter(){
 }
 
 module ballBearing8(){
-  color("Gray")linear_extrude(7)difference(){circle(d=22);circle(d=8,$fn=20);}
+  color("Gray")linear_extrude(7)difference(){circle(d=22,$fn=30);circle(d=8,$fn=20);}
 }
 
 module ballBearing15(){
-  color("Gray")linear_extrude(9)difference(){circle(d=32);circle(d=15);}
+  color("Gray")linear_extrude(9)difference(){circle(d=32,$fn=30);circle(d=15,$fn=30);}
 }
 
 
 module pulley36T(){
-  color("LightGray"){cylinder(d=27.5,h=10);translate([0,0,10])cylinder(d=16,h=7);}
+  color("LightGray"){cylinder(d=27.5,h=10,$fn=30);translate([0,0,10])cylinder(d=16,h=7,$fn=30);}
 }
 
 module pulley16T(){
-  color("LightGray")cylinder(d=13,h=14);
+  color("LightGray")cylinder(d=13,h=14, $fn=20);
 }
 
 module motor775(){
   color("Gray"){
-    cylinder(d=44.5,h=67);
-    translate([0,0,-(6+5)])cylinder(d=5,h=67+4.5+16+5+6);
-    cylinder(d=17.5,h=67+4.5);
-    translate([0,0,-6])cylinder(d=15,h=6);
+    cylinder(d=44.5,h=67,$fn=30);
+    translate([0,0,-(6+5)])cylinder(d=5,h=67+4.5+16+5+6,$fn=20);
+    cylinder(d=17.5,h=67+4.5,$fn=20);
+    translate([0,0,-6])cylinder(d=15,h=6,$fn=20);
   }
 }
 
@@ -214,4 +219,91 @@ module bearing15holder(){
         translate([-18,0])circle(d=3,$fn=10);
         translate([18,0])circle(d=3,$fn=10);
     }
+}
+
+module coverMotor(hght,wall){
+  //walls
+  translate([0,0,hght-10])rotate([0,0,90])cover_half_ring(10,wall);
+  translate([10,0,hght-10])rotate([0,0,-90])cover_half_ring(10,wall);
+
+  rotate([0,0,90])rotate_extrude(angle=180, convexity=10)translate([25, 0])square([wall,hght-10]);
+  difference(){
+    translate([10,0,0])rotate([0,0,-90])rotate_extrude(angle=180, convexity=10) translate([25, 0])square([wall,hght-10]);
+    translate([10,0,38])for(i=[0:30:180])rotate([0,0,i])rotate([45,0,0])cube([100,5,5],true);
+    translate([10,0,30])for(i=[15:30:180])rotate([0,0,i])rotate([45,0,0])cube([100,5,5],true);
+    translate([10,0,22])for(i=[0:30:180])rotate([0,0,i])rotate([45,0,0])cube([100,5,5],true);
+  }
+  translate([0,-25-wall,0])cube([10,1.5,hght-10]);
+  translate([0,25,0])cube([10,1.5,hght-10]);
+
+  translate([10,15+wall,hght-10])rotate([0,-90,0])linear_extrude(height=10)cover_round(10,wall);
+
+  translate([0,-15-wall,hght-10])rotate([0,-90,180])linear_extrude(height=10)cover_round(10,wall);
+  
+  //top
+  translate([5,0,hght-wall]){
+    linear_extrude(height=wall){
+      translate([5,0,0])circle(r=16.5);
+      translate([-5,0,0])circle(r=16.5);
+    }
+    translate([-5,-33/2,0])cube([10,33,wall]);
+  }
+  
+  //mounting tabs
+  rotate([0,0,90])translate([0,29,0])cover_mountingTab();
+  translate([10,0,0]){
+    rotate([0,0,-22])translate([0,29,0])cover_mountingTab();
+    rotate([0,0,202])translate([0,29,0])cover_mountingTab();
+  }
+  
+  // bottom rebro
+  rotate([0,0,90])rotate_extrude(angle=180, convexity=10)translate([25,0,0])square([3,2]);
+  translate([10,0,0])rotate([0,0,-90])rotate_extrude(angle=180, convexity=10)translate([25,0,0])square([3,2]);
+  translate([0,25,0])cube([10,3,2]);
+  translate([0,-28,0])cube([10,3,2]);
+  
+  // vert rebra
+  translate([-26,4,0])rotate([0,0,171])cover_vertRebro(40);
+  translate([-26,-4,0])rotate([0,0,189])cover_vertRebro(40);
+  
+  translate([10,0,0])rotate([0,0,58])translate([26,0,0])cover_vertRebro(17.5);
+  translate([10,0,0])rotate([0,0,78])translate([26,0,0])cover_vertRebro(17.5);
+  translate([10,0,0])rotate([0,0,282])translate([26,0,0])cover_vertRebro(17.5);
+  translate([10,0,0])rotate([0,0,302])translate([26,0,0])cover_vertRebro(17.5);
+  
+}
+
+module cover_vertRebro(hght){
+  translate([0,-1,0])hull(){
+    cube([4,2,0.1]);
+    translate([0,0.5,hght])cube([0.1,1,1]);
+  }
+}
+
+module cover_mountingTab(){
+    linear_extrude(height=2)difference(){
+      hull(){
+        circle(5,$fn=40);
+        translate([-15,-9,0])square([30,1]);
+      }
+      translate([0,1,0])circle(1.5,$fn=20);
+      translate([0,-28,0])circle(25, $fn=40);
+    }
+}
+
+module cover_round(r,wall){
+  intersection(){
+    difference(){
+      circle(r,$fn=r*8); 
+      circle(r-wall,$fn=r*7); 
+    }
+    square([r*2,r*2]);
+  }
+}
+
+module cover_half_ring(r,wall)
+{
+ rotate_extrude(angle=180, convexity=10)
+    translate([25-r+wall, 0]) 
+      cover_round(r,wall);
 }

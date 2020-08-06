@@ -1,0 +1,549 @@
+
+DIY_ChainSaw_M8.elf:     file format elf32-avr
+
+Sections:
+Idx Name          Size      VMA       LMA       File off  Algn
+  0 .text         00000222  00000000  00000000  00000074  2**1
+                  CONTENTS, ALLOC, LOAD, READONLY, CODE
+  1 .data         00000098  00800060  00000222  00000296  2**0
+                  CONTENTS, ALLOC, LOAD, DATA
+  2 .comment      00000030  00000000  00000000  0000032e  2**0
+                  CONTENTS, READONLY
+  3 .note.gnu.avr.deviceinfo 0000003c  00000000  00000000  00000360  2**2
+                  CONTENTS, READONLY
+  4 .debug_aranges 000000b0  00000000  00000000  0000039c  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  5 .debug_info   00001012  00000000  00000000  0000044c  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  6 .debug_abbrev 000006e9  00000000  00000000  0000145e  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  7 .debug_line   000005a8  00000000  00000000  00001b47  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  8 .debug_frame  00000188  00000000  00000000  000020f0  2**2
+                  CONTENTS, READONLY, DEBUGGING
+  9 .debug_str    000003e7  00000000  00000000  00002278  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 10 .debug_loc    00000432  00000000  00000000  0000265f  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 11 .debug_ranges 00000080  00000000  00000000  00002a91  2**0
+                  CONTENTS, READONLY, DEBUGGING
+
+Disassembly of section .text:
+
+00000000 <__vectors>:
+   0:	12 c0       	rjmp	.+36     	; 0x26 <__ctors_end>
+   2:	24 c0       	rjmp	.+72     	; 0x4c <__bad_interrupt>
+   4:	23 c0       	rjmp	.+70     	; 0x4c <__bad_interrupt>
+   6:	22 c0       	rjmp	.+68     	; 0x4c <__bad_interrupt>
+   8:	21 c0       	rjmp	.+66     	; 0x4c <__bad_interrupt>
+   a:	20 c0       	rjmp	.+64     	; 0x4c <__bad_interrupt>
+   c:	1f c0       	rjmp	.+62     	; 0x4c <__bad_interrupt>
+   e:	1e c0       	rjmp	.+60     	; 0x4c <__bad_interrupt>
+  10:	1d c0       	rjmp	.+58     	; 0x4c <__bad_interrupt>
+  12:	1c c0       	rjmp	.+56     	; 0x4c <__bad_interrupt>
+  14:	1b c0       	rjmp	.+54     	; 0x4c <__bad_interrupt>
+  16:	1a c0       	rjmp	.+52     	; 0x4c <__bad_interrupt>
+  18:	19 c0       	rjmp	.+50     	; 0x4c <__bad_interrupt>
+  1a:	18 c0       	rjmp	.+48     	; 0x4c <__bad_interrupt>
+  1c:	17 c0       	rjmp	.+46     	; 0x4c <__bad_interrupt>
+  1e:	16 c0       	rjmp	.+44     	; 0x4c <__bad_interrupt>
+  20:	15 c0       	rjmp	.+42     	; 0x4c <__bad_interrupt>
+  22:	14 c0       	rjmp	.+40     	; 0x4c <__bad_interrupt>
+  24:	13 c0       	rjmp	.+38     	; 0x4c <__bad_interrupt>
+
+00000026 <__ctors_end>:
+  26:	11 24       	eor	r1, r1
+  28:	1f be       	out	0x3f, r1	; 63
+  2a:	cf e5       	ldi	r28, 0x5F	; 95
+  2c:	d4 e0       	ldi	r29, 0x04	; 4
+  2e:	de bf       	out	0x3e, r29	; 62
+  30:	cd bf       	out	0x3d, r28	; 61
+
+00000032 <__do_copy_data>:
+  32:	10 e0       	ldi	r17, 0x00	; 0
+  34:	a0 e6       	ldi	r26, 0x60	; 96
+  36:	b0 e0       	ldi	r27, 0x00	; 0
+  38:	e2 e2       	ldi	r30, 0x22	; 34
+  3a:	f2 e0       	ldi	r31, 0x02	; 2
+  3c:	02 c0       	rjmp	.+4      	; 0x42 <__SREG__+0x3>
+  3e:	05 90       	lpm	r0, Z+
+  40:	0d 92       	st	X+, r0
+  42:	a8 3f       	cpi	r26, 0xF8	; 248
+  44:	b1 07       	cpc	r27, r17
+  46:	d9 f7       	brne	.-10     	; 0x3e <__SP_H__>
+  48:	38 d0       	rcall	.+112    	; 0xba <main>
+  4a:	e9 c0       	rjmp	.+466    	; 0x21e <_exit>
+
+0000004c <__bad_interrupt>:
+  4c:	d9 cf       	rjmp	.-78     	; 0x0 <__vectors>
+
+0000004e <i2c_init>:
+#include "main.h"
+
+
+void i2c_init(void) {
+	//this->address = address;
+	TWSR = 0;
+  4e:	11 b8       	out	0x01, r1	; 1
+	TWBR = ((F_CPU/SCL_CLOCK)-16)/2;
+  50:	80 e2       	ldi	r24, 0x20	; 32
+  52:	80 b9       	out	0x00, r24	; 0
+  54:	08 95       	ret
+
+00000056 <i2c_start>:
+}
+
+uint8_t i2c_start() {
+	uint8_t twi_status_register;
+	TWCR = (1<<TWINT) | (1<<TWSTA) | (1<<TWEN);
+  56:	84 ea       	ldi	r24, 0xA4	; 164
+  58:	86 bf       	out	0x36, r24	; 54
+#ifndef DEBUGI2C
+	while(!(TWCR & (1<<TWINT)));
+  5a:	06 b6       	in	r0, 0x36	; 54
+  5c:	07 fe       	sbrs	r0, 7
+  5e:	fd cf       	rjmp	.-6      	; 0x5a <i2c_start+0x4>
+#endif
+	twi_status_register = TW_STATUS & 0xF8;
+  60:	81 b1       	in	r24, 0x01	; 1
+  62:	88 7f       	andi	r24, 0xF8	; 248
+	if ((twi_status_register != TW_START) && (twi_status_register != TW_REP_START)) {
+  64:	88 30       	cpi	r24, 0x08	; 8
+  66:	11 f0       	breq	.+4      	; 0x6c <i2c_start+0x16>
+  68:	80 31       	cpi	r24, 0x10	; 16
+  6a:	81 f4       	brne	.+32     	; 0x8c <i2c_start+0x36>
+		return 1;
+	}
+	TWDR = I2CADDRESS << 1;
+  6c:	88 e7       	ldi	r24, 0x78	; 120
+  6e:	83 b9       	out	0x03, r24	; 3
+	TWCR = (1<<TWINT) | (1<<TWEN);
+  70:	84 e8       	ldi	r24, 0x84	; 132
+  72:	86 bf       	out	0x36, r24	; 54
+
+#ifndef DEBUGI2C
+	while(!(TWCR & (1<<TWINT)));
+  74:	06 b6       	in	r0, 0x36	; 54
+  76:	07 fe       	sbrs	r0, 7
+  78:	fd cf       	rjmp	.-6      	; 0x74 <i2c_start+0x1e>
+#endif
+	twi_status_register = TW_STATUS & 0xF8;
+  7a:	91 b1       	in	r25, 0x01	; 1
+  7c:	98 7f       	andi	r25, 0xF8	; 248
+	if ((twi_status_register != TW_MT_SLA_ACK) && (twi_status_register != TW_MR_SLA_ACK)) {
+  7e:	98 31       	cpi	r25, 0x18	; 24
+  80:	39 f0       	breq	.+14     	; 0x90 <i2c_start+0x3a>
+#ifndef DEBUGI2C
+	while(!(TWCR & (1<<TWINT)));
+#endif
+	twi_status_register = TW_STATUS & 0xF8;
+	if ((twi_status_register != TW_START) && (twi_status_register != TW_REP_START)) {
+		return 1;
+  82:	81 e0       	ldi	r24, 0x01	; 1
+  84:	90 34       	cpi	r25, 0x40	; 64
+  86:	29 f4       	brne	.+10     	; 0x92 <i2c_start+0x3c>
+  88:	80 e0       	ldi	r24, 0x00	; 0
+  8a:	08 95       	ret
+  8c:	81 e0       	ldi	r24, 0x01	; 1
+  8e:	08 95       	ret
+	twi_status_register = TW_STATUS & 0xF8;
+	if ((twi_status_register != TW_MT_SLA_ACK) && (twi_status_register != TW_MR_SLA_ACK)) {
+		return 1;
+	}
+
+	return 0;
+  90:	80 e0       	ldi	r24, 0x00	; 0
+}
+  92:	08 95       	ret
+
+00000094 <i2c_write>:
+
+uint8_t i2c_write(uint8_t data) {
+	uint8_t twi_status_register;
+	TWDR = data;
+  94:	83 b9       	out	0x03, r24	; 3
+	TWCR = (1<<TWINT) | (1<<TWEN);
+  96:	84 e8       	ldi	r24, 0x84	; 132
+  98:	86 bf       	out	0x36, r24	; 54
+#ifndef DEBUGI2C
+	while(!(TWCR & (1<<TWINT)));
+  9a:	06 b6       	in	r0, 0x36	; 54
+  9c:	07 fe       	sbrs	r0, 7
+  9e:	fd cf       	rjmp	.-6      	; 0x9a <i2c_write+0x6>
+#endif
+	twi_status_register = TW_STATUS & 0xF8;
+  a0:	91 b1       	in	r25, 0x01	; 1
+  a2:	98 7f       	andi	r25, 0xF8	; 248
+  a4:	81 e0       	ldi	r24, 0x01	; 1
+  a6:	98 32       	cpi	r25, 0x28	; 40
+  a8:	09 f4       	brne	.+2      	; 0xac <i2c_write+0x18>
+  aa:	80 e0       	ldi	r24, 0x00	; 0
+	if (twi_status_register != TW_MT_DATA_ACK) {
+		return 1;
+		} else {
+		return 0;
+	}
+}
+  ac:	08 95       	ret
+
+000000ae <i2c_stop>:
+
+void i2c_stop(void) {
+	TWCR = (1<<TWINT) | (1<<TWEN) | (1<<TWSTO);
+  ae:	84 e9       	ldi	r24, 0x94	; 148
+  b0:	86 bf       	out	0x36, r24	; 54
+#ifndef DEBUGI2C
+	while(TWCR & (1<<TWSTO));
+  b2:	06 b6       	in	r0, 0x36	; 54
+  b4:	04 fc       	sbrc	r0, 4
+  b6:	fd cf       	rjmp	.-6      	; 0xb2 <i2c_stop+0x4>
+#endif
+  b8:	08 95       	ret
+
+000000ba <main>:
+#include "SSD1306.h"
+#include "i2c.h"
+
+int main(void)
+{
+	i2c_init();
+  ba:	c9 df       	rcall	.-110    	; 0x4e <i2c_init>
+	ssd1306_init();
+  bc:	13 d0       	rcall	.+38     	; 0xe4 <ssd1306_init>
+
+	ssd1306_clear_display();
+  be:	44 d0       	rcall	.+136    	; 0x148 <ssd1306_clear_display>
+	ssd1306_send_command(0xAF); //SSD1306_DISPLAYON
+  c0:	8f ea       	ldi	r24, 0xAF	; 175
+  c2:	24 d0       	rcall	.+72     	; 0x10c <ssd1306_send_command>
+	setCol(0);
+  c4:	80 e0       	ldi	r24, 0x00	; 0
+  c6:	32 d0       	rcall	.+100    	; 0x12c <setCol>
+	setRow(0);
+  c8:	80 e0       	ldi	r24, 0x00	; 0
+  ca:	3b d0       	rcall	.+118    	; 0x142 <setRow>
+
+	ssd1306_bitmap(128-32,0,32,4,stateDANGER);
+  cc:	00 e6       	ldi	r16, 0x60	; 96
+  ce:	10 e0       	ldi	r17, 0x00	; 0
+  d0:	24 e0       	ldi	r18, 0x04	; 4
+  d2:	40 e2       	ldi	r20, 0x20	; 32
+  d4:	60 e0       	ldi	r22, 0x00	; 0
+  d6:	80 e6       	ldi	r24, 0x60	; 96
+  d8:	50 d0       	rcall	.+160    	; 0x17a <ssd1306_bitmap>
+  da:	ff cf       	rjmp	.-2      	; 0xda <main+0x20>
+
+000000dc <ssd1306_send_command_start>:
+	i2c_stop();
+}
+
+
+void ssd1306_send_command_start(void){
+	i2c_start();
+  dc:	bc df       	rcall	.-136    	; 0x56 <i2c_start>
+	i2c_write(SSD1306_COMMAND);
+  de:	80 e0       	ldi	r24, 0x00	; 0
+  e0:	d9 df       	rcall	.-78     	; 0x94 <i2c_write>
+  e2:	08 95       	ret
+
+000000e4 <ssd1306_init>:
+#include "SSD1306.h"
+#include "main.h"
+#include "I2C.h"
+
+void ssd1306_init(void){
+  e4:	0f 93       	push	r16
+  e6:	1f 93       	push	r17
+  e8:	cf 93       	push	r28
+  ea:	df 93       	push	r29
+	ssd1306_send_command_start();
+  ec:	f7 df       	rcall	.-18     	; 0xdc <ssd1306_send_command_start>
+  ee:	c0 ee       	ldi	r28, 0xE0	; 224
+  f0:	d0 e0       	ldi	r29, 0x00	; 0
+  f2:	08 ef       	ldi	r16, 0xF8	; 248
+  f4:	10 e0       	ldi	r17, 0x00	; 0
+	for (uint8_t i = 0; i < sizeof(initSSD1306sq); i++) {
+		i2c_write(initSSD1306sq[i]);
+  f6:	89 91       	ld	r24, Y+
+  f8:	cd df       	rcall	.-102    	; 0x94 <i2c_write>
+#include "main.h"
+#include "I2C.h"
+
+void ssd1306_init(void){
+	ssd1306_send_command_start();
+	for (uint8_t i = 0; i < sizeof(initSSD1306sq); i++) {
+  fa:	c0 17       	cp	r28, r16
+  fc:	d1 07       	cpc	r29, r17
+  fe:	d9 f7       	brne	.-10     	; 0xf6 <ssd1306_init+0x12>
+		i2c_write(initSSD1306sq[i]);
+	}
+	i2c_stop();
+ 100:	d6 df       	rcall	.-84     	; 0xae <i2c_stop>
+}
+ 102:	df 91       	pop	r29
+ 104:	cf 91       	pop	r28
+ 106:	1f 91       	pop	r17
+ 108:	0f 91       	pop	r16
+ 10a:	08 95       	ret
+
+0000010c <ssd1306_send_command>:
+void ssd1306_send_command_start(void){
+	i2c_start();
+	i2c_write(SSD1306_COMMAND);
+}
+
+void ssd1306_send_command(uint8_t cmd){
+ 10c:	cf 93       	push	r28
+ 10e:	c8 2f       	mov	r28, r24
+	i2c_start();
+ 110:	a2 df       	rcall	.-188    	; 0x56 <i2c_start>
+	//i2c_write(0x00);
+	i2c_write(cmd);
+ 112:	8c 2f       	mov	r24, r28
+ 114:	bf df       	rcall	.-130    	; 0x94 <i2c_write>
+	i2c_stop();
+ 116:	cb df       	rcall	.-106    	; 0xae <i2c_stop>
+
+	
+	ssd1306_send_command_start();
+ 118:	e1 df       	rcall	.-62     	; 0xdc <ssd1306_send_command_start>
+	i2c_write(cmd);
+ 11a:	8c 2f       	mov	r24, r28
+ 11c:	bb df       	rcall	.-138    	; 0x94 <i2c_write>
+	i2c_stop();
+ 11e:	c7 df       	rcall	.-114    	; 0xae <i2c_stop>
+}
+ 120:	cf 91       	pop	r28
+ 122:	08 95       	ret
+
+00000124 <ssd1306_write_display_start>:
+
+void ssd1306_write_display_start(void){
+	i2c_start();
+ 124:	98 df       	rcall	.-208    	; 0x56 <i2c_start>
+	i2c_write(SSD1306_DATA);
+ 126:	80 e4       	ldi	r24, 0x40	; 64
+ 128:	b5 df       	rcall	.-150    	; 0x94 <i2c_write>
+ 12a:	08 95       	ret
+
+0000012c <setCol>:
+}
+
+
+void setCol(uint8_t col) {
+ 12c:	cf 93       	push	r28
+ 12e:	c8 2f       	mov	r28, r24
+	ssd1306_send_command(SSD1306_SETLOWCOLUMN | (col & 0XF));
+ 130:	8f 70       	andi	r24, 0x0F	; 15
+ 132:	ec df       	rcall	.-40     	; 0x10c <ssd1306_send_command>
+	ssd1306_send_command(SSD1306_SETHIGHCOLUMN | (col >> 4));
+ 134:	8c 2f       	mov	r24, r28
+ 136:	82 95       	swap	r24
+ 138:	8f 70       	andi	r24, 0x0F	; 15
+ 13a:	80 61       	ori	r24, 0x10	; 16
+ 13c:	e7 df       	rcall	.-50     	; 0x10c <ssd1306_send_command>
+}
+ 13e:	cf 91       	pop	r28
+ 140:	08 95       	ret
+
+00000142 <setRow>:
+
+
+void setRow(uint8_t row) {
+	ssd1306_send_command(SSD1306_SETSTARTPAGE | row);
+ 142:	80 6b       	ori	r24, 0xB0	; 176
+ 144:	e3 df       	rcall	.-58     	; 0x10c <ssd1306_send_command>
+ 146:	08 95       	ret
+
+00000148 <ssd1306_clear_display>:
+}
+
+void ssd1306_clear_display(void){
+ 148:	cf 93       	push	r28
+ 14a:	df 93       	push	r29
+	uint8_t i,i1;
+	for(i1=0;i1<4;i1++){
+ 14c:	d0 e0       	ldi	r29, 0x00	; 0
+		setCol(0);
+ 14e:	80 e0       	ldi	r24, 0x00	; 0
+ 150:	ed df       	rcall	.-38     	; 0x12c <setCol>
+		setRow(i1);
+ 152:	8d 2f       	mov	r24, r29
+ 154:	f6 df       	rcall	.-20     	; 0x142 <setRow>
+		ssd1306_write_display_start();
+ 156:	e6 df       	rcall	.-52     	; 0x124 <ssd1306_write_display_start>
+ 158:	c0 e0       	ldi	r28, 0x00	; 0
+		for(i=0;i<128;i++){
+			i2c_write(0);
+ 15a:	80 e0       	ldi	r24, 0x00	; 0
+ 15c:	9b df       	rcall	.-202    	; 0x94 <i2c_write>
+	uint8_t i,i1;
+	for(i1=0;i1<4;i1++){
+		setCol(0);
+		setRow(i1);
+		ssd1306_write_display_start();
+		for(i=0;i<128;i++){
+ 15e:	cf 5f       	subi	r28, 0xFF	; 255
+ 160:	c0 38       	cpi	r28, 0x80	; 128
+ 162:	d9 f7       	brne	.-10     	; 0x15a <ssd1306_clear_display+0x12>
+			i2c_write(0);
+		}
+		i2c_stop();
+ 164:	a4 df       	rcall	.-184    	; 0xae <i2c_stop>
+	ssd1306_send_command(SSD1306_SETSTARTPAGE | row);
+}
+
+void ssd1306_clear_display(void){
+	uint8_t i,i1;
+	for(i1=0;i1<4;i1++){
+ 166:	df 5f       	subi	r29, 0xFF	; 255
+ 168:	d4 30       	cpi	r29, 0x04	; 4
+ 16a:	89 f7       	brne	.-30     	; 0x14e <ssd1306_clear_display+0x6>
+		for(i=0;i<128;i++){
+			i2c_write(0);
+		}
+		i2c_stop();
+	}
+	setCol(0);
+ 16c:	80 e0       	ldi	r24, 0x00	; 0
+ 16e:	de df       	rcall	.-68     	; 0x12c <setCol>
+	setRow(0);
+ 170:	80 e0       	ldi	r24, 0x00	; 0
+ 172:	e7 df       	rcall	.-50     	; 0x142 <setRow>
+}
+ 174:	df 91       	pop	r29
+ 176:	cf 91       	pop	r28
+ 178:	08 95       	ret
+
+0000017a <ssd1306_bitmap>:
+
+
+void ssd1306_bitmap(uint8_t x0, uint8_t y0, uint8_t x1, uint8_t y1, const uint8_t bitmap[]) {
+ 17a:	5f 92       	push	r5
+ 17c:	6f 92       	push	r6
+ 17e:	7f 92       	push	r7
+ 180:	8f 92       	push	r8
+ 182:	9f 92       	push	r9
+ 184:	af 92       	push	r10
+ 186:	bf 92       	push	r11
+ 188:	cf 92       	push	r12
+ 18a:	df 92       	push	r13
+ 18c:	ef 92       	push	r14
+ 18e:	ff 92       	push	r15
+ 190:	0f 93       	push	r16
+ 192:	1f 93       	push	r17
+ 194:	cf 93       	push	r28
+ 196:	df 93       	push	r29
+ 198:	58 2e       	mov	r5, r24
+ 19a:	66 2e       	mov	r6, r22
+	uint16_t j = 0;
+	uint8_t x, y;
+	for (y = y0; y < (y0+y1); y++) {
+ 19c:	86 2f       	mov	r24, r22
+ 19e:	90 e0       	ldi	r25, 0x00	; 0
+ 1a0:	5c 01       	movw	r10, r24
+ 1a2:	a2 0e       	add	r10, r18
+ 1a4:	b1 1c       	adc	r11, r1
+ 1a6:	8a 15       	cp	r24, r10
+ 1a8:	9b 05       	cpc	r25, r11
+ 1aa:	2c f5       	brge	.+74     	; 0x1f6 <ssd1306_bitmap+0x7c>
+ 1ac:	c0 e0       	ldi	r28, 0x00	; 0
+ 1ae:	d0 e0       	ldi	r29, 0x00	; 0
+		setCol(x0);
+		setRow(y);
+		ssd1306_write_display_start();
+		for (x = x0; x < (x0+x1); x++) {
+ 1b0:	85 2c       	mov	r8, r5
+ 1b2:	91 2c       	mov	r9, r1
+ 1b4:	64 01       	movw	r12, r8
+ 1b6:	c4 0e       	add	r12, r20
+ 1b8:	d1 1c       	adc	r13, r1
+
+void ssd1306_bitmap(uint8_t x0, uint8_t y0, uint8_t x1, uint8_t y1, const uint8_t bitmap[]) {
+	uint16_t j = 0;
+	uint8_t x, y;
+	for (y = y0; y < (y0+y1); y++) {
+		setCol(x0);
+ 1ba:	85 2d       	mov	r24, r5
+ 1bc:	b7 df       	rcall	.-146    	; 0x12c <setCol>
+		setRow(y);
+ 1be:	86 2d       	mov	r24, r6
+ 1c0:	c0 df       	rcall	.-128    	; 0x142 <setRow>
+		ssd1306_write_display_start();
+ 1c2:	b0 df       	rcall	.-160    	; 0x124 <ssd1306_write_display_start>
+		for (x = x0; x < (x0+x1); x++) {
+ 1c4:	8c 14       	cp	r8, r12
+ 1c6:	9d 04       	cpc	r9, r13
+ 1c8:	7c f4       	brge	.+30     	; 0x1e8 <ssd1306_bitmap+0x6e>
+ 1ca:	78 01       	movw	r14, r16
+ 1cc:	ec 0e       	add	r14, r28
+ 1ce:	fd 1e       	adc	r15, r29
+ 1d0:	75 2c       	mov	r7, r5
+			i2c_write(bitmap[j++]);
+ 1d2:	21 96       	adiw	r28, 0x01	; 1
+ 1d4:	f7 01       	movw	r30, r14
+ 1d6:	81 91       	ld	r24, Z+
+ 1d8:	7f 01       	movw	r14, r30
+ 1da:	5c df       	rcall	.-328    	; 0x94 <i2c_write>
+	uint8_t x, y;
+	for (y = y0; y < (y0+y1); y++) {
+		setCol(x0);
+		setRow(y);
+		ssd1306_write_display_start();
+		for (x = x0; x < (x0+x1); x++) {
+ 1dc:	73 94       	inc	r7
+ 1de:	87 2d       	mov	r24, r7
+ 1e0:	90 e0       	ldi	r25, 0x00	; 0
+ 1e2:	8c 15       	cp	r24, r12
+ 1e4:	9d 05       	cpc	r25, r13
+ 1e6:	ac f3       	brlt	.-22     	; 0x1d2 <ssd1306_bitmap+0x58>
+			i2c_write(bitmap[j++]);
+		}
+		i2c_stop();
+ 1e8:	62 df       	rcall	.-316    	; 0xae <i2c_stop>
+
+
+void ssd1306_bitmap(uint8_t x0, uint8_t y0, uint8_t x1, uint8_t y1, const uint8_t bitmap[]) {
+	uint16_t j = 0;
+	uint8_t x, y;
+	for (y = y0; y < (y0+y1); y++) {
+ 1ea:	63 94       	inc	r6
+ 1ec:	86 2d       	mov	r24, r6
+ 1ee:	90 e0       	ldi	r25, 0x00	; 0
+ 1f0:	8a 15       	cp	r24, r10
+ 1f2:	9b 05       	cpc	r25, r11
+ 1f4:	14 f3       	brlt	.-60     	; 0x1ba <ssd1306_bitmap+0x40>
+		for (x = x0; x < (x0+x1); x++) {
+			i2c_write(bitmap[j++]);
+		}
+		i2c_stop();
+	}
+	setCol(0);
+ 1f6:	80 e0       	ldi	r24, 0x00	; 0
+ 1f8:	99 df       	rcall	.-206    	; 0x12c <setCol>
+	setRow(0);
+ 1fa:	80 e0       	ldi	r24, 0x00	; 0
+ 1fc:	a2 df       	rcall	.-188    	; 0x142 <setRow>
+}
+ 1fe:	df 91       	pop	r29
+ 200:	cf 91       	pop	r28
+ 202:	1f 91       	pop	r17
+ 204:	0f 91       	pop	r16
+ 206:	ff 90       	pop	r15
+ 208:	ef 90       	pop	r14
+ 20a:	df 90       	pop	r13
+ 20c:	cf 90       	pop	r12
+ 20e:	bf 90       	pop	r11
+ 210:	af 90       	pop	r10
+ 212:	9f 90       	pop	r9
+ 214:	8f 90       	pop	r8
+ 216:	7f 90       	pop	r7
+ 218:	6f 90       	pop	r6
+ 21a:	5f 90       	pop	r5
+ 21c:	08 95       	ret
+
+0000021e <_exit>:
+ 21e:	f8 94       	cli
+
+00000220 <__stop_program>:
+ 220:	ff cf       	rjmp	.-2      	; 0x220 <__stop_program>

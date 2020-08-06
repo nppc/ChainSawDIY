@@ -1,5 +1,10 @@
+//#include <U8x8lib.h>
+
 #include <avr/wdt.h>
-#include <Tiny4kOLED.h> //https://github.com/datacute/Tiny4kOLED
+//#include <Tiny4kOLED.h> //https://github.com/datacute/Tiny4kOLED
+#include <Wire.h>
+
+//U8X8_SSD1306_128X32_UNIVISION_HW_I2C u8x8(/* reset=*/ U8X8_PIN_NONE);   // Adafruit ESP8266/32u4/ARM Boards + FeatherWing OLED
 
 //#define NOHANG
 //#define ENABLEFONT
@@ -8,7 +13,7 @@
 
 // PB1 is ON/OFF switch
 
-#define MAXMEASUREDVOLT 27.22
+#define MAXMEASUREDVOLT 28.16
 
 // formula: 1SVolt * 1024 * 128 / MAXMEASUREDVOLT
 #define V1S6 (uint32_t)19725 * CELLS //4.15
@@ -20,9 +25,9 @@
 #define V1S0 (uint32_t)14259 * CELLS //3.00
 
 
-// with current resistor divider (120K/27K) we can measure max 27.22 volts
-// so, the formula is: V = 27.22 * RAWADC / 1024
-// or RAWADC = V * 1024 / 27.22
+// with current resistor divider (100K/10K) we can measure max 28.16 volts
+// so, the formula is: V = 28.16 * RAWADC / 1024
+// or RAWADC = V * 1024 / 28.16
 // for 4S: fully charged is 631 (4.2v per cell); 451 - fully discharged (3v per cell)
 
 uint8_t run_state = 0; // 0 - stopped; 1 - running
@@ -78,11 +83,11 @@ static const uint8_t PROGMEM batEnd[7*4] = {
 };
 
 void draw_Bat(uint8_t val){
-	if(val==0){oled.bitmap(0,0,13,4,batBot0);} else {oled.bitmap(0,0,13,4,batBot1);}
-	for(uint8_t ix=2;ix<=6;ix++){if(ix<=val){oled.bitmap(13+(ix-2)*10,0,10,4,bat1);}else{oled.bitmap(13+(ix-2)*10,0,10,4,bat0);}}
-	oled.bitmap(13+50,0,7,4,batEnd);
+	if(val==0){ssd1306_bitmap(0,0,13,4,batBot0);} else {ssd1306_bitmap(0,0,13,4,batBot1);}
+	for(uint8_t ix=2;ix<=6;ix++){if(ix<=val){ssd1306_bitmap(13+(ix-2)*10,0,10,4,bat1);}else{ssd1306_bitmap(13+(ix-2)*10,0,10,4,bat0);}}
+	ssd1306_bitmap(13+50,0,7,4,batEnd);
 }
-
+/*
 void draw_clear(uint8_t x0, uint8_t y0, uint8_t x1, uint8_t y1) {
 	uint16_t j = 0;
  	for (uint8_t y = y0; y < y0 + y1; y++) {
@@ -90,7 +95,7 @@ void draw_clear(uint8_t x0, uint8_t y0, uint8_t x1, uint8_t y1) {
 		oled.fillLength(0,x1);
 	}
 }
-
+*/
 bool isBatteryEmpty(uint16_t rawadc){
   return ((uint32_t)rawadc*128 >= V1S0 ? LOW : HIGH);
 }
@@ -116,9 +121,9 @@ uint8_t getbatIndicatorVal(uint16_t rawadc){
 }
 
 bool getButtonState(){
-  bool tmp = bitRead(PINB, 1);
+  bool tmp = bitRead(PIND, 2);
   delay(10);
-  if(tmp == bitRead(PINB, 1)){return tmp;}else{return !tmp;}
+  if(tmp == bitRead(PIND, 2)){return tmp;}else{return !tmp;}
 }
 
 void disableWatchdog(){
@@ -127,33 +132,66 @@ void disableWatchdog(){
 
 void setup() {
   //stop motor
-  bitClear(PORTB, 3);
-  bitSet(DDRB, 3);
-
-  bitClear(DDRB, 1); // Input
-  bitSet(PORTB, 1); // Enable pullup
+  bitClear(PORTB, 1);
+  bitSet(DDRB, 1);
+  // button
+  bitClear(DDRD, 2); // Input
+  bitSet(PORTD, 2); // Enable pullup
+  //FAN
+  bitSet(PORTB, 2);
+  bitSet(DDRB, 2);
 
   disableWatchdog();
-  
+
+  Wire.begin();
+
+  ssd1306_init();
+
   // configure ADC
   ADMUX =
            (0 << ADLAR) |     // do not left shift result (for 10-bit values)
-           (0 << REFS2) |     // Sets ref. voltage to VCC
-           (0 << REFS1) |     // Sets ref. voltage to VCC
-           (0 << REFS0) |     // Sets ref. voltage to VCC
-           (0 << MUX3)  |     // use ADC2 for input (PB4)
-           (0 << MUX2)  |     // use ADC2 for input (PB4)
-           (1 << MUX1)  |     // use ADC2 for input (PB4)
-           (0 << MUX0);       // use ADC2 for input (PB4)
+           (1 << REFS1) |     // Sets ref. voltage to VCC
+           (1 << REFS0) |     // Sets ref. voltage to VCC
+           (0 << MUX3)  |     // use ADC0 for input (PC0)
+           (0 << MUX2)  |     // use ADC0 for input (PC0)
+           (0 << MUX1)  |     // use ADC0 for input (PC0)
+           (0 << MUX0);       // use ADC0 for input (PC0)
  ADCSRA = 
            (1 << ADEN)  |     // Enable ADC 
            (1 << ADPS2) |     // set prescaler to 64, bit 2 
            (1 << ADPS1) |     // set prescaler to 64, bit 1 
-           (1 << ADPS0);      // set prescaler to 64, bit 0 
+           (0 << ADPS0);      // set prescaler to 64, bit 0 
 
 
   ADCSRA |= (1 << ADSC); // start first conversion
-  
+
+  //u8x8.begin();
+//  ssd1306_send_command(1 ? SSD1306_INVERTDISPLAY : SSD1306_NORMALDISPLAY);
+  //u8x8.setFont(u8x8_font_chroma48medium8_r);
+  //u8x8.drawString(0,0,"Hello World!");
+  //u8x8.refreshDisplay();    // only required for SSD1606/7  
+
+  ssd1306_clear_display();
+  ssd1306_send_command(0xAF); //SSD1306_DISPLAYON
+  setCol(0);
+  setRow(0);
+//    ssd1306_bitmap(128-32,0,32,4,stateDANGER);
+  uint16_t j = 0;
+  for (uint8_t y = 0; y < 4; y++) {
+    setCol(60);
+    setRow(y);
+    ssd1306_write_display_start();
+    for (uint8_t x = 60; x < 32+60; x++) {
+      Wire.write(pgm_read_byte(&stateDANGER[j++]));
+    }
+    Wire.endTransmission();
+  }
+  setCol(0);
+  setRow(0);
+
+  while(1);
+ 
+ /*
   #ifdef ENABLEFONT
   oled.setFont(FONT8X16);
   #endif
@@ -176,26 +214,12 @@ void setup() {
     // button is pressed
     delay(100);
   }  
-
+*/
   // enable 1s watchdog with reset
   cli();
   WDTCR = (1<<WDCE);
   WDTCR = (1<<WDE) | (1<<WDP1) | (1<<WDP2); // 1s
   sei();
-}
-
-
-ISR(TIMER1_COMPA_vect){
-  // set pin
-  bitClear(PORTB, 3);
-  //tmrval1 = TCNT1;
-}
-
-//ISR(TIMER1_OVF_vect){
-ISR(TIMER1_COMPB_vect){
-  //clear pin
-  bitSet(PORTB, 3);
-  //tmrval = TCNT1;
 }
 
 uint16_t readADC(void){
@@ -213,12 +237,13 @@ uint16_t readADC(void){
 
 // start motor smoothly
 bool startMotor(void){
+  bitClear(PORTB, 2);
   cli();
   OCR1A = 95; // value to test
-  OCR1B = 255; // value to test	
-  TCCR1 = (1<<CS13) | (1<<CS11) ; // Fast PWM mode (value 3)
-  //TCCR0B = (0<<WGM02) | (1<<CS02) | (0<<CS01) | (0<<CS00); // Speed (value 3)
-  TIMSK |= (1<<OCIE1A) | (1<<OCIE1B) ;//(1<<TOIE1); // enable compare match and overflow interrupts
+//  OCR1B = 255; // value to test	
+  TCCR1A = (1<<WGM11) | (1<<WGM10);// | (1<<CS13) | (1<<CS11) ; // Fast PWM mode (value 3)
+  TCCR1B = (1<<COM1A1) | (0<<COM1A0) | (1<<WGM13) | (1<<WGM12) | (1<<CS12) | (0<<CS01) | (1<<CS10); // Speed (/1024)
+  //TIMSK |= (1<<OCIE1A) | (1<<OCIE1B) ;//(1<<TOIE1); // enable compare match and overflow interrupts
   sei();
   delay(30);
   //now motor starts at 50%. Increase the speed to 100%
@@ -240,27 +265,33 @@ bool startMotor(void){
   }
   // at the end run motor at full speed
   cli();
-  TCCR1 = 0; // stop timer
+  TCCR1A = 0; // stop timer
+  TCCR1B = 0; // stop timer
   sei();
-  bitSet(PORTB, 3);
-  delay(5);
-  bitSet(PORTB, 3); // make sure motor is on. can be done with resetting interrupts flags.
+  bitSet(PORTB, 1);
+//  delay(5);
+//  bitSet(PORTB, 1); // make sure motor is on. can be done with resetting interrupts flags.
   run_state=1;
   return LOW;
 }
 
 void stopMotor(){
+    bitSet(PORTB, 2);
     // make sure that motor is off
     run_state=0;
     // stop timer
 	cli();
-    TCCR1 = 0;
+  TCCR1A = 0; // stop timer
+  TCCR1B = 0; // stop timer
 	sei();
-    bitClear(PORTB,3);
-	delay(5);
-    bitClear(PORTB,3);  
+    bitClear(PORTB,1);
+//	delay(5);
+//    bitClear(PORTB,1);  
 }
 
+void loop() {  }
+
+/*
 void loop() {  
   wdt_reset();
   uint16_t rawadc = readADC();
@@ -276,7 +307,7 @@ void loop() {
     }else{
       oled.bitmap(128-32,0,32,4,stateOK);
     }
-    oled.switchFrame();
+    //oled.switchFrame();
     delay(50); // make sure, that page switch doesn't occur too often
   }
   // check button and start/stop motor
@@ -296,18 +327,18 @@ void loop() {
     disableWatchdog();
 #ifndef NOHANG
 	while(1==1){
-		bitClear(PORTB,3); // just to be 100% sure that motor will not start
+		bitClear(PORTB,1); // just to be 100% sure that motor will not start
 		draw_Bat(0);
-		oled.bitmap(128-32,0,32,4,stateDANGER);
-		oled.switchFrame();
+//		oled.bitmap(128-32,0,32,4,stateDANGER);
+//		oled.switchFrame();
 		delay(300);
 		draw_clear(0,0,70,4);
-		oled.bitmap(128-32,0,32,4,stateDANGER);
-		oled.switchFrame();
+//		oled.bitmap(128-32,0,32,4,stateDANGER);
+//		oled.switchFrame();
 		delay(600);
 	}
 #endif
   }
 
 }
-
+*/

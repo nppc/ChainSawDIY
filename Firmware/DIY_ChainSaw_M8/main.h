@@ -1,6 +1,7 @@
 #ifndef MAIN_H_
 #define MAIN_H_
 
+#define COOLER
 //#define DEBUGI2C
 //#define NOHANG
 //#define ENABLEFONT

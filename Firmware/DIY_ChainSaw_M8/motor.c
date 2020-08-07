@@ -4,7 +4,9 @@
 
 // start motor smoothly
 uint8_t startMotor(void){
+#ifdef COOLER
 	cbi(PORTB, 2);
+#endif
 	cli();
 	OCR1A = 95; // value to test
 	//  OCR1B = 255; // value to test
@@ -43,7 +45,9 @@ uint8_t startMotor(void){
 }
 
 void stopMotor(void){
+#ifdef COOLER
 	sbi(PORTB, 2);
+#endif
 	// make sure that motor is off
 	run_state=0;
 	// stop timer

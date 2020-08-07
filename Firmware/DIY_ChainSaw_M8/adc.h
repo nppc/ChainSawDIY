@@ -3,7 +3,7 @@
 
 #include "main.h"
 
-// If voltage dividor for ADC is changed, or vref, then need to recalculate this constant
+// If voltage divisor for ADC is changed, or vref, then need to recalculate this constant
 // with current resistor divider (100K/10K) we can measure max 28.16 volts
 // so, the formula is: V = 28.16 * RAWADC / 1024
 // or RAWADC = V * 1024 / 28.16
@@ -29,7 +29,7 @@
 
 void adc_init(void);
 uint16_t readADC(void);
-bool isBatteryEmpty(uint16_t rawadc);
+uint8_t isBatteryEmpty(uint16_t rawadc);
 uint8_t getbatIndicatorVal(uint16_t rawadc);
 
 #endif /* ADC_H_ */

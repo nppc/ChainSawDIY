@@ -4,7 +4,7 @@
 #include "main.h"
 #include <util/twi.h>
 
-#define SCL_CLOCK  100000L
+#define SCL_CLOCK  500000L
 #define I2CADDRESS 0x3C
 
     void i2c_init(void);

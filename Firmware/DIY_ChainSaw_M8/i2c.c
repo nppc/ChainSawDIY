@@ -32,18 +32,21 @@ uint8_t i2c_start() {
 }
 
 uint8_t i2c_write(uint8_t data) {
-	uint8_t twi_status_register;
+	//uint8_t twi_status_register;
 	TWDR = data;
 	TWCR = (1<<TWINT) | (1<<TWEN);
 #ifndef DEBUGI2C
 	while(!(TWCR & (1<<TWINT)));
 #endif
+/*
 	twi_status_register = TW_STATUS & 0xF8;
 	if (twi_status_register != TW_MT_DATA_ACK) {
 		return 1;
 		} else {
 		return 0;
 	}
+*/
+	return 0;
 }
 
 void i2c_stop(void) {

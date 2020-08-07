@@ -1,6 +1,8 @@
 #ifndef OLED_H_
 #define OLED_H_
 
+#include "main.h"
+
 void oled_init(void);
 void oled_enable_display(void);
 void oled_clear_display(void);

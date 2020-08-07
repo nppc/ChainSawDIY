@@ -10,6 +10,7 @@
 #define CELLS 5	// define LiIon cells count
 
 #include <avr/io.h>
+#include <avr/wdt.h>
 #include <stdint.h>
 #include <util/delay.h>
 #include <avr/interrupt.h>
@@ -19,7 +20,10 @@
 #define cbi(port, bit) (port) &= ~(1 << (bit))
 #define bitRead(value, bit) (((value) >> (bit)) & 0x01)
 
-uint8_t run_state = 0; // 0 - stopped; 1 - running
-uint8_t prev_batInd = 0;
+uint8_t getButtonState(void);
+
+// global variables
+extern uint8_t run_state; // = 0; // 0 - stopped; 1 - running
+extern uint8_t prev_batInd; // = 0;
 
 #endif /* MAIN_H_ */

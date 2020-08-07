@@ -22,11 +22,11 @@ void adc_init(void){
 }
 
 uint16_t readADC(void){
-	while (bit_is_set(ADCSRA,ADSC)); // wait for any previous conversion
+	while (bitRead(ADCSRA,ADSC)==1); // wait for any previous conversion
 	uint16_t res32=0;
 	for(uint8_t i=0;i<32;i++){
 		ADCSRA |= (1 << ADSC); // start new conversion
-		while (bit_is_set(ADCSRA,ADSC)); // wait for current conversion to complete
+		while (bitRead(ADCSRA,ADSC)==1); // wait for current conversion to complete
 		uint8_t low  = ADCL; // must read ADCL first
 		uint8_t high = ADCH;
 		res32+=(uint16_t)((high<<8) | low);
@@ -35,8 +35,8 @@ uint16_t readADC(void){
 }
 
 
-bool isBatteryEmpty(uint16_t rawadc){
-  return ((uint32_t)rawadc*128 >= V1S0 ? LOW : HIGH);
+uint8_t isBatteryEmpty(uint16_t rawadc){
+  return ((uint32_t)rawadc*128 >= V1S0 ? 0 : 1);
 }
 
 uint8_t getbatIndicatorVal(uint16_t rawadc){

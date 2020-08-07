@@ -12,6 +12,12 @@
 #include <avr/io.h>
 #include <stdint.h>
 #include <util/delay.h>
+#include <avr/interrupt.h>
+
+// some macros
+#define sbi(port, bit) (port) |= (1 << (bit))
+#define cbi(port, bit) (port) &= ~(1 << (bit))
+
 
 uint8_t run_state = 0; // 0 - stopped; 1 - running
 uint8_t prev_batInd = 0;

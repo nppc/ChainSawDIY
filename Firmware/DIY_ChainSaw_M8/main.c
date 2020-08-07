@@ -15,14 +15,14 @@ int main(void)
 {
 	// ****** initialization ******
 	//stop motor
-	bitClear(PORTB, 1);
-	bitSet(DDRB, 1);
-	// button
-	bitClear(DDRD, 2); // Input
-	bitSet(PORTD, 2); // Enable pullup
+	cbi(PORTB, 1);
+	sbi(DDRB, 1);
+	// button  with internal pullup
+	cbi(DDRD, 2);
+	sbi(PORTD, 2);
 	//FAN
-	bitSet(PORTB, 2);
-	bitSet(DDRB, 2);
+	sbi(PORTB, 2);
+	sbi(DDRB, 2);
 
 	wdt_disable();
 
@@ -94,7 +94,7 @@ int main(void)
 			wdt_disable();
 			#ifndef NOHANG
 			while(1){
-				bitClear(PORTB,1); // just to be 100% sure that motor will not start
+				cbi(PORTB,1); // just to be 100% sure that motor will not start
 				oled_draw_Bat(0);
 				oled_bitmap(128-32,0,32,4,stateDANGER);
 				_delay_ms(300);
@@ -110,7 +110,7 @@ int main(void)
 
 // start motor smoothly
 bool startMotor(void){
-  bitClear(PORTB, 2);
+  cbi(PORTB, 2);
   cli();
   OCR1A = 95; // value to test
 //  OCR1B = 255; // value to test	
@@ -141,15 +141,15 @@ bool startMotor(void){
   TCCR1A = 0; // stop timer
   TCCR1B = 0; // stop timer
   sei();
-  bitSet(PORTB, 1);
+  sbi(PORTB, 1);
 //  _delay_ms(5);
-//  bitSet(PORTB, 1); // make sure motor is on. can be done with resetting interrupts flags.
+//  sbi(PORTB, 1); // make sure motor is on. can be done with resetting interrupts flags.
   run_state=1;
   return LOW;
 }
 
 void stopMotor(){
-    bitSet(PORTB, 2);
+    sbi(PORTB, 2);
     // make sure that motor is off
     run_state=0;
     // stop timer
@@ -157,9 +157,9 @@ void stopMotor(){
   TCCR1A = 0; // stop timer
   TCCR1B = 0; // stop timer
 	sei();
-    bitClear(PORTB,1);
+    cbi(PORTB,1);
 //	_delay_ms(5);
-//    bitClear(PORTB,1);  
+//    cbi(PORTB,1);  
 }
 
 

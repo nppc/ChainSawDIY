@@ -10,7 +10,7 @@ uint8_t prev_batInd = 0;
 uint8_t getButtonState(void){
 	uint8_t tmp = bitRead(PIND, 2);
 	_delay_ms(10);
-	if(tmp == bitRead(PIND, 2)){return tmp;}else{return !tmp;}
+	if(tmp == bitRead(PIND, 2)){return tmp;}else{return (tmp==0 ? 1 : 0);}
 }
 
 
@@ -18,13 +18,13 @@ int main(void)
 {
 	// ****** initialization ******
 	//stop motor
-	cbi(PORTB, 1);
+	sbi(PORTB, 1);
 	sbi(DDRB, 1);
 	// button  with internal pull up
 	cbi(DDRD, 2);
 	sbi(PORTD, 2);
 	//FAN
-	sbi(PORTB, 2);
+	cbi(PORTB, 2);
 	sbi(DDRB, 2);
 
 	cli();
@@ -100,7 +100,7 @@ int main(void)
 			wdt_disable();
 			#ifndef NOHANG
 			while(1){
-				cbi(PORTB,1); // just to be 100% sure that motor will not start
+				sbi(PORTB,1); // just to be 100% sure that motor will not start
 				oled_draw_Bat(0);
 				oled_bitmap(128-32,0,32,4,oled_stateDANGER);
 				_delay_ms(300);
@@ -113,6 +113,10 @@ int main(void)
 	}		
 }
 
-
+#ifdef DEBUGSIM
+void _delay_ms(uint16_t ms){
+	
+}
+#endif
 
 

@@ -8,7 +8,7 @@
 // so, the formula is: V = 28.16 * RAWADC / 1024
 // or RAWADC = V * 1024 / 28.16
 // for 4S: fully charged is 631 (4.2v per cell); 451 - fully discharged (3v per cell)
-#define MAXMEASUREDVOLT 28160 //(mV)
+#define MAXMEASUREDVOLT 28930 //(mV)
 
 // 3.0v - 0%
 // 3.5v - 15%
@@ -18,13 +18,13 @@
 // 4.0v - 83%
 // 4.2v - 100%
 // formula: 1SVolt * 1024 * 128 / MAXMEASUREDVOLT
-#define V1S6 (uint32_t)4150 * 1024 * 128 / MAXMEASUREDVOLT * CELLS //4.15V
-#define V1S5 (uint32_t)4000 * 1024 * 128 / MAXMEASUREDVOLT * CELLS //4.00V
-#define V1S4 (uint32_t)3850 * 1024 * 128 / MAXMEASUREDVOLT * CELLS //3.85V
-#define V1S3 (uint32_t)3700 * 1024 * 128 / MAXMEASUREDVOLT * CELLS //3.70V
-#define V1S2 (uint32_t)3600 * 1024 * 128 / MAXMEASUREDVOLT * CELLS //3.60V
-#define V1S1 (uint32_t)3500 * 1024 * 128 / MAXMEASUREDVOLT * CELLS //3.50V
-#define V1S0 (uint32_t)3000 * 1024 * 128 / MAXMEASUREDVOLT * CELLS //3.00V
+#define V1S6 (uint32_t)4100 * CELLS * 1024 * 128 / MAXMEASUREDVOLT //4.10V
+#define V1S5 (uint32_t)4000 * CELLS * 1024 * 128 / MAXMEASUREDVOLT //4.00V
+#define V1S4 (uint32_t)3850 * CELLS * 1024 * 128 / MAXMEASUREDVOLT //3.85V
+#define V1S3 (uint32_t)3700 * CELLS * 1024 * 128 / MAXMEASUREDVOLT //3.70V
+#define V1S2 (uint32_t)3600 * CELLS * 1024 * 128 / MAXMEASUREDVOLT //3.60V
+#define V1S1 (uint32_t)3500 * CELLS * 1024 * 128 / MAXMEASUREDVOLT //3.50V
+#define V1S0 (uint32_t)3000 * CELLS * 1024 * 128 / MAXMEASUREDVOLT //3.00V
 
 
 void adc_init(void);

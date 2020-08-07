@@ -5,8 +5,8 @@ void adc_init(void){
 	// configure ADC
 	ADMUX =
 		   (0 << ADLAR) |     // do not left shift result (for 10-bit values)
-		   (1 << REFS1) |     // Sets ref. voltage to VCC
-		   (1 << REFS0) |     // Sets ref. voltage to VCC
+		   (1 << REFS1) |     // Sets ref. voltage to Internal 2.56V
+		   (1 << REFS0) |     // Sets ref. voltage to Internal 2.56V
 		   (0 << MUX3)  |     // use ADC0 for input (PC0)
 		   (0 << MUX2)  |     // use ADC0 for input (PC0)
 		   (0 << MUX1)  |     // use ADC0 for input (PC0)
@@ -36,7 +36,11 @@ uint16_t readADC(void){
 
 
 uint8_t isBatteryEmpty(uint16_t rawadc){
-  return ((uint32_t)rawadc*128 >= V1S0 ? 0 : 1);
+#ifdef NOLOWBAT
+	return 0;
+#else
+	return ((uint32_t)rawadc*128 >= V1S0 ? 0 : 1);
+#endif
 }
 
 uint8_t getbatIndicatorVal(uint16_t rawadc){

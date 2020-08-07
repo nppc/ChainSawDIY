@@ -2,9 +2,9 @@
 #define MAIN_H_
 
 #define COOLER
-//#define DEBUGI2C
+//#define DEBUGSIM
 //#define NOHANG
-//#define ENABLEFONT
+//#define NOLOWBAT
 
 #define F_CPU 8000000UL
 
@@ -13,13 +13,18 @@
 #include <avr/io.h>
 #include <avr/wdt.h>
 #include <stdint.h>
+#ifndef DEBUGSIM
 #include <util/delay.h>
+#endif
 #include <avr/interrupt.h>
 
 // some macros
 #define sbi(port, bit) (port) |= (1 << (bit))
 #define cbi(port, bit) (port) &= ~(1 << (bit))
 #define bitRead(value, bit) (((value) >> (bit)) & 0x01)
+#ifdef DEBUGSIM
+void _delay_ms(uint16_t ms);
+#endif
 
 uint8_t getButtonState(void);
 

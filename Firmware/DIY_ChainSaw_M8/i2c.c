@@ -10,7 +10,7 @@ void i2c_init(void) {
 uint8_t i2c_start() {
 	uint8_t twi_status_register;
 	TWCR = (1<<TWINT) | (1<<TWSTA) | (1<<TWEN);
-#ifndef DEBUGI2C
+#ifndef DEBUGSIM
 	while(!(TWCR & (1<<TWINT)));
 #endif
 	twi_status_register = TW_STATUS & 0xF8;
@@ -20,7 +20,7 @@ uint8_t i2c_start() {
 	TWDR = I2CADDRESS << 1;
 	TWCR = (1<<TWINT) | (1<<TWEN);
 
-#ifndef DEBUGI2C
+#ifndef DEBUGSIM
 	while(!(TWCR & (1<<TWINT)));
 #endif
 	twi_status_register = TW_STATUS & 0xF8;
@@ -35,7 +35,7 @@ uint8_t i2c_write(uint8_t data) {
 	//uint8_t twi_status_register;
 	TWDR = data;
 	TWCR = (1<<TWINT) | (1<<TWEN);
-#ifndef DEBUGI2C
+#ifndef DEBUGSIM
 	while(!(TWCR & (1<<TWINT)));
 #endif
 /*
@@ -51,7 +51,7 @@ uint8_t i2c_write(uint8_t data) {
 
 void i2c_stop(void) {
 	TWCR = (1<<TWINT) | (1<<TWEN) | (1<<TWSTO);
-#ifndef DEBUGI2C
+#ifndef DEBUGSIM
 	while(TWCR & (1<<TWSTO));
 #endif
 }

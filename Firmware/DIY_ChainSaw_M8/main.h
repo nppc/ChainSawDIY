@@ -17,7 +17,7 @@
 // some macros
 #define sbi(port, bit) (port) |= (1 << (bit))
 #define cbi(port, bit) (port) &= ~(1 << (bit))
-
+#define bitRead(value, bit) (((value) >> (bit)) & 0x01)
 
 uint8_t run_state = 0; // 0 - stopped; 1 - running
 uint8_t prev_batInd = 0;

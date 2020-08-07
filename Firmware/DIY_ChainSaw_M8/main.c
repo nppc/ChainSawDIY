@@ -2,6 +2,7 @@
 #include <avr/wdt.h>
 #include "main.h"
 #include "i2c.h"
+#include "adc.h"
 #include "oled.h"
 
 bool getButtonState(){
@@ -40,7 +41,7 @@ int main(void)
 
 	//if switch is ON then show warning
 	if(getButtonState()==0){
-		oled_bitmap(128-32,0,32,4,stateDANGER);
+		oled_bitmap(128-32,0,32,4,oled_stateDANGER);
 		_delay_ms(500);
 	}
 	//wait until button is released
@@ -55,7 +56,7 @@ int main(void)
 	WDTCR = (1<<WDE) | (1<<WDP1) | (1<<WDP2); // 1s
 	sei();
 
-	//oled_bitmap(128-32,0,32,4,stateDANGER);
+	//oled_bitmap(128-32,0,32,4,oled_stateDANGER);
 
     // ******* endless loop ******
 	while (1){
@@ -70,9 +71,9 @@ int main(void)
 			oled_draw_Bat(batInd);
 
 			if(batEmpty){
-				oled_bitmap(128-32,0,32,4,stateDANGER);
+				oled_bitmap(128-32,0,32,4,oled_stateDANGER);
 			}else{
-				oled_bitmap(128-32,0,32,4,stateOK);
+				oled_bitmap(128-32,0,32,4,oled_stateOK);
 			}
 			//oled.switchFrame();
 			_delay_ms(50); // make sure, that page switch doesn't occur too often
@@ -96,10 +97,10 @@ int main(void)
 			while(1){
 				cbi(PORTB,1); // just to be 100% sure that motor will not start
 				oled_draw_Bat(0);
-				oled_bitmap(128-32,0,32,4,stateDANGER);
+				oled_bitmap(128-32,0,32,4,oled_stateDANGER);
 				_delay_ms(300);
-				ssd1306_clear(0,0,70,4);
-				//oled_bitmap(128-32,0,32,4,stateDANGER);
+				oled_clear(0,0,70,4);
+				//oled_bitmap(128-32,0,32,4,oled_stateDANGER);
 				_delay_ms(600);
 			}
 			#endif
@@ -154,8 +155,8 @@ void stopMotor(){
     run_state=0;
     // stop timer
 	cli();
-  TCCR1A = 0; // stop timer
-  TCCR1B = 0; // stop timer
+	TCCR1A = 0; // stop timer
+	TCCR1B = 0; // stop timer
 	sei();
     cbi(PORTB,1);
 //	_delay_ms(5);

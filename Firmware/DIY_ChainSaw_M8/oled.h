@@ -2,7 +2,7 @@
 #define OLED_H_
 
 void oled_init(void);
-void oled_enable_display(void)
+void oled_enable_display(void);
 void oled_clear_display(void);
 void oled_setCol(uint8_t col);
 void oled_setRow(uint8_t row);

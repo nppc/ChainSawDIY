@@ -11,8 +11,6 @@
 
 #define CELLS 5	// define LiIon cells count
 
-// PB1 is ON/OFF switch
-
 #define MAXMEASUREDVOLT 28.16
 
 // formula: 1SVolt * 1024 * 128 / MAXMEASUREDVOLT

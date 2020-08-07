@@ -1,6 +1,5 @@
 $fn=80;
 
-!coverMotor(55,1.5);
 
 translate([65,0,2.9])rotate([180,0,0])coverMotor(55,1.5);
 
@@ -19,8 +18,8 @@ translate([0,0,3])ballBearing15();
 translate([0,0,35])pulley36T();
 
 // belt length = 200mm
-translate([70,0,-38])motor775();
-translate([70,0,35])pulley16T();
+translate([75,0,-38])motor775();
+translate([75,0,35])pulley20T();
 
 
 //projection(cut = false)
@@ -53,8 +52,8 @@ module pulley36T(){
   color("LightGray"){cylinder(d=27.5,h=10,$fn=30);translate([0,0,10])cylinder(d=16,h=7,$fn=30);}
 }
 
-module pulley16T(){
-  color("LightGray")cylinder(d=13,h=14, $fn=20);
+module pulley20T(){
+  color("LightGray")cylinder(d=16,h=14, $fn=20);
 }
 
 module motor775(){

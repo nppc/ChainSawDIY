@@ -3,7 +3,6 @@
 
 
 void i2c_init(void) {
-	//this->address = address;
 	TWSR = 0;
 	TWBR = ((F_CPU/SCL_CLOCK)-16)/2;
 }

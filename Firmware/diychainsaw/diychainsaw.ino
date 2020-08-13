@@ -1,6 +1,9 @@
 #include <avr/wdt.h>
+#ifndef NOOLED
 #include <Tiny4kOLED.h> //https://github.com/datacute/Tiny4kOLED
+#endif
 
+#define NOOLED
 //#define NOHANG
 //#define ENABLEFONT
 
@@ -28,6 +31,7 @@
 uint8_t run_state = 0; // 0 - stopped; 1 - running
 uint8_t prev_batInd = 0;
 
+#ifndef NOOLED
 static const uint8_t PROGMEM stateOK[32*4] = {
   252,254,7,3,3,3,3,3,3,3,3,3,131,195,227,131,3,3,3,3,3,3,3,3,3,3,3,3,3,7,254,252,
   255,255,0,0,0,0,4,14,30,62,63,127,119,227,227,193,128,0,0,0,0,0,0,0,0,0,0,0,0,0,255,255,
@@ -90,6 +94,7 @@ void draw_clear(uint8_t x0, uint8_t y0, uint8_t x1, uint8_t y1) {
 		oled.fillLength(0,x1);
 	}
 }
+#endif
 
 bool isBatteryEmpty(uint16_t rawadc){
   return ((uint32_t)rawadc*128 >= V1S0 ? LOW : HIGH);
@@ -154,9 +159,7 @@ void setup() {
 
   ADCSRA |= (1 << ADSC); // start first conversion
   
-  #ifdef ENABLEFONT
-  oled.setFont(FONT8X16);
-  #endif
+#ifndef NOOLED
   oled.begin();
   oled.clear();
   draw_Bat(0); // prefill bufer with empty battery bitmap
@@ -171,6 +174,8 @@ void setup() {
     oled.switchFrame();
     delay(500);
   }
+#endif
+
   //wait until button is released
   while(getButtonState()==0){
     // button is pressed
@@ -179,7 +184,7 @@ void setup() {
 
   // enable 1s watchdog with reset
   cli();
-  WDTCR = (1<<WDCE);
+  WDTCR = (1<<WDCE) | (1<<WDE);
   WDTCR = (1<<WDE) | (1<<WDP1) | (1<<WDP2); // 1s
   sei();
 }
@@ -214,7 +219,7 @@ uint16_t readADC(void){
 // start motor smoothly
 bool startMotor(void){
   cli();
-  OCR1A = 95; // value to test
+  OCR1A = 75; // value to test
   OCR1B = 255; // value to test	
   TCCR1 = (1<<CS13) | (1<<CS11) ; // Fast PWM mode (value 3)
   //TCCR0B = (0<<WGM02) | (1<<CS02) | (0<<CS01) | (0<<CS00); // Speed (value 3)
@@ -222,7 +227,7 @@ bool startMotor(void){
   sei();
   delay(30);
   //now motor starts at 50%. Increase the speed to 100%
-  for(uint8_t i=100;i<190;i+=5){
+  for(uint8_t i=80;i<190;i+=6){
     wdt_reset();
     OCR1A = i;
   	delay(25);
@@ -269,14 +274,16 @@ void loop() {
   // redraw screen only when needed (to avoid unnecesarry i2c traffic)
   if(batInd!=prev_batInd || batEmpty){
     prev_batInd = batInd;
-	draw_Bat(batInd);
-    
+
+#ifndef NOOLED
+    draw_Bat(batInd);
     if(batEmpty){
       oled.bitmap(128-32,0,32,4,stateDANGER);
     }else{
       oled.bitmap(128-32,0,32,4,stateOK);
     }
     oled.switchFrame();
+#endif
     delay(50); // make sure, that page switch doesn't occur too often
   }
   // check button and start/stop motor
@@ -294,9 +301,10 @@ void loop() {
   if(batEmpty){
     stopMotor();
     disableWatchdog();
-#ifndef NOHANG
 	while(1==1){
+#ifndef NOHANG
 		bitClear(PORTB,3); // just to be 100% sure that motor will not start
+#ifndef NOOLED
 		draw_Bat(0);
 		oled.bitmap(128-32,0,32,4,stateDANGER);
 		oled.switchFrame();
@@ -305,9 +313,9 @@ void loop() {
 		oled.bitmap(128-32,0,32,4,stateDANGER);
 		oled.switchFrame();
 		delay(600);
+#endif
 	}
 #endif
   }
 
 }
-

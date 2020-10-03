@@ -1126,4 +1126,6 @@ F 3 "" H 3200 5000 50  0001 C CNN
 $EndComp
 Text Notes 3250 3250 0    50   ~ 0
 2.63V
+Text Notes 2200 3800 0    118  ~ 0
+Fuses:\nL=A4\nH=D9
 $EndSCHEMATC
